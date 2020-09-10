@@ -7,7 +7,7 @@
         android:title="Settings"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/list_item"
+    <item android:id="@+id/impressum"
         android:title="Impressum"
         app:showAsAction="never"/>
 
