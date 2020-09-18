@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new HomeFragment();
                             break;
                         case R.id.nav_Lists:
-                            // selectedFragment = new KlasseDesFragments();
+                            selectedFragment = new ShoppingListFragment();
                             break;
                         case R.id.nav_ProductSearch:
                             // selectedFragment = new KlasseDesFragments();
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                             selectedFragment).commit();
-                    
+
                     return true;
                 }
             };
