@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new ShoppingListFragment();
                             break;
                         case R.id.nav_ProductSearch:
-                            // selectedFragment = new KlasseDesFragments();
+                            selectedFragment = new ProductFragment();
                             break;
                     }
 
