@@ -23,14 +23,16 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/login"
         android:layout_below="@+id/login_PasswordField"/>
 
     <TextView
+        android:id="@+id/TVtoRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="@string/no_account"
-        android:onClick="myMethod"
+        android:onClick="OnClick"
         android:layout_below="@id/btn_login"/>
 
 </RelativeLayout>
