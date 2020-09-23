@@ -1,5 +1,6 @@
 package com.example.hwr_huschka;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +51,11 @@ public class ShoppingListFragment extends Fragment {
                 // Fragment aufrufen, in dem Infos für eine neue Einkaufsliste eingetragen werden
                 // vereinfacht erstmal nur neue Liste in das LinearLayout hinzufügen
 
-                list.add(editText.getText().toString());
-                arrayAdapter.notifyDataSetChanged();
+                startActivity(new Intent(getActivity(), AddShoppingList.class));
 
+                /*list.add(editText.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+                */
             }
         });
         return v;

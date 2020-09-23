@@ -5,4 +5,8 @@
     <string name="register">Registrieren!</string>
     <string name="no_account">Kein Account? Hier entlang</string>
     <string name="exist_account">Account vorhanden? Hier entlang</string>
+
+
+    <string name="addList_Infos">Hinzufügen</string>
+
 </resources>
