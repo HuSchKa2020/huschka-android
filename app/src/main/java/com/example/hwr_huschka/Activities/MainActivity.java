@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.hwr_huschka.FragmentsMain.HomeFragment;
+import com.example.hwr_huschka.FragmentsMain.ProductFragment;
+import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.FragmentsMain.ShoppingListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,9 +1,11 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.FragmentsMain;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.hwr_huschka.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.FragmentsMain;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,13 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.hwr_huschka.Activities.AddShoppingListActivity;
+import com.example.hwr_huschka.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -51,7 +50,7 @@ public class ShoppingListFragment extends Fragment {
                 // Fragment aufrufen, in dem Infos für eine neue Einkaufsliste eingetragen werden
                 // vereinfacht erstmal nur neue Liste in das LinearLayout hinzufügen
 
-                startActivity(new Intent(getActivity(), AddShoppingList.class));
+                startActivity(new Intent(getActivity(), AddShoppingListActivity.class));
 
                 /*list.add(editText.getText().toString());
                 arrayAdapter.notifyDataSetChanged();

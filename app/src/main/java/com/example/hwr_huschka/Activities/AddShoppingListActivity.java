@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-public class AddShoppingList extends AppCompatActivity {
+import com.example.hwr_huschka.R;
+
+public class AddShoppingListActivity extends AppCompatActivity {
 
     Button btnAddList;
     DatePicker datePicker;

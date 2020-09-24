@@ -1,6 +1,9 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.Activities;
 
 import android.os.Bundle;
+
+import com.example.hwr_huschka.FragmentsLogin.LoginFragment;
+import com.example.hwr_huschka.R;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.FragmentsLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
+import com.example.hwr_huschka.Activities.MainActivity;
+import com.example.hwr_huschka.Constants;
+import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
