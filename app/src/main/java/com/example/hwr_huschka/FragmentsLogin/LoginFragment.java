@@ -50,8 +50,6 @@ public class LoginFragment extends Fragment {
                 final FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragmentLoginContainer, new RegistrationFragment(), "register");
                 ft.commit();
-
-                //Toast.makeText(getContext(), "You Clicke here", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -59,7 +57,6 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // logInUser(edEmail.getText().toString().trim(), edPassword.getText().toString().trim());
                 openMainActivity();
             }

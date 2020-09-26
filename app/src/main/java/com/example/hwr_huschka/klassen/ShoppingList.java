@@ -1,35 +1,31 @@
 package com.example.hwr_huschka.klassen;
 
-import java.lang.reflect.Array;
-import java.sql.Date;
-import java.time.LocalDateTime;
+import org.threeten.bp.LocalDate;
 import java.util.ArrayList;
 
 public class ShoppingList {
 
 	//Eigenschaften
-	
 	private int listenID;
-	private LocalDateTime datum;
+	private LocalDate datum;
 	private String supermarkt;
 	private String status;
 	private ArrayList inhalt;
 	
 	//Konstruktoren
-	
-	public ShoppingList(){
-		status = "In Bearbeitung";
+	public ShoppingList(LocalDate datum, String supermarkt, String status) {
+		this.datum = datum;
+		this.supermarkt = supermarkt;
+		this.status = status;
 	}
 	
-	
 	//Methoden
-	
-	
+	//setter
 	public void setListenID(int listenID) {
 		this.listenID = listenID;
 	}
 	
-	public void setDatum(LocalDateTime datum) {
+	public void setDatum(LocalDate datum) {
 		this.datum = datum;
 	}
 	
@@ -44,14 +40,13 @@ public class ShoppingList {
 	public void setInhalt(ArrayList inhalt) {
 		this.inhalt = inhalt; 
 	}
-	
-	
-	
+
+	//getter
 	public int getListenID() {
 		return listenID;
 	}
 	
-	public LocalDateTime getDatum() {
+	public LocalDate getDatum() {
 		return datum;
 	}
 	

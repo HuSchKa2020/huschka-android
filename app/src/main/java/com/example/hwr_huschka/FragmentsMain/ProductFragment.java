@@ -8,7 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.hwr_huschka.ProductAdapter;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.ShoppingListAdapter;
+import com.example.hwr_huschka.klassen.Product;
+
+import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +25,9 @@ public class ProductFragment extends Fragment {
     Button btnSearch;
     ListView productListView;
 
+    ArrayList<Product> products;
+    ProductAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,15 +37,31 @@ public class ProductFragment extends Fragment {
         btnSearch = v.findViewById(R.id.btnProductSearch);
         productListView = v.findViewById(R.id.produktListView);
 
+        products = new ArrayList<Product>();
+        products.add(new Product(1,"Ketchup", 1.99));
+        products.add(new Product(2, "Mayo", 1.49));
+
+        adapter = new ProductAdapter(getContext(), R.layout.listadapter_product, products);
+        productListView.setAdapter(adapter);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Suchen in der DB nach dem Produkt (ggfs. alle Produkte, die das was im Textfeld steht enthalten, in die ListView schreiben)
+                products.clear();
+                products.addAll(loadProducts(searchedProductName.getText().toString()));
+
+                products.add(new Product(38,"Reis", 0.99));
+                adapter.notifyDataSetChanged();
             }
         });
 
         return v;
+    }
+
+    private ArrayList<Product> loadProducts(String partOfProductName){
+        // loadProducts from Backend
+        return new ArrayList<Product>();
     }
 
 }

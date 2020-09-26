@@ -2,32 +2,31 @@ package com.example.hwr_huschka.klassen;
 
 import com.example.hwr_huschka.klassen.Position;
 
-public class Produkt {
+public class Product {
 
 	//Eigenschaften
-	
-	private int produktID;
+	private int produktID = 0;
 	private String name;
 	private double preis;
 	private String kategorie;
 	private String hersteller;
 	private int kcal;
 	private Position position;
-	
-	
-	//Konstruktor
-	
-	public Produkt(){
+
+	//Konstruktoren
+	public Product(int produktID, String name, double preis){
+		this.produktID = produktID;
+		this.name = name;
+		this.preis = preis;
 	}
-	
-	
+
 	//Methoden
-	
+	// setter
 	public void setPosition(Position position) {
 		this.position = position;
 	}
 	
-	public void setProduktName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -50,15 +49,13 @@ public class Produkt {
 	public void setKcal(int kcal) {
 		this.kcal = kcal;	
 	}
-	
-	
-	
-	
+
+	// getter
 	public Position getPosition() {
 		return position;
 	}
 	
-	public String getProduktName() {
+	public String getName() {
 		return name;
 	}
 	
@@ -81,5 +78,4 @@ public class Produkt {
 	public int getKcal() {
 		return kcal;
 	}
-	
 }
