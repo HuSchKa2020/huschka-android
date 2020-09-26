@@ -1,14 +1,18 @@
 package com.example.hwr_huschka.FragmentsMain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.hwr_huschka.Activities.AddShoppingListActivity;
 import com.example.hwr_huschka.ProductAdapter;
+import com.example.hwr_huschka.ProductInfoActivity;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.ShoppingListAdapter;
 import com.example.hwr_huschka.klassen.Product;
@@ -53,6 +57,13 @@ public class ProductFragment extends Fragment {
 
                 products.add(new Product(38,"Reis", 0.99));
                 adapter.notifyDataSetChanged();
+            }
+        });
+
+        productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
             }
         });
 
