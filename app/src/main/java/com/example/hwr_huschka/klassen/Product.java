@@ -2,6 +2,8 @@ package com.example.hwr_huschka.klassen;
 
 import com.example.hwr_huschka.klassen.Position;
 
+import androidx.annotation.NonNull;
+
 public class Product {
 
 	//Eigenschaften
@@ -18,6 +20,12 @@ public class Product {
 		this.produktID = produktID;
 		this.name = name;
 		this.preis = preis;
+	}
+
+	@NonNull
+	@Override
+	public String toString() {
+		return "ID: " + produktID;
 	}
 
 	//Methoden

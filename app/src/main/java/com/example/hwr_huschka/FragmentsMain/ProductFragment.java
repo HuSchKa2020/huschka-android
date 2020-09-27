@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
 import com.example.hwr_huschka.ProductAdapter;
@@ -63,7 +64,12 @@ public class ProductFragment extends Fragment {
         productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(getActivity(), ProductInfoActivity.class));
+                Intent intent = new Intent(getActivity(), ProductInfoActivity.class);
+                Product clickedItem = (Product) adapterView.getItemAtPosition(i);
+                //Toast.makeText(getContext(), Integer.toString(clickedItem.getProduktID()), Toast.LENGTH_LONG).show();
+
+                intent.putExtra("productID", Integer.toString(clickedItem.getProduktID()));
+                startActivity(intent);
             }
         });
 
