@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductInfoActivity">
+    tools:context=".Activities.ProductInfoActivity"
+    android:orientation="horizontal">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/addListToolbar"
@@ -16,11 +17,40 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <TextView
-            android:id="@+id/TVproductID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/addListToolbar"/>
+    <TextView
+        android:id="@+id/TVproductID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addListToolbar"/>
 
+    <TextView
+        android:id="@+id/TVproductHersteller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVproductID"/>
+
+    <TextView
+        android:id="@+id/TVproductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVproductHersteller"/>
+
+    <TextView
+        android:id="@+id/TVproductKategorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVproductName"/>
+
+    <TextView
+        android:id="@+id/TVproductPreis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVproductKategorie"/>
+
+    <TextView
+        android:id="@+id/TVproductKcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVproductPreis"/>
 
 </RelativeLayout>

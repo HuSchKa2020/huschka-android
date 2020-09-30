@@ -22,10 +22,18 @@ public class Product {
 		this.preis = preis;
 	}
 
+	public Product(int produktID){
+		this.produktID = produktID;
+	}
+
+	public Product(){
+
+	}
+
 	@NonNull
 	@Override
 	public String toString() {
-		return "ID: " + produktID;
+		return "ID: " + produktID + ", Hersteller: " + hersteller + ",  Name: " + name;
 	}
 
 	//Methoden
