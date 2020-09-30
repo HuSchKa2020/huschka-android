@@ -7,32 +7,94 @@
         android:id="@+id/login_EmailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_above="@id/login_PasswordField"
-        />
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <EditText
         android:id="@+id/login_PasswordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="120dp"
+        android:hint="@string/login_Passwort"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_login_Passwort_anzeigen"
+        android:layout_width="105dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="317dp"
+        android:background="@color/colorWeiß"
+        android:text="Anzeigen"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/login_PasswordField"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/login"
-        android:layout_below="@+id/login_PasswordField"/>
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"/>
 
     <TextView
         android:id="@+id/TVtoRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login"
         android:layout_centerHorizontal="true"
-        android:text="@string/no_account"
         android:onClick="OnClick"
-        android:layout_below="@id/btn_login"/>
+        android:text="@string/no_account" />
+
+    <TextView
+        android:id="@+id/TV_Passwort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_PasswordField"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/login_Passwort"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_EmailField"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/login_Email"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_Willkommen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/login_Begrueßung"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="25dp" />
+
 
 </RelativeLayout>

@@ -3,4 +3,7 @@
     <color name="colorPrimary">#2bd9c0</color>
     <color name="colorPrimaryDark">#8fcfc6</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorDunkelTuerkis">#03a696</color>
+    <color name="colorSehrDunkelTuerkis">#00423b</color>
+    <color name="colorWeiß">#ffffff</color>
 </resources>

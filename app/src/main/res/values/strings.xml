@@ -5,6 +5,18 @@
     <string name="register">Registrieren!</string>
     <string name="no_account">Kein Account? Hier entlang</string>
     <string name="exist_account">Account vorhanden? Hier entlang</string>
+    <string name="register_Vorname">Vorname</string>
+    <string name="register_Nachname">Nachname</string>
+    <string name="register_Stadt">Stadt</string>
+    <string name="register_Postleitzahl">Postleitzahl</string>
+    <string name="register_Straße">Straße</string>
+    <string name="register_Hausnummer">Nr.</string>
+    <string name="register_Email">E-Mail</string>
+    <string name="register_Passwort">Passwort</string>
+    <string name="register_Passwort_Wiederholen">Passwort wiederholen</string>
+    <string name="login_Begrueßung">Willkommen bei HuSchKa!         Ihrem Einkaufsplaner</string>
+    <string name="login_Email">Email</string>
+    <string name="login_Passwort">Passwort</string>
 
 
     <string name="addList_Infos">Hinzufügen</string>
