@@ -55,9 +55,6 @@ public class ProductInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         loadData(Integer.parseInt(getIntent().getStringExtra("productID")));
-
-
-
     }
 
     private void loadData(final int productID){
@@ -95,37 +92,5 @@ public class ProductInfoActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-
-
-
-   class Connection extends AsyncTask<String, String, String>{
-       @Override
-       protected String doInBackground(String... strings) {
-           String result = "";
-           try{
-               URL url = new URL(Constants.URL_PRODUCT_INFO);
-               HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-               is = new BufferedInputStream(con.getInputStream());
-
-               BufferedReader br = new BufferedReader((new InputStreamReader(is)));
-               JSONObject jsonObject = new JSONObject(br.readLine());
-
-               Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-
-               br.close();
-
-               result = jsonObject.toString();
-           }catch (Exception e){
-                e.printStackTrace();
-           }
-            return null;
-       }
-
-       @Override
-       protected void onPostExecute(String result) {
-           Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-       }
-   }
 
 }
