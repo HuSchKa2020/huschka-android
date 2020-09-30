@@ -44,7 +44,7 @@ public class RegistrationFragment extends Fragment {
     Button btnPasswortanzeigen;
 
 
-    EditText edEmail, edPassword1, edPassword2;
+    EditText edEmail, edPassword1, edPassword2, edFirstname, edFamilyname, edPLZ, edCity, edStreet, edHousenumber;
 
 
     @Nullable
@@ -54,10 +54,18 @@ public class RegistrationFragment extends Fragment {
 
         goToLogin = v.findViewById(R.id.TVtoLogin);
         btnRegister = v.findViewById(R.id.btn_register);
-        edEmail = v.findViewById(R.id.register_EmailField);
 
-        edPassword1= v.findViewById(R.id.register_PasswordField);
-        edPassword2= v.findViewById(R.id.register_PasswordField2);
+
+
+        edEmail = v.findViewById(R.id.register_EmailField);
+        edPassword1 = v.findViewById(R.id.register_PasswordField);
+        edPassword2 = v.findViewById(R.id.register_PasswordField2);
+        edFirstname = v.findViewById(R.id.register_VornameField);
+        edFamilyname = v.findViewById(R.id.register_NachnameField);
+        edPLZ = v.findViewById(R.id.register_Postleitzahl);
+        edCity = v.findViewById(R.id.register_Stadt);
+        edStreet = v.findViewById(R.id.register_Straße);
+        edHousenumber = v.findViewById(R.id.register_Hausnummer);
 
 
 
@@ -74,12 +82,29 @@ public class RegistrationFragment extends Fragment {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edEmail.getText().toString().trim();
-                String password = edPassword.getText().toString().trim();
-                String firstname = edFirstname.getText().toString().trim();
-                String familyname = edFamilyname.getText().toString().trim();
 
-                registerUser(email, password, firstname, familyname);
+
+                if (edPassword1.getText().toString().trim().equals(edPassword2.getText().toString().trim())){
+
+                    String email = edEmail.getText().toString().trim();
+                    String password = edPassword1.getText().toString().trim();
+                    String firstname = edFirstname.getText().toString().trim();
+                    String familyname = edFamilyname.getText().toString().trim();
+
+                    StringBuilder str = new StringBuilder();
+
+                    str.append(edStreet.getText().toString().trim() + " ");
+                    str.append(edHousenumber.getText().toString().trim() + ", ");
+                    str.append(edPLZ.getText().toString().trim() + " ");
+                    str.append(edCity.getText().toString().trim());
+
+                    registerUser(email, password, firstname, familyname, str.toString());
+
+                } else{
+                    Toast.makeText(getContext(), "Passwörter sind nicht äquivalent!", Toast.LENGTH_LONG).show();
+                }
+
+
             }
         });
 
@@ -108,7 +133,8 @@ public class RegistrationFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void registerUser(final String email, final String password, final String firstname, final String familyname){
+    private void registerUser(final String email, final String password, final String firstname,
+                              final String familyname, final String adresse){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER_USER,
                 new Response.Listener<String>() {
@@ -144,6 +170,7 @@ public class RegistrationFragment extends Fragment {
                 params.put("password", password);
                 params.put("vorname", firstname);
                 params.put("nachname", familyname);
+                params.put("adresse", adresse);
                 return params;
             }
         };
