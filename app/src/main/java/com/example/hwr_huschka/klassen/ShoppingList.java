@@ -18,6 +18,11 @@ public class ShoppingList {
 		this.supermarkt = supermarkt;
 		this.status = status;
 	}
+	public ShoppingList(String supermarkt, String status){
+		this.supermarkt = supermarkt;
+		this.status = status;
+		this.datum = LocalDate.of(2020,04,19);
+	}
 	
 	//Methoden
 	//setter

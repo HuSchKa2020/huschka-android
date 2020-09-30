@@ -43,8 +43,9 @@ public class ShoppingListFragment extends Fragment {
 
         listOfShoppingLists = loadShoppingLists(0); // here in Future add the ID from the SharedPreferences Class
 
-        LocalDate datum = LocalDate.now();
-        ShoppingList shoppingList = new ShoppingList(datum, "LIDL", "bezahlt");
+
+    //    LocalDate datum = LocalDate.now();
+        ShoppingList shoppingList = new ShoppingList("LIDL", "bezahlt");
         listOfShoppingLists.add(shoppingList);
 
         adapter = new ShoppingListAdapter(getContext(), R.layout.listadapter_shoppinglist, listOfShoppingLists);
