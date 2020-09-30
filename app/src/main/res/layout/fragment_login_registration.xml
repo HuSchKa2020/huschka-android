@@ -5,11 +5,11 @@
 
     <EditText
         android:id="@+id/register_NachnameField"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_Postleitzahl"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp" />
 
     <EditText
@@ -17,14 +17,19 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_Stadt"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"/>
 
     <EditText
         android:id="@+id/register_PasswordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_PasswordField2"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="120dp"
+        android:hint="@string/register_Passwort"
+        android:inputType="textPassword"/>
 
     <EditText
         android:id="@+id/register_PasswordField2"
@@ -32,97 +37,33 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_register"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="15dp" />
-
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/TVtoLogin"
-        android:layout_marginBottom="2dp"
-        android:text="@string/register" />
-
-    <TextView
-        android:id="@+id/TVtoLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="104dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="3dp"
-        android:text="@string/exist_account" />
-
-    <TextView
-        android:id="@+id/TV_vorname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_VornameField"
-        android:layout_alignEnd="@+id/register_VornameField"
-        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="10dp"
-        android:text="Vorname" />
+        android:layout_marginEnd="120dp"
+        android:hint="@string/register_Passwort_Wiederholen"
+        android:inputType="textPassword"/>
 
-    <TextView
-        android:id="@+id/TV_vorname2"
-        android:layout_width="97dp"
+    <EditText
+        android:id="@+id/register_Stadt"
+        android:layout_width="104dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register_NachnameField"
-        android:layout_alignStart="@+id/register_NachnameField"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="10dp"
-        android:text="Nachname" />
-
-    <TextView
-        android:id="@+id/TV_passwort"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_PasswordField"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/register_Straße"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="220dp"
-        android:layout_marginBottom="10dp"
-        android:text="Passwort" />
-
-    <TextView
-        android:id="@+id/TV_email"
-        android:layout_width="114dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_EmailField"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="270dp"
-        android:layout_marginBottom="10dp"
-        android:text="E-Mail" />
-
-    <TextView
-        android:id="@+id/TV_passwort_wiederholen"
-        android:layout_width="206dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_PasswordField2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="185dp"
-        android:layout_marginBottom="10dp"
-        android:text="Passwort wiederholen" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:layout_toEndOf="@+id/register_Postleitzahl"
+        android:ems="10"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/register_EmailField"
         android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_PasswordField"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         android:ems="10"
         android:inputType="textEmailAddress" />
@@ -132,7 +73,8 @@
         android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/register_EmailField"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"/>
 
     <EditText
         android:id="@+id/register_Hausnummer"
@@ -141,14 +83,126 @@
         android:layout_above="@+id/register_EmailField"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         android:layout_toEndOf="@+id/register_Straße"
         android:ems="10"
         android:inputType="number" />
 
+    <EditText
+        android:id="@+id/register_Postleitzahl"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_Straße"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"/>
+
+    <Button
+        android:id="@+id/btn_register_Passwort_anzeigen"
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_register"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:text="Anzeigen"
+        android:background="#ffffff"/>
+
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TVtoLogin"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/register"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"/>
+
     <TextView
-        android:id="@+id/TV_Straße"
+        android:id="@+id/TVtoLogin"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="3dp"
+        android:text="@string/exist_account"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/TV_register_Vorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_VornameField"
+        android:layout_alignEnd="@+id/register_VornameField"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Vorname"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_register_Nachname"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_NachnameField"
+        android:layout_alignStart="@+id/register_NachnameField"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Nachname"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_register_Passwort"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_PasswordField"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Passwort"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_register_Passwort_wiederholen"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_PasswordField2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="185dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Passwort_Wiederholen"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_register_Email"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_EmailField"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="270dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Email"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_register_Straße"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_Straße"
@@ -157,63 +211,44 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="10dp"
-        android:text="Straße" />
+        android:text="@string/register_Straße"
+        android:textColor="@color/colorDunkelTuerkis"/>
 
     <TextView
-        android:id="@+id/TV_Hausnummer"
+        android:id="@+id/TV_register_Hausnummer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_Hausnummer"
         android:layout_alignStart="@+id/register_Hausnummer"
         android:layout_alignEnd="@+id/register_Hausnummer"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="10dp"
-        android:text="Nr." />
-
-    <EditText
-        android:id="@+id/register_Stadt"
-        android:layout_width="231dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_Straße"
-        android:layout_marginBottom="50dp" />
+        android:text="@string/register_Hausnummer"
+        android:textColor="@color/colorDunkelTuerkis"/>
 
     <TextView
-        android:id="@+id/TV_Stadt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_Stadt"
-        android:layout_alignEnd="@+id/register_Stadt"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="10dp"
-        android:text="Stadt" />
-
-    <EditText
-        android:id="@+id/register_Postleitzahl"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/register_Hausnummer"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="50dp"
-        android:layout_toEndOf="@+id/register_Stadt"
-        android:ems="10"
-        android:inputType="number" />
-
-
-    <TextView
-        android:id="@+id/TV_Postleitzahl"
+        android:id="@+id/TV_register_Postleitzahl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/register_Postleitzahl"
-        android:layout_alignStart="@+id/register_Postleitzahl"
-        android:layout_alignEnd="@+id/register_Postleitzahl"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/register_Postleitzahl"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_register_Stadt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/register_Stadt"
+        android:layout_alignStart="@+id/register_Stadt"
+        android:layout_alignEnd="@+id/register_Stadt"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="10dp"
-        android:text="Postleitzahl" />
+        android:text="@string/register_Stadt"
+        android:textColor="@color/colorDunkelTuerkis"/>
 
 </RelativeLayout>

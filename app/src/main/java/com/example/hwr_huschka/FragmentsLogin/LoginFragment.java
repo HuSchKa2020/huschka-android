@@ -1,5 +1,6 @@
 package com.example.hwr_huschka.FragmentsLogin;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,10 +29,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+
 public class LoginFragment extends Fragment {
 
     TextView goToRegistration;
     Button btnLogin;
+    Button btnPasswortAnzeigen;
 
     EditText edEmail, edPassword;
 
@@ -62,7 +67,22 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        btnPasswortAnzeigen = v.findViewById(R.id.btn_login_Passwort_anzeigen);
+        btnPasswortAnzeigen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (btnPasswortAnzeigen.getText().toString().equals("Anzeigen")) {
+                    edPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    btnPasswortAnzeigen.setText("Verbergen");
+                } else {
+                    edPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    btnPasswortAnzeigen.setText("Anzeigen");
+                }
+            }
+        });
+
         return v;
+
     }
 
     private void openMainActivity(){

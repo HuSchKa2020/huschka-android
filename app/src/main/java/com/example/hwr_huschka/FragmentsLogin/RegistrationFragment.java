@@ -2,6 +2,8 @@ package com.example.hwr_huschka.FragmentsLogin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +39,9 @@ public class RegistrationFragment extends Fragment {
     TextView goToLogin;
 
     Button btnRegister;
+    Button btnPasswortanzeigen;
 
-    EditText edEmail, edPassword;
+    EditText edEmail, edPassword1, edPassword2;
 
     @Nullable
     @Override
@@ -48,7 +51,9 @@ public class RegistrationFragment extends Fragment {
         goToLogin = v.findViewById(R.id.TVtoLogin);
         btnRegister = v.findViewById(R.id.btn_register);
         edEmail = v.findViewById(R.id.register_EmailField);
-        edPassword = v.findViewById(R.id.register_PasswordField);
+        edPassword1= v.findViewById(R.id.register_PasswordField);
+        edPassword2= v.findViewById(R.id.register_PasswordField2);
+
 
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +70,23 @@ public class RegistrationFragment extends Fragment {
             public void onClick(View view) {
 
             }
+        });
+
+        btnPasswortanzeigen = v.findViewById(R.id.btn_register_Passwort_anzeigen);
+        btnPasswortanzeigen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (btnPasswortanzeigen.getText().toString().equals("Anzeigen")) {
+                    edPassword1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    edPassword2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    btnPasswortanzeigen.setText("Verbergen");
+                } else {
+                    edPassword1.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    edPassword2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    btnPasswortanzeigen.setText("Anzeigen");
+                }
+            }
+
         });
 
         return v;
