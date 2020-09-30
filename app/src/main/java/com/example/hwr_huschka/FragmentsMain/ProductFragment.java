@@ -9,13 +9,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.hwr_huschka.Activities.AddShoppingListActivity;
 import com.example.hwr_huschka.ProductAdapter;
-import com.example.hwr_huschka.ProductInfoActivity;
+import com.example.hwr_huschka.Activities.ProductInfoActivity;
 import com.example.hwr_huschka.R;
-import com.example.hwr_huschka.ShoppingListAdapter;
 import com.example.hwr_huschka.klassen.Product;
 
 import java.util.ArrayList;

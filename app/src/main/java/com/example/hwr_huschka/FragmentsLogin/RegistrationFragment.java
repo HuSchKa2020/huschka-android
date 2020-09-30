@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.FragmentsLogin.LoginFragment;
@@ -41,7 +43,9 @@ public class RegistrationFragment extends Fragment {
     Button btnRegister;
     Button btnPasswortanzeigen;
 
+
     EditText edEmail, edPassword1, edPassword2;
+
 
     @Nullable
     @Override
@@ -51,8 +55,10 @@ public class RegistrationFragment extends Fragment {
         goToLogin = v.findViewById(R.id.TVtoLogin);
         btnRegister = v.findViewById(R.id.btn_register);
         edEmail = v.findViewById(R.id.register_EmailField);
+
         edPassword1= v.findViewById(R.id.register_PasswordField);
         edPassword2= v.findViewById(R.id.register_PasswordField2);
+
 
 
 
@@ -68,7 +74,12 @@ public class RegistrationFragment extends Fragment {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = edEmail.getText().toString().trim();
+                String password = edPassword.getText().toString().trim();
+                String firstname = edFirstname.getText().toString().trim();
+                String familyname = edFamilyname.getText().toString().trim();
 
+                registerUser(email, password, firstname, familyname);
             }
         });
 
@@ -97,7 +108,7 @@ public class RegistrationFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void registerUser(final String email, final String password){
+    private void registerUser(final String email, final String password, final String firstname, final String familyname){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER_USER,
                 new Response.Listener<String>() {
@@ -108,18 +119,16 @@ public class RegistrationFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
-                            if (jsonObject.getBoolean("registered") == true) {
-                                // User Daten korrekt
-                                // ID in die sharedPreferences
+                            if (jsonObject.getBoolean("error") == false){
                                 openMainActivity();
-                            } else {
-                                // Eingegebene Daten nicht korrekt?
-                                Toast.makeText(getContext(), "Registrierung fehlgeschlagen", Toast.LENGTH_LONG).show();
+                            } else if (jsonObject.getString("message").equals("User already registered")){
+                                Toast.makeText(getContext(), "Sie sind schon registriert, bitte loggen sie sich ein!", Toast.LENGTH_LONG).show();
                             }
 
-                        } catch (JSONException e) {
+                        }catch(JSONException e){
                             e.printStackTrace();
                         }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -127,17 +136,20 @@ public class RegistrationFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                }) {
+                }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("email", email);
                 params.put("password", password);
+                params.put("vorname", firstname);
+                params.put("nachname", familyname);
                 return params;
             }
         };
-        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
 
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
 }
