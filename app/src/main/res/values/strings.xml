@@ -20,5 +20,15 @@
 
 
     <string name="addList_Infos">Hinzufügen</string>
+    
+    <string-array name="Supermarkts">
+        <item>Kaufland</item>
+        <item>Rewe</item>
+        <item>Lidl</item>
+        <item>Aldi</item>
+        <item>Edeka</item>
+    </string-array>
 
+    <string name="ListeHinzufügen_Bitte">Bitte Supermarkt auswählen</string>
+    <string name="ListeHinzufügen_Datum">Bitte Einkaufsdatum auswählen</string>
 </resources>
