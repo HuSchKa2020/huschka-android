@@ -14,9 +14,11 @@
     <string name="register_Email">E-Mail</string>
     <string name="register_Passwort">Passwort</string>
     <string name="register_Passwort_Wiederholen">Passwort wiederholen</string>
-    <string name="login_Begrueßung">Willkommen bei HuSchKa!         Ihrem Einkaufsplaner</string>
+    <string name="login_Begrueßung">Willkommen bei HuSchKa! Ihrem Einkaufsplaner</string>
     <string name="login_Email">Email</string>
     <string name="login_Passwort">Passwort</string>
+
+    <string name="register_ueberschrift">Konto erstellen</string>
 
 
     <string name="addList_Infos">Hinzufügen</string>
