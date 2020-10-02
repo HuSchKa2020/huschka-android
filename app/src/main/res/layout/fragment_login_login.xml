@@ -26,12 +26,12 @@
     <Button
         android:id="@+id/btn_login_Passwort_anzeigen"
         android:layout_width="105dp"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="13dp"
         android:layout_marginBottom="317dp"
-        android:background="@color/colorWeiß"
+        android:background="@color/colorPrimaryDark"
         android:text="Anzeigen"
         android:textColor="@color/colorSehrDunkelTuerkis"/>
 
