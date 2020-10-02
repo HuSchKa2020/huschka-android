@@ -12,7 +12,7 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/logout"
-        android:title="Impressum"
+        android:title="Ausloggen"
         app:showAsAction="never"/>
 
 </menu>
