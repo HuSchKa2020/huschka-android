@@ -108,12 +108,10 @@ public class LoginFragment extends Fragment {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            Toast.makeText(getContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
 
                             if (jsonObject.getBoolean("error") == false){
                                 // mail and password are correct
                                 // safe user data in SharedPreferences
-
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
                                 editor.putInt("id", jsonObject.getInt("id"));
