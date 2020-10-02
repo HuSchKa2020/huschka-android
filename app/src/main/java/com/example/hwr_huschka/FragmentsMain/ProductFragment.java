@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.ProductAdapter;
 import com.example.hwr_huschka.Activities.ProductInfoActivity;
 import com.example.hwr_huschka.R;

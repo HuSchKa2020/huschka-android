@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
+import com.example.hwr_huschka.Activities.ProductInfoActivity;
+import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.ShoppingListAdapter;
 import com.example.hwr_huschka.klassen.ShoppingList;
@@ -58,6 +61,19 @@ public class ShoppingListFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddShoppingListActivity.class));
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ShoppingList clickedItem = (ShoppingList) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(getActivity(), ShoppinglistActivity.class);
+
+                intent.putExtra("shoppingListID", Integer.toString(clickedItem.getListenID()));
+                startActivity(intent);
+            }
+        });
+
+
         return v;
     }
 

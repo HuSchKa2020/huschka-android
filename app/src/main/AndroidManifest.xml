@@ -10,8 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.ProductInfoActivity"
-            android:parentActivityName=".Activities.ProductInfoActivity"/>
+        <activity android:name=".Activities.ShoppinglistActivity"></activity>
+        <activity
+            android:name=".Activities.ProductInfoActivity"
+            android:parentActivityName=".Activities.ProductInfoActivity" />
         <activity
             android:name=".Activities.AddShoppingListActivity"
             android:parentActivityName=".Activities.MainActivity" />
