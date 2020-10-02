@@ -1,6 +1,7 @@
 package com.example.hwr_huschka.FragmentsLogin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -36,6 +37,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class RegistrationFragment extends Fragment {
 
     TextView goToLogin;
@@ -43,19 +46,19 @@ public class RegistrationFragment extends Fragment {
     Button btnRegister;
     Button btnPasswortanzeigen;
 
-
     EditText edEmail, edPassword1, edPassword2, edFirstname, edFamilyname, edPLZ, edCity, edStreet, edHousenumber;
 
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_login_registration, container, false);
 
+        sharedPreferences = this.getActivity().getSharedPreferences("userdata", MODE_PRIVATE);
+
         goToLogin = v.findViewById(R.id.TVtoLogin);
         btnRegister = v.findViewById(R.id.btn_register);
-
-
 
         edEmail = v.findViewById(R.id.register_EmailField);
         edPassword1 = v.findViewById(R.id.register_PasswordField);
@@ -66,9 +69,6 @@ public class RegistrationFragment extends Fragment {
         edCity = v.findViewById(R.id.register_Stadt);
         edStreet = v.findViewById(R.id.register_Straße);
         edHousenumber = v.findViewById(R.id.register_Hausnummer);
-
-
-
 
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +146,16 @@ public class RegistrationFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
 
                             if (jsonObject.getBoolean("error") == false){
+
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                //editor.putInt("id", jsonObject.getInt("id"));
+                                editor.putString("email", email);
+                                editor.putString("firstname", firstname);
+                                editor.putString("familyname", familyname);
+                                editor.commit();
+
+
                                 openMainActivity();
                             } else if (jsonObject.getString("message").equals("User already registered")){
                                 Toast.makeText(getContext(), "Sie sind schon registriert, bitte loggen sie sich ein!", Toast.LENGTH_LONG).show();

@@ -1,7 +1,9 @@
 package com.example.hwr_huschka.FragmentsLogin;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +30,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class LoginFragment extends Fragment {
 
@@ -40,9 +45,15 @@ public class LoginFragment extends Fragment {
 
     EditText edEmail, edPassword;
 
+    SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        sharedPreferences = this.getActivity().getSharedPreferences("userdata", MODE_PRIVATE);
+        if(sharedPreferences.contains("email")){
+            openMainActivity();
+        }
         View v = inflater.inflate(R.layout.fragment_login_login, container, false);
 
         edEmail = v.findViewById(R.id.login_EmailField);
@@ -62,8 +73,7 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // logInUser(edEmail.getText().toString().trim(), edPassword.getText().toString().trim());
-                openMainActivity();
+                logInUser(edEmail.getText().toString().trim(), edPassword.getText().toString().trim());
             }
         });
 
@@ -96,18 +106,26 @@ public class LoginFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // was einem das PHP Skript zurückgibt wird hier behandelt
-                        // jsonObject, dass was in Postman zurückgegeben wurde
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(getContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
 
-                            if (jsonObject.getBoolean("login") == true) {
-                                // User Daten korrekt
-                                // ID in die sharedPreferences
+                            if (jsonObject.getBoolean("error") == false){
+                                // mail and password are correct
+                                // safe user data in SharedPreferences
+
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                editor.putInt("id", jsonObject.getInt("id"));
+                                editor.putString("email", jsonObject.getString("email"));
+                                editor.putString("firstname", jsonObject.getString("vorname"));
+                                editor.putString("familyname", jsonObject.getString("nachname"));
+                                editor.commit();
+
                                 openMainActivity();
-                            } else {
-                                // Eingegebene Daten nicht korrekt?
-                                Toast.makeText(getContext(), "E-Mail oder Password falsch!", Toast.LENGTH_LONG).show();
+                            } else{
+                                // mail and password are not correct
+                                Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
 
                         } catch (JSONException e) {
