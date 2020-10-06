@@ -6,4 +6,119 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ShoppinglistActivity">
 
+    <TextView
+        android:id="@+id/TV_shoppingList_ListenID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="335dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="635dp"
+        android:text="@string/shoppinglist_ListenID"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_ID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="295dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="635dp"
+        android:text="0001"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+         />
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_Supermarkt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="590dp"
+        android:text="@string/shoppinglist_Supermarkt"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_SupermarktAuswahl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="550dp"
+        android:text="SupermarktString"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_Datum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="500dp"
+        android:text="@string/shoppinglist_Datum"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_DatumAuswahl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginBottom="460dp"
+        android:text="DatumString"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_Produkte"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="410dp"
+        android:text="@string/shoppinglist_Produkte"
+        android:textColor="@color/colorDunkelTuerkis"/>
+
+
+    <Button
+        android:id="@+id/btn_shoppinglist_Starten"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/shoppinglist_Starten"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorSehrDunkelTuerkis"/>
+
+    <ListView
+        android:id="@+id/LV_shoppinglist_ProduktListe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp"
+        android:textAlignment="center"
+        android:background="@color/colorPrimaryDark"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
