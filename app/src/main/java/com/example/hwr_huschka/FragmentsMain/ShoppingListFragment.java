@@ -31,9 +31,12 @@ import com.example.hwr_huschka.klassen.ShoppingList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,14 +64,11 @@ public class ShoppingListFragment extends Fragment {
         // get UserID from SharedPreferences
         sharedPreferences = this.getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
         userID = sharedPreferences.getInt("id", 0);
-        Toast.makeText(getContext(), userID + "", Toast.LENGTH_LONG).show();
 
         addListFltBtn = v.findViewById(R.id.floatActBtnAddShoopingList);
         listView = (ListView) v.findViewById(R.id.shoppingListView);
 
-        loadShoppingLists(userID); // here in Future add the ID from the SharedPreferences Class
-
-
+        loadShoppingLists(userID);
 
         addListFltBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -88,8 +88,7 @@ public class ShoppingListFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
+        
         return v;
     }
 
@@ -105,14 +104,30 @@ public class ShoppingListFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            Toast.makeText(getContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+                            JSONArray jsonArray = new JSONArray(response);
 
                             ArrayList<ShoppingList> listOfShoppingLists = new ArrayList<ShoppingList>();
                             // fetch the Shoppinglist data from JSON
 
+                            for (int i = 0; i < jsonArray.length(); i++) {
 
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                int listID = jsonObject.getInt("ListenID");
+                                String datum = jsonObject.getString("Erstelldatum");
+                                String supermarkt = jsonObject.getString("Supermarkt");
+                                String status = jsonObject.getString("Status");
+
+                                // convert the datum to a LocalDate Object
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                LocalDate date = LocalDate.parse(datum, formatter);
+
+                                // generate ListObject from Data
+                                ShoppingList tempList = new ShoppingList(listID, date, supermarkt, status);
+
+                                // add to the ShoppingList ArrayList
+                                listOfShoppingLists.add(tempList);
+                            }
 
                             // in der ListView anzeigen
                             adapter = new ShoppingListAdapter(getContext(), R.layout.listadapter_shoppinglist, listOfShoppingLists);
