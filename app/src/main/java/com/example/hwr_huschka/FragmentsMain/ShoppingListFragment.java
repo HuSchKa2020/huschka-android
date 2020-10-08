@@ -84,7 +84,7 @@ public class ShoppingListFragment extends Fragment {
                 ShoppingList clickedItem = (ShoppingList) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(getActivity(), ShoppinglistActivity.class);
 
-                intent.putExtra("shoppingListID", Integer.toString(clickedItem.getListenID()));
+                intent.putExtra("shoppinglist", clickedItem);
                 startActivity(intent);
             }
         });

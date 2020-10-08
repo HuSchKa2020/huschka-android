@@ -1,9 +1,13 @@
 package com.example.hwr_huschka.klassen;
 
 import org.threeten.bp.LocalDate;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShoppingList {
+import androidx.annotation.NonNull;
+
+public class ShoppingList implements Serializable {
 
 	//Eigenschaften
 	private int listenID;
@@ -25,12 +29,20 @@ public class ShoppingList {
 	}
 
 	public ShoppingList(int listenID, LocalDate datum, String supermarkt, String status) {
+		this.listenID = listenID;
 		this.datum = datum;
 		this.supermarkt = supermarkt;
 		this.status = status;
 	}
 	
 	//Methoden
+
+	@NonNull
+	@Override
+	public String toString() {
+		return "ID: " + this.listenID + ", Supermarkt: " + this.supermarkt;
+	}
+
 	//setter
 	public void setListenID(int listenID) {
 		this.listenID = listenID;
