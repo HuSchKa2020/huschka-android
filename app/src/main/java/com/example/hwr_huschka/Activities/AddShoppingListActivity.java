@@ -3,7 +3,9 @@ package com.example.hwr_huschka.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,10 +42,17 @@ public class AddShoppingListActivity extends AppCompatActivity {
     Spinner spinner;
     Toolbar toolbar;
 
+    SharedPreferences sharedPreferences;
+    int userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shopping_list);
+
+        // get UserID from SharedPreferences
+        sharedPreferences = this.getSharedPreferences("userdata", Context.MODE_PRIVATE);
+        userID = sharedPreferences.getInt("id", 0);
 
         btnAddList = findViewById(R.id.btnAddList);
         datePicker = findViewById(R.id.datepickerList);
@@ -76,7 +85,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
 
                 String supermarkt = spinner.getSelectedItem().toString();
 
-                addShoppinglist(Constants.USER_ID, date.toString(), supermarkt);
+                addShoppinglist(userID, date.toString(), supermarkt);
             }
         });
 
@@ -87,7 +96,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void addShoppinglist(final String userID, final String date, final String supermarkt){
+    private void addShoppinglist(final int userID, final String date, final String supermarkt){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_LIST,
                 new Response.Listener<String>() {
@@ -117,7 +126,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("userID", userID);
+                params.put("userID", Integer.toString(userID));
                 params.put("date", date);
                 params.put("supermarkt", supermarkt);
                 return params;
