@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
 
+    public static final String URL_GET_USERS_SHOPPINGLIST = ROOT_URL + "getShoppingListbyUser.php";
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
 
     public static final String USER_ID = "1";
