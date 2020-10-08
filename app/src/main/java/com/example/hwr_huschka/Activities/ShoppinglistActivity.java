@@ -5,21 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.klassen.ShoppingList;
 
 import java.util.ArrayList;
 
 public class ShoppinglistActivity extends AppCompatActivity {
 
     ListView listView;
+    TextView tv_listID, tv_supermarkt, tv_datum;
+
+    ShoppingList shoppingList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppinglist);
 
+        tv_listID = findViewById(R.id.TV_shoppinglist_ID);
+        tv_supermarkt = findViewById(R.id.TV_shoppinglist_SupermarktAuswahl);
+        tv_datum = findViewById(R.id.TV_shoppinglist_DatumAuswahl);
 
-        listView= (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
+        shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
+        tv_listID.setText(Integer.toString(shoppingList.getListenID()));
+        tv_supermarkt.setText(shoppingList.getSupermarkt());
+        tv_datum.setText(shoppingList.getDatum().toString());
+
+
+
+        listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
 
         ArrayList<String> arrayList=new ArrayList<>();
 
