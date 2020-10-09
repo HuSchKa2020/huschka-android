@@ -26,6 +26,15 @@ public class Product {
 		this.produktID = produktID;
 	}
 
+	public Product(int produktID, String hersteller, String name, String kategorie, double preis, int kcal) {
+		this.produktID = produktID;
+		this.name = name;
+		this.preis = preis;
+		this.kategorie = kategorie;
+		this.hersteller = hersteller;
+		this.kcal = kcal;
+	}
+
 	public Product(){
 
 	}

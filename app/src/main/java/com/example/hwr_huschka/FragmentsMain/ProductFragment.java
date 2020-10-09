@@ -9,14 +9,33 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.ShoppinglistActivity;
+import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.ProductAdapter;
 import com.example.hwr_huschka.Activities.ProductInfoActivity;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.ShoppingListAdapter;
 import com.example.hwr_huschka.klassen.Product;
+import com.example.hwr_huschka.klassen.ShoppingList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +47,6 @@ public class ProductFragment extends Fragment {
     Button btnSearch;
     ListView productListView;
 
-    ArrayList<Product> products;
     ProductAdapter adapter;
 
     @Nullable
@@ -40,22 +58,10 @@ public class ProductFragment extends Fragment {
         btnSearch = v.findViewById(R.id.btnProductSearch);
         productListView = v.findViewById(R.id.produktListView);
 
-        products = new ArrayList<Product>();
-        products.add(new Product(1,"Ketchup", 1.99));
-        products.add(new Product(2, "Mayo", 1.49));
-
-        adapter = new ProductAdapter(getContext(), R.layout.listadapter_product, products);
-        productListView.setAdapter(adapter);
-
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Suchen in der DB nach dem Produkt (ggfs. alle Produkte, die das was im Textfeld steht enthalten, in die ListView schreiben)
-                products.clear();
-                products.addAll(loadProducts(searchedProductName.getText().toString()));
-
-                products.add(new Product(38,"Reis", 0.99));
-                adapter.notifyDataSetChanged();
+                loadProducts(searchedProductName.getText().toString());
             }
         });
 
@@ -74,9 +80,60 @@ public class ProductFragment extends Fragment {
         return v;
     }
 
-    private ArrayList<Product> loadProducts(String partOfProductName){
-        // loadProducts from Backend
-        return new ArrayList<Product>();
-    }
+    private void loadProducts(final String partOfProductName) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCTS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
 
+                            ArrayList<Product> productArrayList = new ArrayList<Product>();
+                            // fetch the Shoppinglist data from JSON
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                int produktID = jsonObject.getInt("ProduktID");
+                                String hersteller = jsonObject.getString("Hersteller");
+                                String name = jsonObject.getString("Name");
+                                String kategorie = jsonObject.getString("Kategorie");
+                                double preis = jsonObject.getDouble("Preis");
+                                int kcal = jsonObject.getInt("Kcal");
+
+                                // generate ListObject from Data
+                                Product temp = new Product(produktID, hersteller, name, kategorie, preis, kcal);
+
+                                // add to the ShoppingList ArrayList
+                                productArrayList.add(temp);
+                            }
+
+                            // in der ListView anzeigen
+                            adapter = new ProductAdapter(getContext(), R.layout.listadapter_product, productArrayList);
+                            productListView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Name", partOfProductName);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
 }
+
+
