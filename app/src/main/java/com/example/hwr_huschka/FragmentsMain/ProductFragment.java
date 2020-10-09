@@ -58,6 +58,9 @@ public class ProductFragment extends Fragment {
         btnSearch = v.findViewById(R.id.btnProductSearch);
         productListView = v.findViewById(R.id.produktListView);
 
+        // show all available Products
+        loadProducts("");
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,8 +73,6 @@ public class ProductFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getActivity(), ProductInfoActivity.class);
                 Product clickedItem = (Product) adapterView.getItemAtPosition(i);
-                //Toast.makeText(getContext(), Integer.toString(clickedItem.getProduktID()), Toast.LENGTH_LONG).show();
-
                 intent.putExtra("productID", Integer.toString(clickedItem.getProduktID()));
                 startActivity(intent);
             }
@@ -94,13 +95,18 @@ public class ProductFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                
+
                                 int produktID = jsonObject.getInt("ProduktID");
                                 String hersteller = jsonObject.getString("Hersteller");
                                 String name = jsonObject.getString("Name");
                                 String kategorie = jsonObject.getString("Kategorie");
                                 double preis = jsonObject.getDouble("Preis");
-                                int kcal = jsonObject.getInt("Kcal");
+                                int kcal;
+                                if (jsonObject.isNull("Kcal")){
+                                    kcal = 0;
+                                }else{
+                                    kcal = jsonObject.getInt("Kcal");
+                                }
 
                                 // generate Product Object from Data
                                 Product temp = new Product(produktID, hersteller, name, kategorie, preis, kcal);
@@ -115,7 +121,7 @@ public class ProductFragment extends Fragment {
                             adapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
-
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
