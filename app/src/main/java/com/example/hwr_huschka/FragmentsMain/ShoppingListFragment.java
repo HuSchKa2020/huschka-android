@@ -98,7 +98,6 @@ public class ShoppingListFragment extends Fragment {
      * @param kundenID ID des Kunden
      */
     private void loadShoppingLists(final int kundenID){
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_USERS_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
