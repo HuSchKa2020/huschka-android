@@ -89,12 +89,12 @@ public class ProductFragment extends Fragment {
                             JSONArray jsonArray = new JSONArray(response);
 
                             ArrayList<Product> productArrayList = new ArrayList<Product>();
-                            // fetch the Shoppinglist data from JSON
 
+                            // fetch the Product data from JSON
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
+                                
                                 int produktID = jsonObject.getInt("ProduktID");
                                 String hersteller = jsonObject.getString("Hersteller");
                                 String name = jsonObject.getString("Name");
@@ -102,10 +102,10 @@ public class ProductFragment extends Fragment {
                                 double preis = jsonObject.getDouble("Preis");
                                 int kcal = jsonObject.getInt("Kcal");
 
-                                // generate ListObject from Data
+                                // generate Product Object from Data
                                 Product temp = new Product(produktID, hersteller, name, kategorie, preis, kcal);
 
-                                // add to the ShoppingList ArrayList
+                                // add to the Product ArrayList
                                 productArrayList.add(temp);
                             }
 
