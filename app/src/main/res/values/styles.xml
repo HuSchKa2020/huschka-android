@@ -6,5 +6,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="custom_fab">
+        <item name="android:background">@drawable/lable_background</item>
+        <item name="android:textColor">@color/colorSehrDunkelTuerkis</item>
+    </style>
 
 </resources>
