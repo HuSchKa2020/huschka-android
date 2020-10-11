@@ -73,7 +73,15 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logInUser(edEmail.getText().toString().trim(), edPassword.getText().toString().trim());
+                String email = edEmail.getText().toString().trim();
+                String password = edPassword.getText().toString().trim();
+
+                if (!email.equals("") && email.contains("@")
+                    && !password.equals("")){
+                    logInUser(email, password);
+                } else{
+                    Toast.makeText(getContext(), "Bitte füllen Sie das Feld Password und Email korrekt aus!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
