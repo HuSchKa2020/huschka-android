@@ -91,15 +91,26 @@ public class RegistrationFragment extends Fragment {
                     String firstname = edFirstname.getText().toString().trim();
                     String familyname = edFamilyname.getText().toString().trim();
 
-                    StringBuilder str = new StringBuilder();
+                    if(email.equals("") || !email.contains("@")){
+                        Toast.makeText(getContext(), "Bitte füllen Sie das Email Feld korrekt aus!", Toast.LENGTH_SHORT).show();
+                    } else {
 
-                    str.append(edStreet.getText().toString().trim() + " ");
-                    str.append(edHousenumber.getText().toString().trim() + ", ");
-                    str.append(edPLZ.getText().toString().trim() + " ");
-                    str.append(edCity.getText().toString().trim());
+                        if(password.length()<6){
 
-                    registerUser(email, password, firstname, familyname, str.toString());
+                            Toast.makeText(getContext(), "Bitte wählen sie ein längeres Passwort!", Toast.LENGTH_SHORT).show();
 
+                        }else{
+
+                            StringBuilder str = new StringBuilder();
+
+                            str.append(edStreet.getText().toString().trim() + " ");
+                            str.append(edHousenumber.getText().toString().trim() + ", ");
+                            str.append(edPLZ.getText().toString().trim() + " ");
+                            str.append(edCity.getText().toString().trim());
+
+                            registerUser(email, password, firstname, familyname, str.toString());
+                        }
+                    }
                 } else{
                     Toast.makeText(getContext(), "Passwörter sind nicht äquivalent!", Toast.LENGTH_LONG).show();
                 }
