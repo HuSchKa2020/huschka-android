@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -92,20 +92,6 @@
         android:textColor="@color/colorDunkelTuerkis"/>
 
 
-    <Button
-        android:id="@+id/btn_shoppinglist_Starten"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="580dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:text="@string/shoppinglist_Starten"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@color/colorWeiß"
-        android:background="@color/colorSehrDunkelTuerkis"/>
-
     <ListView
         android:id="@+id/LV_shoppinglist_ProduktListe"
         android:layout_width="match_parent"
@@ -121,4 +107,44 @@
         android:background="@color/colorPrimaryDark"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:fab_addButtonColorNormal="@color/colorSehrDunkelTuerkis"
+        app:fab_addButtonColorPressed="@color/colorDunkelTuerkis"
+        app:fab_addButtonPlusIconColor="@color/colorWeiß"
+        app:fab_labelStyle="@style/custom_fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/fab_action1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorDunkelTuerkis"
+            app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
+            app:fab_size="mini"
+            app:fab_title="Produkte hinzufuegen"
+            />
+
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/fab_action2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorDunkelTuerkis"
+            app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
+            app:fab_size="mini"
+            app:fab_title="@string/shoppinglist_Starten" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</RelativeLayout>
+
+
+
+

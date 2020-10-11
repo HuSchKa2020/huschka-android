@@ -61,6 +61,7 @@ public class ShoppingListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_shoppinglists, container, false);
 
+
         // get UserID from SharedPreferences
         sharedPreferences = this.getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
         userID = sharedPreferences.getInt("id", 0);
@@ -86,9 +87,13 @@ public class ShoppingListFragment extends Fragment {
 
                 intent.putExtra("shoppinglist", clickedItem);
                 startActivity(intent);
+
             }
         });
-        
+
+
+
+
         return v;
     }
 
