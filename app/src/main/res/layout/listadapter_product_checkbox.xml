@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp"
+    android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/image_of_product"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="2"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <CheckBox
+            android:id="@+id/CB_listadapter_Checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Produktname"
+            android:textAlignment="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TV_listadapter_Preis"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="Preis"
+        android:textAlignment="center" />
+
+
+</LinearLayout>
