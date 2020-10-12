@@ -6,6 +6,12 @@ import android.widget.Toast;
 
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ProductAdapter;
+
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.hwr_huschka.FragmentsMain.ShoppingListFragment;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
@@ -34,6 +40,11 @@ public class AddProductsToListActivity extends AppCompatActivity {
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
 
         fillShoppinglistListView();
+       /*Spinner mySpinner = (Spinner) findViewById(R.id.spinner_ProduktAnzahl);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AddProductsToListActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Anzahl));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+        */
 
     }
 

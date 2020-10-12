@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -61,7 +62,6 @@ public class ShoppingListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_shoppinglists, container, false);
 
-
         // get UserID from SharedPreferences
         sharedPreferences = this.getActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE);
         userID = sharedPreferences.getInt("id", 0);
@@ -90,7 +90,6 @@ public class ShoppingListFragment extends Fragment {
 
             }
         });
-
 
 
 
