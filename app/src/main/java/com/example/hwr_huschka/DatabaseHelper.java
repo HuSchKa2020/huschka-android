@@ -120,7 +120,7 @@ public class DatabaseHelper {
 
                             // in der ListView anzeigen
                             ProductNumberAdapter adapter;
-                            adapter = new ProductNumberAdapter(context, R.layout.listadapter_product_checkbox, productArrayList);
+                            adapter = new ProductNumberAdapter(context, R.layout.listadapter_product_spinner, productArrayList);
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 

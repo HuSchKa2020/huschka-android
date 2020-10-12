@@ -42,7 +42,7 @@ public class ProductNumberAdapter extends ArrayAdapter<Product> {
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(resource, parent, false);
 
-        CheckBox cbProductName = (CheckBox) convertView.findViewById(R.id.CB_listadapter_Checkbox);
+        TextView cbProductName = (TextView) convertView.findViewById(R.id.TV_productName);
         TextView tvProductPrice = (TextView) convertView.findViewById(R.id.TV_listadapter_Preis);
         Spinner spinnerNumber = (Spinner) convertView.findViewById(R.id.spinner_ProduktAnzahl);
 

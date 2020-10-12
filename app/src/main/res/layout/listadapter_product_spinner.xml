@@ -19,8 +19,8 @@
         android:orientation="vertical"
         android:layout_weight="1">
 
-        <CheckBox
-            android:id="@+id/CB_listadapter_Checkbox"
+        <TextView
+            android:id="@+id/TV_productName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Produktname"
