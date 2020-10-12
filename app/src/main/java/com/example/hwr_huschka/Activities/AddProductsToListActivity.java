@@ -17,11 +17,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.hwr_huschka.FragmentsMain.ShoppingListFragment;
+import com.example.hwr_huschka.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -37,8 +39,9 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
     ListView listViewProductSuche, listViewProductShoppinglist;
     ProductAdapter adapter;
+    ProductNumberAdapter productNumberAdapter;
 
-    List<Product> newProductsOfShoppingList;
+    HashMap<Product, Integer> newProductsOfShoppingList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,12 +49,8 @@ public class AddProductsToListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addproducttoshoppinglist);
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
-        newProductsOfShoppingList = new ArrayList<Product>();
-        newProductsOfShoppingList.add(new Product(2, "Heinz", "Ketchup", "Soßen", 1.99, 100));
-
-        if (shoppingList.getInhalt() != null){
-            refreshProductListView();
-        }
+        newProductsOfShoppingList = new HashMap<Product, Integer>();
+        newProductsOfShoppingList.put(new Product(2, "Heinz", "Ketchup", "Soßen", 1.99, 100), 3);
 
         ed_productName = findViewById(R.id.edTextProduct);
 
@@ -60,7 +59,10 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
         listViewProductSuche = findViewById(R.id.produktListView);
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
-        refreshProductListView();
+
+        if (shoppingList.getInhalt() != null || shoppingList.getInhalt().size()>0){
+            refreshProductListView();
+        }
 
         btn_SearchProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,26 +83,31 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Product clickedItem = (Product) adapterView.getItemAtPosition(i);
-                newProductsOfShoppingList.add(clickedItem);
+                newProductsOfShoppingList.put(clickedItem, 0);
                 refreshProductListView();
             }
         });
+
+        /*
+        HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
+        toShow.put(new Product(1, "Weihenstephan", "Milch", "Getraenke", 2.99, 100), 3);
+        */
     }
 
     private void refreshProductListView(){
-        List<Product> toShow = new ArrayList<Product>();
+        HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
 
         if (shoppingList.getInhalt() != null){
-            toShow.addAll(shoppingList.getInhalt());
+            toShow.putAll(shoppingList.getInhalt());
         }
         if (newProductsOfShoppingList.size() != 0){
-            toShow.addAll(newProductsOfShoppingList);
+            toShow.putAll(newProductsOfShoppingList);
         }
 
-        if (toShow.size() != 0){
-            adapter = new ProductAdapter(this, R.layout.listadapter_product, toShow);
-            listViewProductShoppinglist.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+       if (toShow.size() != 0){
+           productNumberAdapter = new ProductNumberAdapter(this,  toShow);
+           listViewProductShoppinglist.setAdapter(productNumberAdapter);
+           productNumberAdapter.notifyDataSetChanged();
         }
     }
 

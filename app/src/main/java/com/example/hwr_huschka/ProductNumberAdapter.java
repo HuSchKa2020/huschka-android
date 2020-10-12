@@ -4,62 +4,100 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.example.hwr_huschka.klassen.Product;
 
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class ProductNumberAdapter extends ArrayAdapter<Product> {
 
-    private static final String TAG = "ProductAdapter";
+public class ProductNumberAdapter extends BaseAdapter {
+
+    private HashMap<Product, Integer> mapData = new HashMap<Product, Integer>();
+    private Product[] mKeys;
     private Context context;
-    int resource;
 
-    public ProductNumberAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Product> objects) {
-        super(context, resource, objects);
-        this.resource = resource;
+    public ProductNumberAdapter(Context context, HashMap<Product, Integer> mapData){
         this.context = context;
+        this.mapData  = mapData;
+        mKeys = mapData.keySet().toArray(new Product[mapData.size()]);
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-        // get Values of the Produkt, that have to be shown in the Listview
-        int produktID = getItem(position).getProduktID();
-        String name = getItem(position).getName();
-        double preis = getItem(position).getPreis();
-
-        Product product = new Product(produktID, name, preis);
-
-        LayoutInflater inflater = LayoutInflater.from(context);
-        convertView = inflater.inflate(resource, parent, false);
-
-        TextView cbProductName = (TextView) convertView.findViewById(R.id.TV_productName);
-        TextView tvProductPrice = (TextView) convertView.findViewById(R.id.TV_listadapter_Preis);
-        Spinner spinnerNumber = (Spinner) convertView.findViewById(R.id.spinner_ProduktAnzahl);
-
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context,
-                android.R.layout.simple_list_item_1,
-                convertView.getResources().getStringArray(R.array.Anzahl));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNumber.setAdapter(myAdapter);
-        // ImageView imageProduct = (ImageView) convertView.findViewById(R.id.productImage);
-
-
-        cbProductName.setText(name);
-        tvProductPrice.setText(Double.toString(preis));
-
-
-        return convertView;
+    public int getCount() {
+        return mapData.size();
     }
 
+    @Override
+    public Object getItem(int i) {
+        return mapData.get(mKeys[i]);
+    }
 
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+
+        if(view == null){
+            LayoutInflater inflater;
+            inflater = LayoutInflater.from(context);
+            view = inflater.inflate(R.layout.listadapter_product_spinner, null);
+
+        }
+
+        final Product key = mKeys[i];
+        Integer value = mapData.get(key);
+
+        TextView tv_prodName = (TextView) view.findViewById(R.id.TV_adapter_productName);
+        TextView tv_prodPrice = (TextView) view.findViewById(R.id.TV_adapter_productPreis);
+        final Spinner spinnerNumberOfProd = view.findViewById(R.id.spinner_ProduktAnzahl);
+
+        Integer[] spinnerItems = new Integer[]{1,2,3,4,5,6,7,8,9};
+        ArrayAdapter<Integer> myAdapter = new ArrayAdapter<Integer>(context,
+                android.R.layout.simple_list_item_1,
+                spinnerItems);
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNumberOfProd.setAdapter(myAdapter);
+
+        spinnerNumberOfProd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mapData.put(key, (Integer)spinnerNumberOfProd.getSelectedItem());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        // setValues
+        if (key!= null){
+            tv_prodName.setText(key.getName());
+            tv_prodPrice.setText(Double.toString(key.getPreis()));
+        }
+
+
+        int spinnerPosition = myAdapter.getPosition(value); //value is the Number of Products
+        spinnerNumberOfProd.setSelection(spinnerPosition);
+
+
+        return view;
+    }
 }

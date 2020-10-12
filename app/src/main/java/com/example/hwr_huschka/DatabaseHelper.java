@@ -84,6 +84,7 @@ public class DatabaseHelper {
         requestQueue.add(stringRequest);
     }
 
+    /*
     public static void searchProductWithNumberField(final Context context, final String partOfProductName, final ListView listView){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCTS,
                 new Response.Listener<String>() {
@@ -143,6 +144,6 @@ public class DatabaseHelper {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-    }
+    }*/
 
 }
