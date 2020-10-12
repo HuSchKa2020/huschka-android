@@ -1,7 +1,11 @@
 package com.example.hwr_huschka.Activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hwr_huschka.DatabaseHelper;
@@ -26,6 +30,10 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
     ShoppingList shoppingList;
 
+    EditText ed_productName;
+
+    Button btn_SearchProduct;
+
     ListView listViewProductSuche, listViewProductShoppinglist;
     ProductAdapter adapter;
 
@@ -36,15 +44,24 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
 
+        ed_productName = findViewById(R.id.edTextProduct);
+
+        btn_SearchProduct = findViewById(R.id.btnProductSearch);
+
         listViewProductSuche = findViewById(R.id.produktListView);
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
 
         fillShoppinglistListView();
-       /*Spinner mySpinner = (Spinner) findViewById(R.id.spinner_ProduktAnzahl);
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AddProductsToListActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Anzahl));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
-        */
+
+        btn_SearchProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String searchedProduct = ed_productName.getText().toString().trim();
+                DatabaseHelper.searchProductWithNumberField(getApplicationContext(), searchedProduct, listViewProductSuche);
+            }
+        });
+
+
 
     }
 
