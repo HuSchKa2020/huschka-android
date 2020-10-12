@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
     <ImageView
@@ -21,21 +22,33 @@
         <CheckBox
             android:id="@+id/CB_listadapter_Checkbox"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:text="Produktname"
+            android:textColor="@color/colorSehrDunkelTuerkis"
             android:textAlignment="center"
             android:gravity="center"/>
 
+        <TextView
+            android:id="@+id/TV_listadapter_Preis"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Preis"
+            android:textColor="@color/colorSehrDunkelTuerkis"
+            android:textAlignment="center" />
+
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/TV_listadapter_Preis"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="Preis"
-        android:textAlignment="center" />
+   <Spinner
+       android:id="@+id/spinner_ProduktAnzahl"
+       android:layout_width="match_parent"
+       android:layout_height="60dp"
+       android:layout_weight="2"
+       android:textAlignment="center"
+       android:gravity="center" />
+
 
 
 </LinearLayout>
