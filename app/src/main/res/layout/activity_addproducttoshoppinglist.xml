@@ -15,9 +15,17 @@
         android:text="Produkte in Liste:"/>
 
     <ListView
+        android:id="@+id/listViewProductShoppinglist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnfinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/finish"/>
+
 
 </LinearLayout>

@@ -83,10 +83,4 @@ public class DatabaseHelper {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
-
-
-    private void loadProducts(final String partOfProductName) {
-
-    }
-
 }
