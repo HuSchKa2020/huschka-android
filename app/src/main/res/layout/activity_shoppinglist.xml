@@ -121,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent" >
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
-            android:id="@+id/fab_action1"
+            android:id="@+id/fab_toAddProd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/colorAccent"
@@ -132,7 +132,7 @@
             />
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
-            android:id="@+id/fab_action2"
+            android:id="@+id/fab_startShopping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/colorAccent"

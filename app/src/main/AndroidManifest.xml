@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.AddProductsToListActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
