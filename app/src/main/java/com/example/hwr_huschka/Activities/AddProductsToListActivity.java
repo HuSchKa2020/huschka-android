@@ -48,6 +48,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproducttoshoppinglist);
+        newProductsOfShoppingList = new HashMap<Product, Integer>();
         // get Data from intent
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
         // EditText
@@ -77,7 +78,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 // go Back to List Overview and refresh the List in Database
                 HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
 
-                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+               for (Map.Entry<Product, Integer> entry : data.entrySet()) {
                     Product key = entry.getKey();
                     Integer value = entry.getValue();
                     DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
