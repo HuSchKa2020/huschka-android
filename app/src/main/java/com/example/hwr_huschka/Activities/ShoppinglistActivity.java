@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
@@ -46,6 +47,10 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddProductsToListActivity.class);
+
+
+
+
                 intent.putExtra("shoppinglist", shoppingList);
                 startActivity(intent);
             }
