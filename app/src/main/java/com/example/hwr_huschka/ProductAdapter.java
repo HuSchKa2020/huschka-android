@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.hwr_huschka.klassen.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
     private Context context;
     int resource;
 
-    public ProductAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Product> objects) {
+    public ProductAdapter(@NonNull Context context, int resource, @NonNull List<Product> objects) {
         super(context, resource, objects);
         this.resource = resource;
         this.context = context;

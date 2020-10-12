@@ -4,6 +4,7 @@ import org.threeten.bp.LocalDate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 
@@ -14,7 +15,7 @@ public class ShoppingList implements Serializable {
 	private LocalDate datum;
 	private String supermarkt;
 	private String status;
-	private ArrayList inhalt;
+	private HashMap<Product, Integer> inhalt = new HashMap<Product, Integer>();
 	
 	//Konstruktoren
 	public ShoppingList(LocalDate datum, String supermarkt, String status) {
@@ -60,7 +61,7 @@ public class ShoppingList implements Serializable {
 		this.status = status;
 	}
 	
-	public void setInhalt(ArrayList inhalt) {
+	public void setInhalt(HashMap<Product, Integer> inhalt) {
 		this.inhalt = inhalt; 
 	}
 
@@ -81,7 +82,7 @@ public class ShoppingList implements Serializable {
 		return status;
 	}
 
-	public ArrayList getInhalt() {
+	public HashMap<Product, Integer> getInhalt() {
 		return inhalt;
 	}
 	
