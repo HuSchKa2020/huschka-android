@@ -19,8 +19,8 @@
         android:orientation="vertical"
         android:layout_weight="1">
 
-        <CheckBox
-            android:id="@+id/CB_listadapter_Checkbox"
+        <TextView
+            android:id="@+id/TV_adapter_productName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Produktname"
@@ -29,7 +29,7 @@
             android:gravity="center"/>
 
         <TextView
-            android:id="@+id/TV_listadapter_Preis"
+            android:id="@+id/TV_adapter_productPreis"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_weight="2"
