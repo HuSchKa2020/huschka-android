@@ -25,6 +25,7 @@ import com.example.hwr_huschka.klassen.ShoppingList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,19 +48,17 @@ public class AddProductsToListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproducttoshoppinglist);
-
+        // get Data from intent
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
-        newProductsOfShoppingList = new HashMap<Product, Integer>();
-        newProductsOfShoppingList.put(new Product(2, "Heinz", "Ketchup", "Soßen", 1.99, 100), 3);
-
+        // EditText
         ed_productName = findViewById(R.id.edTextProduct);
-
+        // Buttons
         btn_SearchProduct = findViewById(R.id.btnProductSearch);
         btn_Finish = findViewById(R.id.btnfinish);
-
+        // ListViews
         listViewProductSuche = findViewById(R.id.produktListView);
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
-
+        // load Products from Shoppinglist to ListView
         if (shoppingList.getInhalt() != null || shoppingList.getInhalt().size()>0){
             refreshProductListView();
         }
@@ -75,7 +74,14 @@ public class AddProductsToListActivity extends AppCompatActivity {
         btn_Finish.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // go Back to List Overview and putExtra the ShoppingList
+                // go Back to List Overview and refresh the List in Database
+                HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
+
+                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                    Product key = entry.getKey();
+                    Integer value = entry.getValue();
+                    DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
+                }
             }
         }));
 
@@ -87,11 +93,6 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 refreshProductListView();
             }
         });
-
-        /*
-        HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
-        toShow.put(new Product(1, "Weihenstephan", "Milch", "Getraenke", 2.99, 100), 3);
-        */
     }
 
     private void refreshProductListView(){

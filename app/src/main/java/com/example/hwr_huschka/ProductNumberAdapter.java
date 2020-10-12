@@ -36,6 +36,10 @@ public class ProductNumberAdapter extends BaseAdapter {
         mKeys = mapData.keySet().toArray(new Product[mapData.size()]);
     }
 
+    public HashMap<Product, Integer> getProductsOfList(){
+        return mapData;
+    }
+
     @Override
     public int getCount() {
         return mapData.size();
@@ -58,7 +62,6 @@ public class ProductNumberAdapter extends BaseAdapter {
             LayoutInflater inflater;
             inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.listadapter_product_spinner, null);
-
         }
 
         final Product key = mKeys[i];
