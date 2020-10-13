@@ -209,8 +209,7 @@ public class RegistrationFragment extends Fragment {
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 
 }

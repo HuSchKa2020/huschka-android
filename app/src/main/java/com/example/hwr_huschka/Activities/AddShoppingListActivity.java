@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -135,8 +136,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     /**

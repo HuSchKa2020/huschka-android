@@ -23,6 +23,7 @@ import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.ListAdapter.ShoppingListAdapter;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.ShoppingList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -150,8 +151,7 @@ public class ShoppingListFragment extends Fragment {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 
 }

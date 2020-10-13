@@ -92,8 +92,7 @@ public class DatabaseHelper {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
     /**
@@ -130,8 +129,7 @@ public class DatabaseHelper {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 
