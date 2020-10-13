@@ -1,11 +1,13 @@
 package com.example.hwr_huschka.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ListAdapter.ProductAdapter;
@@ -53,7 +55,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
         // load Products from Shoppinglist to ListView
         productsBefore = (HashMap<Product, Integer>) this.getIntent().getSerializableExtra("productMap");
-        if (productsBefore.size() > 0){
+        if (productsBefore.size() > 0) {
             refreshProductListView();
         }
 
@@ -69,13 +71,24 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // go Back to List Overview and refresh the List in Database
-                HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
 
-               for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                // delete All Old Items of the Shoppinglist in the Databae
+                DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
+                // get new List of Items
+                HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
+                // pull them to the Database
+                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
                     Product key = entry.getKey();
                     Integer value = entry.getValue();
-                    DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
+                    Toast.makeText(AddProductsToListActivity.this, key.getName() + ": " + value, Toast.LENGTH_SHORT).show();
+                    if(value > 0){
+                        DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
+                    }
                 }
+
+                Intent intent = new Intent(getApplicationContext(), ShoppinglistActivity.class);
+                intent.putExtra("shoppinglist", shoppingList);
+                startActivity(intent);
             }
         }));
 
@@ -92,20 +105,20 @@ public class AddProductsToListActivity extends AppCompatActivity {
     /**
      * Show all Products of the Shoppinglist to the ListView
      */
-    private void refreshProductListView(){
+    private void refreshProductListView() {
         HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
 
-        if (productsBefore.size()>0){
+        if (productsBefore.size() > 0) {
             toShow.putAll(productsBefore);
         }
-        if (newProductsOfShoppingList.size() != 0){
+        if (newProductsOfShoppingList.size() != 0) {
             toShow.putAll(newProductsOfShoppingList);
         }
 
-       if (toShow.size() != 0){
-           productNumberAdapter = new ProductNumberAdapter(this,  toShow, true);
-           listViewProductShoppinglist.setAdapter(productNumberAdapter);
-           productNumberAdapter.notifyDataSetChanged();
+        if (toShow.size() != 0) {
+            productNumberAdapter = new ProductNumberAdapter(this, toShow, true);
+            listViewProductShoppinglist.setAdapter(productNumberAdapter);
+            productNumberAdapter.notifyDataSetChanged();
         }
     }
 

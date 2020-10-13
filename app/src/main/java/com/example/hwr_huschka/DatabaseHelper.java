@@ -2,6 +2,7 @@ package com.example.hwr_huschka;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -124,16 +125,50 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ListenID", Integer.toString(shoppingListID));
-                params.put("ProductID", Integer.toString(productID));
-                params.put("Anzahl", Integer.toString(numberOf));
+                params.put("listenID", Integer.toString(shoppingListID));
+                params.put("produktID", Integer.toString(productID));
+                params.put("anzahl", Integer.toString(numberOf));
                 return params;
             }
         };
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    public static void deleteProductsOfShoppinglist(final Context context, final int listenID){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_DELETE_ALL_PRODUCTS_FROM_LIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
 
+                            if (jsonObject.getBoolean("error") == false){
+
+                            } else{
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("listenid", Integer.toString(listenID));
+                return params;
+            }
+        };
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+    }
 
 
 

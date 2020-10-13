@@ -95,8 +95,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
                             HashMap<Product, Integer> products = new HashMap<Product, Integer>();
 
-                            Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-
                             // fetch the Product data from JSON
                             for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -113,14 +111,11 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
                                 Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
 
-                                Toast.makeText(context, productID + ": " + numberOf, Toast.LENGTH_SHORT).show();
-
                                 // add to the Product to the HashMap
                                 products.put(temp, numberOf);
                             }
 
                             // in der ListView anzeigen
-
                             adapter = new ProductNumberAdapter(context, products);
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
