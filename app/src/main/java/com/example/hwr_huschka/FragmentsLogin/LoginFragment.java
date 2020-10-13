@@ -59,6 +59,7 @@ public class LoginFragment extends Fragment {
         edEmail = v.findViewById(R.id.login_EmailField);
         edPassword = v.findViewById(R.id.login_PasswordField);
 
+        // go to the Registration if the User have no Account
         goToRegistration = v.findViewById(R.id.TVtoRegistration);
         goToRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +70,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        // login the User
         btnLogin = v.findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,14 +79,16 @@ public class LoginFragment extends Fragment {
                 String password = edPassword.getText().toString().trim();
 
                 if (!email.equals("") && email.contains("@")
-                    && !password.equals("")){
+                    && !password.equals("")){ // logins fields are okay
                     logInUser(email, password);
                 } else{
+                    // email and password field are not correct
                     Toast.makeText(getContext(), "Bitte füllen Sie das Feld Password und Email korrekt aus!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        // show the Password if the User clicks the Button
         btnPasswortAnzeigen = v.findViewById(R.id.btn_login_Passwort_anzeigen);
         btnPasswortAnzeigen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,11 +107,19 @@ public class LoginFragment extends Fragment {
 
     }
 
+    /**
+     * This Method opens the Main Activity
+     */
     private void openMainActivity(){
         Intent intent = new Intent(this.getActivity(), MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This Method is for logging in the User.
+     * @param email Mail of the User
+     * @param password Password of the User
+     */
     private void logInUser(final String email, final String password) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_LOGIN_USER,

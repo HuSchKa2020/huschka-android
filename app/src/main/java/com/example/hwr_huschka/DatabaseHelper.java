@@ -1,6 +1,7 @@
 package com.example.hwr_huschka;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -11,6 +12,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hwr_huschka.Activities.MainActivity;
+import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 import com.example.hwr_huschka.klassen.Product;
 
 import org.json.JSONArray;
@@ -21,8 +24,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class for Request to the Database of the Apache Webserver
+ */
 public class DatabaseHelper {
 
+    /**
+     * Search Product by a Part of a Productname
+     * @param context the context
+     * @param partOfProductName the String who is searched for
+     * @param listView the ListView where the Products will be Shown
+     */
     public static void searchProduct(final Context context, final String partOfProductName, final ListView listView){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCTS,
                 new Response.Listener<String>() {
@@ -80,10 +92,16 @@ public class DatabaseHelper {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    /**
+     * This Method add one Product to a Shoppinglist
+     * @param context the Context
+     * @param shoppingListID the ID of the Shoppinglist
+     * @param productID the ID of the Product
+     * @param numberOf number of Products
+     */
     public static void addProductToList(final Context context, final int shoppingListID, final int productID, final int numberOf){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
                 new Response.Listener<String>() {
@@ -111,8 +129,9 @@ public class DatabaseHelper {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
+
+
 
 }

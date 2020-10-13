@@ -70,6 +70,7 @@ public class RegistrationFragment extends Fragment {
         edStreet = v.findViewById(R.id.register_Straße);
         edHousenumber = v.findViewById(R.id.register_Hausnummer);
 
+        // go to Login, if the User already have an existing account
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,11 +80,11 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
+        // register the User
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                // check if Password are equals
                 if (edPassword1.getText().toString().trim().equals(edPassword2.getText().toString().trim())){
 
                     String email = edEmail.getText().toString().trim();
@@ -91,16 +92,16 @@ public class RegistrationFragment extends Fragment {
                     String firstname = edFirstname.getText().toString().trim();
                     String familyname = edFamilyname.getText().toString().trim();
 
-                    if(email.equals("") || !email.contains("@")){
+                    if(email.equals("") || !email.contains("@")){ // check if email is correct
                         Toast.makeText(getContext(), "Bitte füllen Sie das Email Feld korrekt aus!", Toast.LENGTH_SHORT).show();
                     } else {
 
-                        if(password.length()<6){
+                        if(password.length()<6){ // check if password is long enough
 
                             Toast.makeText(getContext(), "Bitte wählen sie ein längeres Passwort!", Toast.LENGTH_SHORT).show();
 
                         }else{
-
+                            // Build the Adress String from the View
                             StringBuilder str = new StringBuilder();
 
                             str.append(edStreet.getText().toString().trim() + " ");
@@ -119,6 +120,7 @@ public class RegistrationFragment extends Fragment {
             }
         });
 
+        // show the Password
         btnPasswortanzeigen = v.findViewById(R.id.btn_register_Passwort_anzeigen);
         btnPasswortanzeigen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,13 +141,24 @@ public class RegistrationFragment extends Fragment {
         return v;
     }
 
+    /**
+     * This Method opens the Main Activity
+     */
     private void openMainActivity(){
         Intent intent = new Intent(this.getActivity(), MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This Method is for register a User to the HuSchKa Database
+     * @param email mail of the User.
+     * @param password password of the User. It will be hashed in the Backend
+     * @param firstname the firstname of the User
+     * @param familyname the familyname of the User
+     * @param adress the adress of the User
+     */
     private void registerUser(final String email, final String password, final String firstname,
-                              final String familyname, final String adresse){
+                              final String familyname, final String adress){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER_USER,
                 new Response.Listener<String>() {
@@ -191,13 +204,12 @@ public class RegistrationFragment extends Fragment {
                 params.put("password", password);
                 params.put("vorname", firstname);
                 params.put("nachname", familyname);
-                params.put("adresse", adresse);
+                params.put("adresse", adress);
                 return params;
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 
 }

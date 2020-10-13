@@ -48,9 +48,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddProductsToListActivity.class);
 
-
-
-
                 intent.putExtra("shoppinglist", shoppingList);
                 startActivity(intent);
             }
@@ -82,10 +79,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
         ArrayAdapter arrayAdapter= new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
         listView.setAdapter(arrayAdapter);
-
-
-
-
 
     }
 

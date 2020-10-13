@@ -23,7 +23,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Constants;
+import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,19 +87,20 @@ public class AddShoppingListActivity extends AppCompatActivity {
 
                 String supermarkt = spinner.getSelectedItem().toString();
 
-                addShoppinglist(userID, date.toString(), supermarkt);
+                addShoppinglist(getApplicationContext(), userID, date.toString(), supermarkt);
             }
         });
 
     }
 
-    private void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    private void addShoppinglist(final int userID, final String date, final String supermarkt){
-
+    /**
+     * This Method creates a new Shoppinglist for the Suer.
+     * @param context the context
+     * @param userID the users ID
+     * @param date the Date when the User want to go Shopping
+     * @param supermarkt the Supermarket of the Shopping trip
+     */
+    private void addShoppinglist(final Context context, final int userID, final String date, final String supermarkt){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_LIST,
                 new Response.Listener<String>() {
                     @Override
@@ -108,7 +111,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
                             if(jsonObject.getBoolean("error") == false){
                                 openMainActivity();
                             }else{
-                                Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
 
                         }catch(JSONException e){
@@ -120,7 +123,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
@@ -133,7 +136,18 @@ public class AddShoppingListActivity extends AppCompatActivity {
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
+
+    /**
+     * start the Main Activity
+     */
+    private void openMainActivity(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
 }

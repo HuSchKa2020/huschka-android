@@ -18,21 +18,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
-import com.example.hwr_huschka.ProductAdapter;
+import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 import com.example.hwr_huschka.Activities.ProductInfoActivity;
 import com.example.hwr_huschka.R;
-import com.example.hwr_huschka.ShoppingListAdapter;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
-import com.example.hwr_huschka.klassen.ShoppingList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,29 +43,31 @@ public class ProductFragment extends Fragment {
     EditText searchedProductName;
     Button btnSearch;
     ListView productListView;
-
-
-
+    
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_produkte, container, false);
 
+        // EditText
         searchedProductName = v.findViewById(R.id.edTextProduct);
+        // Button
         btnSearch = v.findViewById(R.id.btnProductSearch);
+        // ListView
         productListView = v.findViewById(R.id.produktListView);
 
         // show all available Products
         DatabaseHelper.searchProduct(getContext(), "", productListView);
 
+        // search for Products
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseHelper.searchProduct(getContext(), searchedProductName.getText().toString(), productListView);
-                //loadProducts(searchedProductName.getText().toString());
             }
         });
 
+        // on Click a Product
         productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -81,67 +79,6 @@ public class ProductFragment extends Fragment {
         });
 
         return v;
-    }
-
-    private void loadProducts(final String partOfProductName) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCTS,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-
-                            ArrayList<Product> productArrayList = new ArrayList<Product>();
-
-                            // fetch the Product data from JSON
-                            for (int i = 0; i < jsonArray.length(); i++) {
-
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                int produktID = jsonObject.getInt("ProduktID");
-                                String hersteller = jsonObject.getString("Hersteller");
-                                String name = jsonObject.getString("Name");
-                                String kategorie = jsonObject.getString("Kategorie");
-                                double preis = jsonObject.getDouble("Preis");
-                                int kcal;
-                                if (jsonObject.isNull("Kcal")){
-                                    kcal = 0;
-                                }else{
-                                    kcal = jsonObject.getInt("Kcal");
-                                }
-
-                                // generate Product Object from Data
-                                Product temp = new Product(produktID, hersteller, name, kategorie, preis, kcal);
-
-                                // add to the Product ArrayList
-                                productArrayList.add(temp);
-                            }
-
-                            // in der ListView anzeigen
-                            ProductAdapter adapter;
-                            adapter = new ProductAdapter(getContext(), R.layout.listadapter_product, productArrayList);
-                            productListView.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
-
-                        } catch (JSONException e) {
-                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Name", partOfProductName);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
     }
 }
 

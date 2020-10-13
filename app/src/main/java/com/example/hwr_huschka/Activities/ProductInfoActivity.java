@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 
 import org.json.JSONException;
@@ -57,6 +58,10 @@ public class ProductInfoActivity extends AppCompatActivity {
         loadData(Integer.parseInt(getIntent().getStringExtra("productID")));
     }
 
+    /**
+     * This Method load the Data of the Product.
+     * @param productID id of the Product.
+     */
     private void loadData(final int productID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_PRODUCT_INFO,
                 new Response.Listener<String>() {
@@ -89,8 +94,7 @@ public class ProductInfoActivity extends AppCompatActivity {
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
 }

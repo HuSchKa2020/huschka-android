@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-
+                    // switch between fragments in the Bottom Navigation
                     switch(item.getItemId()){
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // recognize a Click on the OnOptionsMenu in the right corner of the App
         switch(item.getItemId()){
             case R.id.Settings:
                 Toast.makeText(this, "Settings pushed", Toast.LENGTH_LONG).show();

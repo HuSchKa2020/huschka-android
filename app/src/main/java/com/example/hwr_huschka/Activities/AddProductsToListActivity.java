@@ -6,25 +6,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hwr_huschka.DatabaseHelper;
-import com.example.hwr_huschka.ProductAdapter;
+import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.example.hwr_huschka.FragmentsMain.ShoppingListFragment;
-import com.example.hwr_huschka.ProductNumberAdapter;
+import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.Nullable;
@@ -96,6 +87,9 @@ public class AddProductsToListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Show all Products of the Shoppinglist to the ListView
+     */
     private void refreshProductListView(){
         HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
 
