@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/TV_shoppingList_ListenID"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="335dp"
+
         android:layout_marginTop="5dp"
         android:layout_marginBottom="635dp"
         android:text="@string/shoppinglist_ListenID"
@@ -20,20 +21,21 @@
 
     <TextView
         android:id="@+id/TV_shoppinglist_ID"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="295dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TV_shoppingList_ListenID"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="635dp"
         android:text="0001"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-         />
+        android:textColor="@color/colorSehrDunkelTuerkis" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Supermarkt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="50dp"
@@ -44,21 +46,24 @@
     <TextView
         android:id="@+id/TV_shoppinglist_SupermarktAuswahl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/TV_shoppinglist_Supermarkt"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="80dp"
         android:layout_marginBottom="550dp"
+        android:background="@color/colorPrimaryDark"
         android:text="SupermarktString"
         android:textAlignment="center"
-        android:textSize="20dp"
         android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@color/colorPrimaryDark"/>
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Datum"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="140dp"
@@ -69,21 +74,24 @@
     <TextView
         android:id="@+id/TV_shoppinglist_DatumAuswahl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/TV_shoppinglist_Datum"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="170dp"
         android:layout_marginBottom="460dp"
+        android:background="@color/colorPrimaryDark"
         android:text="DatumString"
         android:textAlignment="center"
-        android:textSize="20dp"
         android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@color/colorPrimaryDark"/>
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Produkte"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="230dp"
@@ -94,18 +102,19 @@
 
     <ListView
         android:id="@+id/LV_shoppinglist_ProduktListe"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="233dp"
+        android:layout_alignTop="@+id/TV_shoppinglist_Produkte"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/colorPrimaryDark"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp"
-        android:textAlignment="center"
-        android:background="@color/colorPrimaryDark"
-        />
+        tools:layout_editor_absoluteY="1dp" />
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
@@ -113,6 +122,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         app:fab_addButtonColorNormal="@color/colorSehrDunkelTuerkis"
         app:fab_addButtonColorPressed="@color/colorDunkelTuerkis"
         app:fab_addButtonPlusIconColor="@color/colorWeiß"
