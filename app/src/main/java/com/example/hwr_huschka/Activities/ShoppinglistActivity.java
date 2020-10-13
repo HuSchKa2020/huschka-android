@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
@@ -61,24 +62,9 @@ public class ShoppinglistActivity extends AppCompatActivity {
             }
         });
 
-
-
         listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
-
-        ArrayList<String> arrayList=new ArrayList<>();
-
-        arrayList.add("Heinz Ketchup");
-        arrayList.add("Kekse");
-        arrayList.add("Schweinefilet");
-        arrayList.add("Chips");
-        arrayList.add("Goldkrone");
-        arrayList.add("Klopapier");
-        arrayList.add("Brötchen");
-        arrayList.add("Kartoffeln");
-
-        ArrayAdapter arrayAdapter= new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
-
-        listView.setAdapter(arrayAdapter);
+        DatabaseHelper.loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
+        Toast.makeText(getApplicationContext(), shoppingList.getListenID() + "", Toast.LENGTH_LONG).show();
 
     }
 
