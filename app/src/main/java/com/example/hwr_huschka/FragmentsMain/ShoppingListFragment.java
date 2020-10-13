@@ -3,16 +3,12 @@ package com.example.hwr_huschka.FragmentsMain;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -23,11 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
-import com.example.hwr_huschka.Activities.ProductInfoActivity;
 import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.R;
-import com.example.hwr_huschka.ShoppingListAdapter;
+import com.example.hwr_huschka.ListAdapter.ShoppingListAdapter;
 import com.example.hwr_huschka.klassen.ShoppingList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -44,7 +39,6 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 public class ShoppingListFragment extends Fragment {
@@ -71,6 +65,7 @@ public class ShoppingListFragment extends Fragment {
 
         loadShoppingLists(userID);
 
+        // go to create new Shoppinglist
         addListFltBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -79,6 +74,7 @@ public class ShoppingListFragment extends Fragment {
             }
         });
 
+        // go into teh View for One Shoppinglist
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.ListAdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
 import org.threeten.bp.LocalDate;

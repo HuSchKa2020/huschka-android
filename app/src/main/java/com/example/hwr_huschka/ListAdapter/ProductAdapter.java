@@ -1,4 +1,4 @@
-package com.example.hwr_huschka;
+package com.example.hwr_huschka.ListAdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 
 import java.util.ArrayList;

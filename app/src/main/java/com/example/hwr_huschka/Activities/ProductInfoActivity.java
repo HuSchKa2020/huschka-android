@@ -57,6 +57,10 @@ public class ProductInfoActivity extends AppCompatActivity {
         loadData(Integer.parseInt(getIntent().getStringExtra("productID")));
     }
 
+    /**
+     * This Method load the Data of the Product.
+     * @param productID id of the Product.
+     */
     private void loadData(final int productID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_PRODUCT_INFO,
                 new Response.Listener<String>() {
