@@ -34,6 +34,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
     ProductNumberAdapter productNumberAdapter;
 
     HashMap<Product, Integer> newProductsOfShoppingList;
+    HashMap<Product, Integer> productsBefore;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +52,8 @@ public class AddProductsToListActivity extends AppCompatActivity {
         listViewProductSuche = findViewById(R.id.produktListView);
         listViewProductShoppinglist = findViewById(R.id.listViewProductShoppinglist);
         // load Products from Shoppinglist to ListView
-        if (shoppingList.getInhalt() != null || shoppingList.getInhalt().size()>0){
+        productsBefore = (HashMap<Product, Integer>) this.getIntent().getSerializableExtra("productMap");
+        if (productsBefore.size() > 0){
             refreshProductListView();
         }
 
@@ -93,8 +95,8 @@ public class AddProductsToListActivity extends AppCompatActivity {
     private void refreshProductListView(){
         HashMap<Product, Integer> toShow = new HashMap<Product, Integer>();
 
-        if (shoppingList.getInhalt() != null){
-            toShow.putAll(shoppingList.getInhalt());
+        if (productsBefore.size()>0){
+            toShow.putAll(productsBefore);
         }
         if (newProductsOfShoppingList.size() != 0){
             toShow.putAll(newProductsOfShoppingList);

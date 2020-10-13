@@ -133,65 +133,7 @@ public class DatabaseHelper {
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
-    public static void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCT_OF_SHOPPINGLIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
 
-                            HashMap<Product, Integer> products = new HashMap<Product, Integer>();
-
-                            Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-
-                            // fetch the Product data from JSON
-                            for (int i = 0; i < jsonArray.length(); i++) {
-
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                                int productID = jsonObject.getInt("ProduktID");
-                                String hersteller = jsonObject.getString("Hersteller");
-                                String name = jsonObject.getString("Name");
-                                //String kategorie = jsonObject.getString("Kategorie");
-                                double preis = jsonObject.getDouble("Preis");
-                                int kcal = jsonObject.getInt("Kcal");
-
-                                int numberOf = jsonObject.getInt("Anzahl");
-
-                                Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
-
-                                Toast.makeText(context, productID + ": " + numberOf, Toast.LENGTH_SHORT).show();
-
-                                // add to the Product to the HashMap
-                                products.put(temp, numberOf);
-                            }
-
-                            // in der ListView anzeigen
-                            ProductNumberAdapter adapter;
-                            adapter = new ProductNumberAdapter(context, products);
-                            listView.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
-
-                        } catch (JSONException e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("listenid", Integer.toString(shoppingListID));
-                return params;
-            }
-        };
-        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
-    }
 
 
 

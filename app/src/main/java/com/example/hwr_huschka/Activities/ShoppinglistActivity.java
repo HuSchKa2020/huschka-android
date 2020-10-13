@@ -2,6 +2,7 @@ package com.example.hwr_huschka.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +11,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
+import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppinglistActivity extends AppCompatActivity {
 
@@ -24,6 +39,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
     TextView tv_listID, tv_supermarkt, tv_datum;
 
     FloatingActionButton fabToAddProd, fabStartShopping;
+    ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
 
     ShoppingList shoppingList;
 
@@ -44,12 +60,16 @@ public class ShoppinglistActivity extends AppCompatActivity {
         fabToAddProd = findViewById(R.id.fab_toAddProd);
         fabStartShopping = findViewById(R.id.fab_startShopping);
 
+        listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
+        loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
+
         fabToAddProd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AddProductsToListActivity.class);
-
                 intent.putExtra("shoppinglist", shoppingList);
+                ProductNumberAdapter productNumberAdapter = (ProductNumberAdapter) listView.getAdapter();
+                intent.putExtra("productMap", productNumberAdapter.getProductsOfList());
                 startActivity(intent);
             }
         });
@@ -62,10 +82,67 @@ public class ShoppinglistActivity extends AppCompatActivity {
             }
         });
 
-        listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
-        DatabaseHelper.loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
-        Toast.makeText(getApplicationContext(), shoppingList.getListenID() + "", Toast.LENGTH_LONG).show();
 
+    }
+
+    public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCT_OF_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            HashMap<Product, Integer> products = new HashMap<Product, Integer>();
+
+                            Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+
+                            // fetch the Product data from JSON
+                            for (int i = 0; i < jsonArray.length(); i++) {
+
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                int productID = jsonObject.getInt("ProduktID");
+                                String hersteller = jsonObject.getString("Hersteller");
+                                String name = jsonObject.getString("Name");
+                                //String kategorie = jsonObject.getString("Kategorie");
+                                double preis = jsonObject.getDouble("Preis");
+                                int kcal = jsonObject.getInt("Kcal");
+
+                                int numberOf = jsonObject.getInt("Anzahl");
+
+                                Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
+
+                                Toast.makeText(context, productID + ": " + numberOf, Toast.LENGTH_SHORT).show();
+
+                                // add to the Product to the HashMap
+                                products.put(temp, numberOf);
+                            }
+
+                            // in der ListView anzeigen
+
+                            adapter = new ProductNumberAdapter(context, products);
+                            listView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("listenid", Integer.toString(shoppingListID));
+                return params;
+            }
+        };
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 
