@@ -10,8 +10,11 @@ public class Constants {
     public static final String URL_GET_PRODUCTS = ROOT_URL + "getProduct.php";
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
 
+    public static final String URL_GET_PRODUCT_OF_SHOPPINGLIST = ROOT_URL + "getProductsbyListenID.php";
+
     public static final String URL_GET_USERS_SHOPPINGLIST = ROOT_URL + "getShoppingListbyUser.php";
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
+    public static final String URL_DELETE_ALL_PRODUCTS_FROM_LIST = ROOT_URL + "DeleteShoppinglist.php";
 
     public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProducts.php";
 

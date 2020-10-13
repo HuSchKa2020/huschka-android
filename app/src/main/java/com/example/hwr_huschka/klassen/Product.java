@@ -2,9 +2,11 @@ package com.example.hwr_huschka.klassen;
 
 import com.example.hwr_huschka.klassen.Position;
 
+import java.io.Serializable;
+
 import androidx.annotation.NonNull;
 
-public class Product {
+public class Product implements Serializable {
 
 	//Eigenschaften
 	private int produktID = 0;

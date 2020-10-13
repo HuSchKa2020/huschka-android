@@ -23,10 +23,20 @@ public class ProductNumberAdapter extends BaseAdapter {
     private Product[] mKeys;
     private Context context;
 
+    private boolean showSpinner = false;
+
     public ProductNumberAdapter(Context context, HashMap<Product, Integer> mapData) {
         this.context = context;
         this.mapData = mapData;
         mKeys = mapData.keySet().toArray(new Product[mapData.size()]);
+    }
+
+    public ProductNumberAdapter(Context context, HashMap<Product, Integer> mapData, boolean showSpinner) {
+        this.context = context;
+        this.mapData = mapData;
+        mKeys = mapData.keySet().toArray(new Product[mapData.size()]);
+
+        this.showSpinner = showSpinner;
     }
 
     public HashMap<Product, Integer> getProductsOfList() {
@@ -54,7 +64,12 @@ public class ProductNumberAdapter extends BaseAdapter {
         if (view == null) {
             LayoutInflater inflater;
             inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.listadapter_product_spinner, null);
+            if (showSpinner) {
+                view = inflater.inflate(R.layout.listadapter_product_spinner, null);
+            } else {
+                view = inflater.inflate(R.layout.listadapter_product_number, null);
+            }
+
         }
 
         final Product key = mKeys[i];
@@ -62,26 +77,36 @@ public class ProductNumberAdapter extends BaseAdapter {
 
         TextView tv_prodName = (TextView) view.findViewById(R.id.TV_adapter_productName);
         TextView tv_prodPrice = (TextView) view.findViewById(R.id.TV_adapter_productPreis);
-        final Spinner spinnerNumberOfProd = view.findViewById(R.id.spinner_ProduktAnzahl);
-        // set Items to the Spinner
-        Integer[] spinnerItems = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        ArrayAdapter<Integer> myAdapter = new ArrayAdapter<Integer>(context,
-                android.R.layout.simple_list_item_1,
-                spinnerItems);
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNumberOfProd.setAdapter(myAdapter);
 
-        spinnerNumberOfProd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mapData.put(key, (Integer) spinnerNumberOfProd.getSelectedItem());
-            }
+        if (showSpinner == true) {
+            final Spinner spinnerNumberOfProd = view.findViewById(R.id.spinner_ProduktAnzahl);
+            // set Items to the Spinner
+            Integer[] spinnerItems = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+            ArrayAdapter<Integer> myAdapter = new ArrayAdapter<Integer>(context,
+                    android.R.layout.simple_list_item_1,
+                    spinnerItems);
+            myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerNumberOfProd.setAdapter(myAdapter);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            spinnerNumberOfProd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    mapData.put(key, (Integer) spinnerNumberOfProd.getSelectedItem());
+                }
 
-            }
-        });
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+            int spinnerPosition = myAdapter.getPosition(value); //value is the Number of Products
+            spinnerNumberOfProd.setSelection(spinnerPosition);
+
+        } else { // show Numberfield
+            TextView numberOf = view.findViewById(R.id.TV_adapter_ProduktAnzahl);
+            numberOf.setText(Integer.toString(value));
+        }
 
         // setValues
         if (key != null) {
@@ -90,8 +115,7 @@ public class ProductNumberAdapter extends BaseAdapter {
         }
 
 
-        int spinnerPosition = myAdapter.getPosition(value); //value is the Number of Products
-        spinnerNumberOfProd.setSelection(spinnerPosition);
+
 
 
         return view;
