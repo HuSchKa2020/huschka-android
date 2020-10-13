@@ -101,7 +101,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
         }
 
        if (toShow.size() != 0){
-           productNumberAdapter = new ProductNumberAdapter(this,  toShow);
+           productNumberAdapter = new ProductNumberAdapter(this,  toShow, true);
            listViewProductShoppinglist.setAdapter(productNumberAdapter);
            productNumberAdapter.notifyDataSetChanged();
         }
