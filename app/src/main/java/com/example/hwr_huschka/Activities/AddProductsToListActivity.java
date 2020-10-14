@@ -17,6 +17,10 @@ import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,19 +80,33 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
                 // get new List of Items
                 HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
+                JSONArray jsonArray = new JSONArray();
                 // pull them to the Database
                 for (Map.Entry<Product, Integer> entry : data.entrySet()) {
                     Product key = entry.getKey();
                     Integer value = entry.getValue();
-                    Toast.makeText(AddProductsToListActivity.this, key.getName() + ": " + value, Toast.LENGTH_SHORT).show();
                     if(value > 0){
-                        DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
+                        // Build JsonArray with all Products
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put("ListenID", shoppingList.getListenID());
+                            jsonObject.put("ProductID", key.getProduktID());
+                            jsonObject.put("numberOf", value);
+
+                            jsonArray.put(jsonObject);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        // DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
                     }
                 }
 
+                // send JsonArrayToBackend
+
+                /*
                 Intent intent = new Intent(getApplicationContext(), ShoppinglistActivity.class);
                 intent.putExtra("shoppinglist", shoppingList);
-                startActivity(intent);
+                startActivity(intent);*/
             }
         }));
 

@@ -105,7 +105,11 @@ public class ShoppinglistActivity extends AppCompatActivity {
                                 String name = jsonObject.getString("Name");
                                 //String kategorie = jsonObject.getString("Kategorie");
                                 double preis = jsonObject.getDouble("Preis");
-                                int kcal = jsonObject.getInt("Kcal");
+                                int kcal = 0;
+                                if(!jsonObject.isNull("Kcal")){
+                                    kcal = jsonObject.getInt("Kcal");
+                                }
+
 
                                 int numberOf = jsonObject.getInt("Anzahl");
 

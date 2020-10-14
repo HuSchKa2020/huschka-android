@@ -112,6 +112,12 @@ public class DatabaseHelper {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
+                            if(!jsonObject.getBoolean("error")){
+                                Toast.makeText(context, "ListID: " + shoppingListID + ", ProduktID: " + productID + ", Anzahl: " + numberOf, Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "error: " + productID, Toast.LENGTH_SHORT).show();
+                            }
+
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
