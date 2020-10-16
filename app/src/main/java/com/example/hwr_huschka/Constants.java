@@ -16,6 +16,6 @@ public class Constants {
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
     public static final String URL_DELETE_ALL_PRODUCTS_FROM_LIST = ROOT_URL + "DeleteProduct.php";
 
-    public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProducts.php";
+    public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProductJsonArray.php";
 
 }
