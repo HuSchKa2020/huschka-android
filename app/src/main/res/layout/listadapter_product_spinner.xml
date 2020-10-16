@@ -9,7 +9,7 @@
         android:id="@+id/image_of_product"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_weight="2"
+        android:layout_weight="20"
 
         />
 
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="10">
 
         <TextView
             android:id="@+id/TV_adapter_productName"
@@ -45,7 +45,7 @@
        android:id="@+id/spinner_ProduktAnzahl"
        android:layout_width="match_parent"
        android:layout_height="60dp"
-       android:layout_weight="2"
+       android:layout_weight="16"
        android:textAlignment="center"
        android:gravity="center" />
 
