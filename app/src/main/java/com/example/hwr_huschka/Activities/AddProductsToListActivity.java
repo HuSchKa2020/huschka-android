@@ -78,31 +78,36 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
                 // delete All Old Items of the Shoppinglist in the Databae
                 DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
-                // get new List of Items
-                HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
-                JSONArray jsonArray = new JSONArray();
-                // pull them to the Database
-                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
-                    Product key = entry.getKey();
-                    Integer value = entry.getValue();
-                    if(value > 0){
-                        // Build JsonArray with all Products
-                        JSONObject jsonObject = new JSONObject();
-                        try {
-                            jsonObject.put("ListenID", shoppingList.getListenID());
-                            jsonObject.put("ProductID", key.getProduktID());
-                            jsonObject.put("numberOf", value);
 
-                            jsonArray.put(jsonObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                // get new List of Items
+                if(productNumberAdapter.getProductsOfList() != null){
+                    HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
+                    JSONArray jsonArray = new JSONArray();
+                    // pull them to the Database
+                    for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                        Product key = entry.getKey();
+                        Integer value = entry.getValue();
+                        if(value > 0){
+                            // Build JsonArray with all Products
+                            JSONObject jsonObject = new JSONObject();
+                            try {
+                                jsonObject.put("ListenID", shoppingList.getListenID());
+                                jsonObject.put("ProduktID", key.getProduktID());
+                                jsonObject.put("numberOf", value);
+
+                                jsonArray.put(jsonObject);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         }
-                        // DatabaseHelper.addProductToList(getApplicationContext(), shoppingList.getListenID(), key.getProduktID(), value);
                     }
+
+                    // send JsonArrayToBackend
+                    DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                 }
 
-                // send JsonArrayToBackend
-
+                finish();
                 /*
                 Intent intent = new Intent(getApplicationContext(), ShoppinglistActivity.class);
                 intent.putExtra("shoppinglist", shoppingList);

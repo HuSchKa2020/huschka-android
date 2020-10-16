@@ -100,11 +100,9 @@ public class DatabaseHelper {
     /**
      * This Method add one Product to a Shoppinglist
      * @param context the Context
-     * @param shoppingListID the ID of the Shoppinglist
-     * @param productID the ID of the Product
-     * @param numberOf number of Products
+     * @param jsonArray a JSONArray with the products of the Shoppinglist
      */
-    public static void addProductToList(final Context context, final int shoppingListID, final int productID, final int numberOf){
+    public static void addProductToList(final Context context, final JSONArray jsonArray){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
@@ -112,10 +110,8 @@ public class DatabaseHelper {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
-                            if(!jsonObject.getBoolean("error")){
-                                Toast.makeText(context, "ListID: " + shoppingListID + ", ProduktID: " + productID + ", Anzahl: " + numberOf, Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, "error: " + productID, Toast.LENGTH_SHORT).show();
+                            if(jsonObject.getBoolean("error") == true){
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
@@ -131,9 +127,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("listenID", Integer.toString(shoppingListID));
-                params.put("produktID", Integer.toString(productID));
-                params.put("anzahl", Integer.toString(numberOf));
+                params.put("ProductArray", jsonArray.toString());
                 return params;
             }
         };
