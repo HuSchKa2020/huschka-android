@@ -4,6 +4,6 @@
 
     <stroke
         android:color="@color/colorSehrDunkelTuerkis"
-        android:width="3dp"/>
+        android:width="3dp" />
 
 </shape>

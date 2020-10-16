@@ -55,5 +55,10 @@
         <item>9</item>
     </string-array>
 
+    <string name="Produktinfo_Hersteller">Hersteller</string>
+    <string name="Produktinfo_Produktname">Produktname</string>
+    <string name="Produktinfo_Kategorie">Kategorie</string>
+    <string name="Produktinfo_Preis">Preis in €</string>
+    <string name="Produktinfo_Kcal">Kcal je 100g</string>
 
 </resources>

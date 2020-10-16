@@ -8,18 +8,26 @@
         android:id="@+id/edTextProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textAlignment="center"
+        />
 
     <Button
         android:id="@+id/btnProductSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="suchen"/>
+        android:layout_margin="5dp"
+        android:text="suchen"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/produktListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+        android:layout_margin="5dp" />
 
 </LinearLayout>

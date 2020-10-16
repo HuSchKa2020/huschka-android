@@ -12,45 +12,151 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorDunkelTuerkis"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
 
     <TextView
         android:id="@+id/TVproductID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addListToolbar"/>
+        android:layout_above="@+id/TV_Produktsuche_Hersteller_Ueberschrift"
+        android:layout_marginBottom="-9dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/IV_Produktsuche_Bild"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/addListToolbar"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/test_bild"/>
+
+    <TextView
+        android:id="@+id/TV_Produktsuche_Hersteller_Ueberschrift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IV_Produktsuche_Bild"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorSehrDunkelTuerkis"
+        android:text="@string/Produktinfo_Hersteller"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductHersteller"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/TV_Produktsuche_Hersteller_Ueberschrift"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/TV_Produktsuche_Name_Ueberschrift"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TVproductID"/>
+        android:layout_below="@+id/TVproductHersteller"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorSehrDunkelTuerkis"
+        android:text="@string/Produktinfo_Produktname"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/TV_Produktsuche_Name_Ueberschrift"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/TV_Produktsuche_Kategorie_Ueberschrift"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TVproductHersteller"/>
+        android:layout_below="@+id/TVproductName"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorSehrDunkelTuerkis"
+        android:text="@string/Produktinfo_Kategorie"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductKategorie"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/TV_Produktsuche_Kategorie_Ueberschrift"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/TV_Produktsuche_Preis_Ueberschrift"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TVproductName"/>
+        android:layout_below="@+id/TVproductKategorie"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorSehrDunkelTuerkis"
+        android:text="@string/Produktinfo_Preis"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductPreis"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/TV_Produktsuche_Preis_Ueberschrift"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/TV_Produktsuche_Kcal_Ueberschrift"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TVproductKategorie"/>
+        android:layout_below="@+id/TVproductPreis"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorSehrDunkelTuerkis"
+        android:text="@string/Produktinfo_Kcal"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductKcal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/TVproductPreis"/>
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/TV_Produktsuche_Kcal_Ueberschrift"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:background="@drawable/text_view_rahmen"
+        android:gravity="center"/>
+
+
 
 </RelativeLayout>
