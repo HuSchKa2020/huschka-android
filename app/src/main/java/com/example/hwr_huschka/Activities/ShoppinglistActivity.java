@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -79,6 +80,16 @@ public class ShoppinglistActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // start Shopping
                 Toast.makeText(ShoppinglistActivity.this, "Start Shopping", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ShoppinglistActivity.this, i + " " + adapterView.getItemAtPosition(i), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
+                intent.putExtra("productID", adapterView.getItemAtPosition(i).toString());
+                startActivity(intent);
             }
         });
 
