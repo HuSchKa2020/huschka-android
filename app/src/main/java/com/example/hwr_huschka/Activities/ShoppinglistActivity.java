@@ -85,6 +85,13 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
+        Toast.makeText(getApplicationContext(), "Restart", Toast.LENGTH_LONG).show();
+    }
+
     public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCT_OF_SHOPPINGLIST,
                 new Response.Listener<String>() {
@@ -99,7 +106,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
+                                Toast.makeText(context, jsonObject.toString(), Toast.LENGTH_SHORT).show();
                                 int productID = jsonObject.getInt("ProduktID");
                                 String hersteller = jsonObject.getString("Hersteller");
                                 String name = jsonObject.getString("Name");
