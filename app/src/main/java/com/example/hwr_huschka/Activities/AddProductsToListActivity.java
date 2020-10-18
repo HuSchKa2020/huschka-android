@@ -102,11 +102,10 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
                         }
                     }
-                    Toast.makeText(getApplicationContext(), jsonArray.toString(), Toast.LENGTH_LONG).show();
                     // send JsonArrayToBackend
                     DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                 }
-
+                // close Activity and go back to Shoppinglist Overview
                 finish();
             }
         }));
