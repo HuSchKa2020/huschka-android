@@ -9,7 +9,7 @@
     
     <style name="custom_fab">
         <item name="android:background">@drawable/lable_background</item>
-        <item name="android:textColor">@color/colorSehrDunkelTuerkis</item>
+        <item name="android:textColor">@color/colorWeiß</item>
     </style>
 
 </resources>

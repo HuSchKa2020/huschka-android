@@ -10,13 +10,11 @@
         android:id="@+id/TV_shoppingList_ListenID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
 
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="635dp"
         android:text="@string/shoppinglist_ListenID"
-        android:textColor="@color/colorDunkelTuerkis"/>
+        android:textColor="@color/colorDunkelTuerkis" />
 
 
     <TextView
@@ -24,93 +22,88 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/TV_shoppingList_ListenID"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="635dp"
         android:text="0001"
-        android:textColor="@color/colorSehrDunkelTuerkis" />
+        android:textColor="@color/colorDunkelTuerkis" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Supermarkt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="590dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Supermarkt"
-        android:textColor="@color/colorDunkelTuerkis"/>
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_SupermarktAuswahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/TV_shoppinglist_Supermarkt"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/TV_shoppinglist_Supermarkt"
+
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="550dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorDunkelTuerkis"
         android:text="SupermarktString"
         android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textColor="@color/colorWeiß"
         android:textSize="20dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Datum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="140dp"
-        android:layout_marginBottom="500dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Datum"
-        android:textColor="@color/colorDunkelTuerkis"/>
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_DatumAuswahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/TV_shoppinglist_Datum"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/TV_shoppinglist_Datum"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="460dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorDunkelTuerkis"
         android:text="DatumString"
         android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textColor="@color/colorWeiß"
         android:textSize="20dp" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Produkte"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="230dp"
-        android:layout_marginBottom="410dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Produkte"
-        android:textColor="@color/colorDunkelTuerkis"/>
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
 
 
     <ListView
         android:id="@+id/LV_shoppinglist_ProduktListe"
         android:layout_width="wrap_content"
-        android:layout_height="233dp"
-        android:layout_alignTop="@+id/TV_shoppinglist_Produkte"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="100dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/TV_shoppinglist_Produkte"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,22 +128,24 @@
             android:id="@+id/fab_toAddProd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/colorAccent"
-            app:fab_colorPressed="@color/colorDunkelTuerkis"
+            app:fab_colorNormal="@color/colorDunkelTuerkis"
+            app:fab_colorPressed="@color/colorSehrDunkelTuerkis"
             app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
             app:fab_size="mini"
-            app:fab_title="Produkte hinzufuegen"
+            app:fab_title="Produkte hinzufügen"
             />
 
         <com.getbase.floatingactionbutton.AddFloatingActionButton
             android:id="@+id/fab_startShopping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/colorAccent"
-            app:fab_colorPressed="@color/colorDunkelTuerkis"
+            android:background="@color/colorDunkelTuerkis"
+            app:fab_colorNormal="@color/colorDunkelTuerkis"
+            app:fab_colorPressed="@color/colorSehrDunkelTuerkis"
             app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
             app:fab_size="mini"
-            app:fab_title="@string/shoppinglist_Starten" />
+            app:fab_title="@string/shoppinglist_Starten"
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

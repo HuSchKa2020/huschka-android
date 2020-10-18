@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:src="@drawable/test_bild"
-        android:background="@drawable/text_view_rahmen"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:padding="3dp"/>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="@color/colorWeiß"
-            android:background="@color/colorSehrDunkelTuerkis"
+            android:background="@color/colorDunkelTuerkis"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -41,7 +41,7 @@
         android:text="Preis"
         android:textAlignment="center"
         android:gravity="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"/>
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"/>
 
 </LinearLayout>
