@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="suchen"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:textStyle="bold" />
 
     <ListView

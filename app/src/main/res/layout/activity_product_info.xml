@@ -25,7 +25,7 @@
         android:layout_above="@+id/TV_Produktsuche_Hersteller_Ueberschrift"
         android:layout_marginBottom="-9dp"
         android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textColor="@color/colorDunkelTuerkis"
         android:textSize="20dp" />
 
     <ImageView
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/IV_Produktsuche_Bild"
         android:layout_marginTop="10dp"
-        android:background="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"
         android:text="@string/Produktinfo_Hersteller"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
@@ -56,8 +56,8 @@
         android:layout_marginTop="0dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 
     <TextView
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TVproductHersteller"
         android:layout_marginTop="0dp"
-        android:background="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"
         android:text="@string/Produktinfo_Produktname"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
@@ -80,8 +80,8 @@
         android:layout_marginTop="0dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 
 
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TVproductName"
         android:layout_marginTop="0dp"
-        android:background="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"
         android:text="@string/Produktinfo_Kategorie"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
@@ -105,8 +105,8 @@
         android:layout_marginTop="0dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 
     <TextView
@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TVproductKategorie"
         android:layout_marginTop="0dp"
-        android:background="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"
         android:text="@string/Produktinfo_Preis"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
@@ -129,8 +129,8 @@
         android:layout_marginTop="0dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 
     <TextView
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/TVproductPreis"
         android:layout_marginTop="0dp"
-        android:background="@color/colorSehrDunkelTuerkis"
+        android:background="@color/colorDunkelTuerkis"
         android:text="@string/Produktinfo_Kcal"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
@@ -153,8 +153,8 @@
         android:layout_marginTop="0dp"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:background="@drawable/text_view_rahmen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 
 

@@ -24,22 +24,31 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="387dp"
             android:layout_height="wrap_content"
-            android:text="Produkte in Liste:"/>
+            android:layout_margin="10dp"
+            android:text="Produkte in Liste:"
+            android:textAlignment="center"
+            android:textColor="@color/colorDunkelTuerkis"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
 
         <ListView
             android:id="@+id/listViewProductShoppinglist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_weight="1"/>
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/rahmen_nicht_ganz_dunkel"/>
 
         <Button
             android:id="@+id/btnfinish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/finish"/>
+            android:text="@string/finish"
+            android:textColor="@color/colorWeiß"
+            android:background="@color/colorSehrDunkelTuerkis"
+            android:layout_margin="10dp" />
 
 
     </LinearLayout>
