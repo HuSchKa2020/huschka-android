@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,7 +83,24 @@ public class ShoppinglistActivity extends AppCompatActivity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ShoppinglistActivity.this, i + " " + adapterView.getItemAtPosition(i), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
+                intent.putExtra("productID", adapterView.getItemAtPosition(i).toString());
+                startActivity(intent);
+            }
+        });
 
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
+        Toast.makeText(getApplicationContext(), "Restart", Toast.LENGTH_LONG).show();
     }
 
     public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
@@ -99,7 +117,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-
+                                Toast.makeText(context, jsonObject.toString(), Toast.LENGTH_SHORT).show();
                                 int productID = jsonObject.getInt("ProduktID");
                                 String hersteller = jsonObject.getString("Hersteller");
                                 String name = jsonObject.getString("Name");
