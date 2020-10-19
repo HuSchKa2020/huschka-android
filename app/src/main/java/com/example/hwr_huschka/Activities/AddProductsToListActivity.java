@@ -2,6 +2,7 @@ package com.example.hwr_huschka.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -102,6 +104,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
                         }
                     }
+                    System.out.println(jsonArray.toString());
                     // send JsonArrayToBackend
                     DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                 }
