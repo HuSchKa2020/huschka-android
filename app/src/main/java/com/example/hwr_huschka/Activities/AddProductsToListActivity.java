@@ -49,6 +49,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproducttoshoppinglist);
+
         newProductsOfShoppingList = new HashMap<Product, Integer>();
         // get Data from intent
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
@@ -66,6 +67,8 @@ public class AddProductsToListActivity extends AppCompatActivity {
             refreshProductListView();
         }
 
+        DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
+
         btn_SearchProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +81,6 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // delete All Old Items of the Shoppinglist in the Databae
-                DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
 
                 HashMap<Product, Integer> data = new HashMap<Product, Integer>();
                 // get new List of Items
