@@ -1,7 +1,9 @@
 package com.example.hwr_huschka.Activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,7 +74,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
                 intent.putExtra("shoppinglist", shoppingList);
                 ProductNumberAdapter productNumberAdapter = (ProductNumberAdapter) listView.getAdapter();
                 intent.putExtra("productMap", productNumberAdapter.getProductsOfList());
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -97,11 +99,21 @@ public class ShoppinglistActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
-    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (resultCode != Activity.RESULT_CANCELED
+            && requestCode == 0
+                && data != null) {
+
+            // show new List in ListView
+            HashMap<Product, Integer> products = (HashMap<Product, Integer>) data.getSerializableExtra("productMap");
+            adapter = new ProductNumberAdapter(ShoppinglistActivity.this, products);
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
+    }
+    
     public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCT_OF_SHOPPINGLIST,
                 new Response.Listener<String>() {

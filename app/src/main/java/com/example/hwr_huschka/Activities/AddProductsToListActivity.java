@@ -1,5 +1,6 @@
 package com.example.hwr_huschka.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.SoundEffectConstants;
@@ -76,20 +77,19 @@ public class AddProductsToListActivity extends AppCompatActivity {
         btn_Finish.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // go Back to List Overview and refresh the List in Database
-
                 // delete All Old Items of the Shoppinglist in the Databae
                 DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
 
+                HashMap<Product, Integer> data = new HashMap<Product, Integer>();
                 // get new List of Items
-                if(productNumberAdapter.getProductsOfList() != null){
-                    HashMap<Product, Integer> data = productNumberAdapter.getProductsOfList();
+                if (productNumberAdapter.getProductsOfList() != null) {
+                    data = productNumberAdapter.getProductsOfList();
                     JSONArray jsonArray = new JSONArray();
                     // pull them to the Database
                     for (Map.Entry<Product, Integer> entry : data.entrySet()) {
                         Product key = entry.getKey();
                         Integer value = entry.getValue();
-                        if(value > 0){
+                        if (value > 0) {
                             // Build JsonArray with all Products
                             JSONObject jsonObject = new JSONObject();
                             try {
@@ -102,13 +102,18 @@ public class AddProductsToListActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
 
+                        } else {
+                            data.remove(key);
                         }
                     }
-                    System.out.println(jsonArray.toString());
                     // send JsonArrayToBackend
                     DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                 }
-                // close Activity and go back to Shoppinglist Overview
+
+                // go back to the Shoppinglist Overview
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
+                setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }
         }));
