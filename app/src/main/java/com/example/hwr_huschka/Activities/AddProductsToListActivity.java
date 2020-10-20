@@ -86,35 +86,38 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 HashMap<Product, Integer> data = new HashMap<Product, Integer>();
                 ArrayList<Product> productsForRemove = new ArrayList<>();
                 // get new List of Items
-                if (productNumberAdapter.getProductsOfList() != null) {
-                    data = productNumberAdapter.getProductsOfList();
-                    JSONArray jsonArray = new JSONArray();
-                    // pull them to the Database
-                    for (Map.Entry<Product, Integer> entry : data.entrySet()) {
-                        Product key = entry.getKey();
-                        Integer value = entry.getValue();
-                        if (value > 0) {
-                            // Build JsonArray with all Products
-                            JSONObject jsonObject = new JSONObject();
-                            try {
-                                jsonObject.put("ListenID", shoppingList.getListenID());
-                                jsonObject.put("ProduktID", key.getProduktID());
-                                jsonObject.put("numberOf", value);
+                if (productNumberAdapter != null) {
+                    if (productNumberAdapter.getProductsOfList() != null) {
+                        data = productNumberAdapter.getProductsOfList();
+                        JSONArray jsonArray = new JSONArray();
+                        // pull them to the Database
+                        for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                            Product key = entry.getKey();
+                            Integer value = entry.getValue();
+                            if (value > 0) {
+                                // Build JsonArray with all Products
+                                JSONObject jsonObject = new JSONObject();
+                                try {
+                                    jsonObject.put("ListenID", shoppingList.getListenID());
+                                    jsonObject.put("ProduktID", key.getProduktID());
+                                    jsonObject.put("numberOf", value);
 
-                                jsonArray.put(jsonObject);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                    jsonArray.put(jsonObject);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            } else {
+                                productsForRemove.add(key);
                             }
-
-                        } else {
-                            productsForRemove.add(key);
                         }
+                        // send JsonArrayToBackend
+                        DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                     }
-                    // send JsonArrayToBackend
-                    DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                 }
 
-                for (Product p: productsForRemove) {
+
+                for (Product p : productsForRemove) {
                     data.remove(p);
                 }
 
