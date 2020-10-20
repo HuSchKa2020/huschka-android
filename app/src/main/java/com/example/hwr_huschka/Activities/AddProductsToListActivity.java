@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,6 +84,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 // delete All Old Items of the Shoppinglist in the Databae
 
                 HashMap<Product, Integer> data = new HashMap<Product, Integer>();
+                ArrayList<Product> productsForRemove = new ArrayList<>();
                 // get new List of Items
                 if (productNumberAdapter.getProductsOfList() != null) {
                     data = productNumberAdapter.getProductsOfList();
@@ -105,11 +107,15 @@ public class AddProductsToListActivity extends AppCompatActivity {
                             }
 
                         } else {
-                            data.remove(key);
+                            productsForRemove.add(key);
                         }
                     }
                     // send JsonArrayToBackend
                     DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
+                }
+
+                for (Product p: productsForRemove) {
+                    data.remove(p);
                 }
 
                 // go back to the Shoppinglist Overview
