@@ -75,10 +75,10 @@ public class AddShoppingListActivity extends AppCompatActivity {
                 StringBuilder date = new StringBuilder();
                 date.append(datePicker.getYear());
                 date.append("-");
-                if (datePicker.getMonth() < 10){
+                if (datePicker.getMonth()+1 < 10){
                     date.append(0);
                 }
-                date.append(datePicker.getMonth());
+                date.append(datePicker.getMonth()+1);
                 date.append("-");
                 if (datePicker.getDayOfMonth() < 10){
                     date.append(0);
