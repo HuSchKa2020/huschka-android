@@ -37,14 +37,14 @@
         android:text="@string/shoppinglist_Supermarkt"
         android:textAlignment="center"
         android:textColor="@color/colorDunkelTuerkis"
-        android:textSize="18dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TV_shoppinglist_SupermarktAuswahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/TV_shoppinglist_Supermarkt"
-
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
@@ -52,7 +52,8 @@
         android:text="SupermarktString"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TV_shoppinglist_Datum"
@@ -64,7 +65,8 @@
         android:text="@string/shoppinglist_Datum"
         android:textAlignment="center"
         android:textColor="@color/colorDunkelTuerkis"
-        android:textSize="18dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TV_shoppinglist_DatumAuswahl"
@@ -78,7 +80,8 @@
         android:text="DatumString"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TV_shoppinglist_Produkte"
@@ -90,7 +93,8 @@
         android:text="@string/shoppinglist_Produkte"
         android:textAlignment="center"
         android:textColor="@color/colorDunkelTuerkis"
-        android:textSize="18dp" />
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
 
     <ListView
@@ -108,6 +112,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="1dp" />
+
+    <TextView
+        android:id="@+id/TV_Summe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"
+        android:text="Summe:"
+        android:textSize="30dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:text="103,56€"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textAlignment="center"/>
+
+
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu

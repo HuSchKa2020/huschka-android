@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,6 +95,9 @@ public class ShoppinglistActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView tv = (TextView) findViewById(R.id.TV_Summe);
+        tv.setPaintFlags(tv.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
     }
