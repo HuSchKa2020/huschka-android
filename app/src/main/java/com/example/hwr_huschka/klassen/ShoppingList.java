@@ -35,6 +35,12 @@ public class ShoppingList implements Serializable {
 		this.supermarkt = supermarkt;
 		this.status = status;
 	}
+	public ShoppingList(int listenID, LocalDate datum, String supermarkt) {
+		this.listenID = listenID;
+		this.datum = datum;
+		this.supermarkt = supermarkt;
+		this.status = status;
+	}
 	
 	//Methoden
 

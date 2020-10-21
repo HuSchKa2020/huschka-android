@@ -3,6 +3,7 @@ package com.example.hwr_huschka.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,10 +27,12 @@ import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
+import com.example.hwr_huschka.klassen.ShoppingList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 
 import java.lang.reflect.Array;
 import java.util.Date;
@@ -109,7 +112,12 @@ public class AddShoppingListActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
 
                             if(jsonObject.getBoolean("error") == false){
-                                openMainActivity();
+
+                                /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
+                                Intent resultIntent = new Intent();
+                                resultIntent.putExtra("shoppinglist", new ShoppingList(jsonObject.getInt("ListenID"), LocalDate.parse(date, formatter), supermarkt)); // set new List as Extra to the Intent
+                                setResult(Activity.RESULT_OK, resultIntent);*/
+                                finish();
                             }else{
                                 Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }

@@ -1,5 +1,6 @@
 package com.example.hwr_huschka.FragmentsMain;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -71,7 +72,7 @@ public class ShoppingListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Fragment aufrufen, in dem Infos für eine neue Einkaufsliste eingetragen werden
-                startActivity(new Intent(getActivity(), AddShoppingListActivity.class));
+                startActivityForResult(new Intent(getActivity(), AddShoppingListActivity.class), 0);
             }
         });
 
@@ -91,6 +92,16 @@ public class ShoppingListFragment extends Fragment {
 
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == Activity.RESULT_OK){
+            /*ShoppingListAdapter adapter = (ShoppingListAdapter) listView.getAdapter();
+            adapter.add((ShoppingList) data.getSerializableExtra("shoppinglist"));*/
+        }
     }
 
     /**
