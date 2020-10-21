@@ -37,6 +37,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ShoppinglistActivity extends AppCompatActivity {
 
@@ -91,7 +92,11 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), ProductInfoActivity.class);
-                intent.putExtra("productID", adapterView.getItemAtPosition(i).toString());
+
+                ArrayList<Product> data = new ArrayList<Product>(adapter.getProductsOfList().keySet());
+                Integer id = data.get(i).getProduktID();
+
+                intent.putExtra("productID", Integer.toString(id));
                 startActivity(intent);
             }
         });

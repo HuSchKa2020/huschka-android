@@ -50,7 +50,7 @@ public class ProductNumberAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return mapData.get(mKeys[i]);
+        return mapData.get(i);
     }
 
     @Override
