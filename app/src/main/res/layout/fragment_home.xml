@@ -1,14 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/textView_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="30dp"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
         android:text="Home" />
+
+    <ImageButton
+        android:id="@+id/IB_Home_Einstellungen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/ic_baseline_settings_24"
+        android:background="@color/colorDunkelTuerkis"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Einstellungen"
+        android:layout_alignStart="@+id/IB_Home_Einstellungen"
+        android:layout_alignEnd="@+id/IB_Home_Einstellungen"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Einstellungen"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+    <ImageButton
+        android:id="@+id/IB_Home_Tipps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/ic_tipps"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Tipps"
+        android:layout_alignStart="@+id/IB_Home_Tipps"
+        android:layout_alignEnd="@+id/IB_Home_Tipps"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Tipps | Tricks"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+    <ImageButton
+        android:id="@+id/IB_Home_Impressum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="360dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/ic_baseline_star_border_24"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Impressum"
+        android:layout_alignStart="@+id/IB_Home_Impressum"
+        android:layout_alignEnd="@+id/IB_Home_Impressum"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Impressum"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+    <ImageButton
+        android:id="@+id/IB_Home_Suche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="160dp"
+        android:src="@drawable/ic_baseline_search_24"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Suche"
+        android:layout_alignStart="@+id/IB_Home_Suche"
+        android:layout_alignEnd="@+id/IB_Home_Suche"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Suche"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+    <ImageButton
+        android:id="@+id/IB_Home_Liste_erstellen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="280dp"
+        android:src="@drawable/ic_neue_liste_erstellen"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Liste_erstellen"
+        android:layout_alignStart="@+id/IB_Home_Liste_erstellen"
+        android:layout_alignEnd="@+id/IB_Home_Liste_erstellen"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Liste erstellen"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+    <ImageButton
+        android:id="@+id/IB_Home_Prospekt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginStart="160dp"
+        android:src="@drawable/ic_prospekt"
+        android:background="@color/colorDunkelTuerkis"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/IB_Home_Prospekt"
+        android:layout_alignStart="@+id/IB_Home_Prospekt"
+        android:layout_alignEnd="@+id/IB_Home_Prospekt"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:text="Prospekt"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="13dp"/>
+
+
+    <Button
+        android:id="@+id/IB_Home_Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/colorDunkelTuerkis"
+        android:padding="5dp"
+        android:text="Schnell Start"
+        android:textColor="@color/colorWeiß"
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
