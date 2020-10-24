@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="Impressum"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="HuSchKa"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:text="Staße 1"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:text="12345 Ort"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:text="Kontakt"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="250dp"
+        android:text="Telefon: 0123456789"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:text="E-Mail: huschka@gmx.de"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:text="Registernummer "
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="370dp"
+        android:text="Registergericht: Amtsgericht Ort"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:text="USt-ID: DE123456789"
+        android:layout_marginStart="40dp"
+        android:textSize="15dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>
