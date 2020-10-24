@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    >
 
     <TextView
         android:id="@+id/textView_home"
@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="30dp"
-        android:textColor="@color/colorWeiß"
+        android:textColor="@color/colorDunkelTuerkis"
         android:textStyle="bold"
         android:text="Home" />
 
@@ -162,7 +162,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
-        android:text="Prospekt"
+        android:text="Prospekte"
         android:textAlignment="center"
         android:textColor="@color/colorSehrDunkelTuerkis"
         android:textStyle="bold"

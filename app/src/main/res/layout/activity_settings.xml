@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="Einstellungen"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Konto"
+        android:layout_alignBottom="@+id/BTN_Setting_Konto"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_konto"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Zahlung"
+        android:layout_alignBottom="@+id/BTN_Setting_Zahlung"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_zahlungsmethode" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Archiv"
+        android:layout_alignBottom="@+id/BTN_Setting_Archiv"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_archiv" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Hilfe"
+        android:layout_alignBottom="@+id/BTN_Setting_Hilfe"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_hilfe" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Benachrichtigungen"
+        android:layout_alignBottom="@+id/BTN_Setting_Benachrichtigungen"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_benachrichtigung" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Datenschutz"
+        android:layout_alignBottom="@+id/BTN_Setting_Datenschutz"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_datennutzung" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_AGB"
+        android:layout_alignBottom="@+id/BTN_Setting_AGB"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_agb" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Nutzungsbedingungen"
+        android:layout_alignBottom="@+id/BTN_Setting_Nutzungsbedingungen"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_nutzungsbedingungen" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/BTN_Setting_Info"
+        android:layout_alignBottom="@+id/BTN_Setting_Info"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:src="@drawable/ic_info" />
+
+
+    <Button
+        android:id="@+id/BTN_Setting_Konto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Konto"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Zahlung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Zahlungsmethode"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Archiv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Archiv"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Hilfe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Hilfe"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Benachrichtigungen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Benachrichtigungen"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Datenschutz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Datenschutzeinstellungen"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_AGB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="460dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="ABG"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Nutzungsbedingungen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="520dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Nutzungsbedingungen"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/BTN_Setting_Info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="580dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="40dp"
+        android:text="Systeminfos"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"/>
+
+</RelativeLayout>
