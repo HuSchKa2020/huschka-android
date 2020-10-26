@@ -34,17 +34,19 @@ import java.util.Map;
 
 public class ProductInfoActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
     TextView tvProductID, tvHersteller, tvProductName, tvProductKategorie, tvPrice, tvKcal;
     Product product = new Product();
 
     InputStream is = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
 
-        Toolbar toolbar = findViewById(R.id.addListToolbar);
+        toolbar = findViewById(R.id.addListToolbar);
         tvProductID = findViewById(R.id.TVproductID);
         tvHersteller = findViewById(R.id.TVproductHersteller);
         tvProductName = findViewById(R.id.TVproductName);

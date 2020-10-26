@@ -142,43 +142,46 @@
 
 
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
+    <com.github.clans.fab.FloatingActionMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        app:fab_addButtonColorNormal="@color/colorSehrDunkelTuerkis"
-        app:fab_addButtonColorPressed="@color/colorDunkelTuerkis"
+        app:menu_icon="@drawable/ic_punkte"
+        app:menu_colorNormal="@color/colorSehrDunkelTuerkis"
+        app:menu_colorPressed="@color/colorDunkelTuerkis"
         app:fab_addButtonPlusIconColor="@color/colorWeiß"
         app:fab_labelStyle="@style/custom_fab"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
-        <com.getbase.floatingactionbutton.AddFloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_toAddProd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/colorSehrDunkelTuerkis"
             app:fab_colorPressed="@color/colorDunkelTuerkis"
-            app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
             app:fab_size="mini"
             app:fab_title="Produkte hinzufügen"
+            android:src="@drawable/ic_baseline_add_shopping_cart_24"
             />
 
-        <com.getbase.floatingactionbutton.AddFloatingActionButton
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_startShopping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="@color/colorSehrDunkelTuerkis"
             app:fab_colorPressed="@color/colorDunkelTuerkis"
-            app:fab_icon="@drawable/ic_baseline_add_shopping_cart_24"
+            android:src="@drawable/ic_start"
             app:fab_size="mini"
             app:fab_title="@string/shoppinglist_Starten"
             />
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </com.github.clans.fab.FloatingActionMenu>
+
 
 </RelativeLayout>
 
