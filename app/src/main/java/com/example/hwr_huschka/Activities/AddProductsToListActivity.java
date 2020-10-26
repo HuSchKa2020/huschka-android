@@ -1,6 +1,7 @@
 package com.example.hwr_huschka.Activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.SoundEffectConstants;
@@ -11,11 +12,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
@@ -85,47 +94,24 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
                 HashMap<Product, Integer> data = new HashMap<Product, Integer>();
                 ArrayList<Product> productsForRemove = new ArrayList<>();
-                // get new List of Items
+
                 if (productNumberAdapter != null) {
                     if (productNumberAdapter.getProductsOfList() != null) {
                         data = productNumberAdapter.getProductsOfList();
-                        JSONArray jsonArray = new JSONArray();
-                        // pull them to the Database
-                        for (Map.Entry<Product, Integer> entry : data.entrySet()) {
-                            Product key = entry.getKey();
-                            Integer value = entry.getValue();
-                            if (value > 0) {
-                                // Build JsonArray with all Products
-                                JSONObject jsonObject = new JSONObject();
-                                try {
-                                    jsonObject.put("ListenID", shoppingList.getListenID());
-                                    jsonObject.put("ProduktID", key.getProduktID());
-                                    jsonObject.put("Anzahl", value);
-
-                                    jsonArray.put(jsonObject);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                            } else {
-                                productsForRemove.add(key);
-                            }
-                        }
-                        // send JsonArrayToBackend
-                        DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
                     }
                 }
 
-
-                for (Product p : productsForRemove) {
-                    data.remove(p);
+                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                    Product key = entry.getKey();
+                    Integer value = entry.getValue();
+                    if (value <= 0){
+                        data.remove(key);
+                    }
                 }
 
-                // go back to the Shoppinglist Overview
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
-                setResult(Activity.RESULT_OK, resultIntent);
-                finish();
+                addProductToList(getApplicationContext(), shoppingList.getListenID(),data);
+
+
             }
         }));
 
@@ -157,6 +143,82 @@ public class AddProductsToListActivity extends AppCompatActivity {
             listViewProductShoppinglist.setAdapter(productNumberAdapter);
             productNumberAdapter.notifyDataSetChanged();
         }
+    }
+
+    /**
+     * This Method add one Product to a Shoppinglist
+     *
+     * @param context the Context
+     * @param data    a HashMap with the products of the Shoppinglist and the number Of
+     */
+    public void addProductToList(final Context context, final int ListenID, final HashMap<Product, Integer> data) {
+
+        JSONArray products = new JSONArray();
+        for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+            Product key = entry.getKey();
+            Integer value = entry.getValue();
+            // Build JsonArray with all Products
+            JSONObject jsonObject = new JSONObject();
+            try {
+
+                jsonObject.put("ProduktID", key.getProduktID());
+                jsonObject.put("numberOf", value);
+
+                products.put(jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        final JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("ListenID", shoppingList.getListenID());
+            jsonObject.put("ProductArray", products);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if (jsonObject.getBoolean("error") == true) {
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+
+                            // go back to the Shoppinglist Overview
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
+                            resultIntent.putExtra("price", jsonObject.getString("price"));
+                            setResult(Activity.RESULT_OK, resultIntent);
+                            finish();
+
+
+                        } catch (JSONException e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ProductArray", jsonObject.toString());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 }

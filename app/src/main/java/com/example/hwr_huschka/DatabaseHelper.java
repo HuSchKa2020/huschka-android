@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -98,8 +99,8 @@ public class DatabaseHelper {
         };
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
-
-    /**
+  
+  /**
      * This Method add one Product to a Shoppinglist
      * @param context the Context
      * @param jsonArray a JSONArray with the products of the Shoppinglist
@@ -137,6 +138,7 @@ public class DatabaseHelper {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
+
 
     /**
      * This Method delete all Products of the Shoppinglist.
