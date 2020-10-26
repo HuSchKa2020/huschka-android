@@ -102,9 +102,9 @@ public class DatabaseHelper {
     /**
      * This Method add one Product to a Shoppinglist
      * @param context the Context
-     * @param jsonArray a JSONArray with the products of the Shoppinglist
+     * @param jsonObject a JSONObject with the products of the Shoppinglist and the ShoppinglistID
      */
-    public static void addProductToList(final Context context, final JSONArray jsonArray){
+    public static void addProductToList(final Context context, final JSONObject jsonObject){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
@@ -129,7 +129,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ProductArray", jsonArray.toString());
+                params.put("ProductArray", jsonObject.toString());
                 return params;
             }
         };

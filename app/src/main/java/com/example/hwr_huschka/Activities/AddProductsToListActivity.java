@@ -98,7 +98,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                                 // Build JsonArray with all Products
                                 JSONObject jsonObject = new JSONObject();
                                 try {
-                                    jsonObject.put("ListenID", shoppingList.getListenID());
+
                                     jsonObject.put("ProduktID", key.getProduktID());
                                     jsonObject.put("numberOf", value);
 
@@ -106,13 +106,19 @@ public class AddProductsToListActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                             } else {
                                 productsForRemove.add(key);
                             }
                         }
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put("ListenID", shoppingList.getListenID());
+                            jsonObject.put("ProductArray", jsonArray);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         // send JsonArrayToBackend
-                        DatabaseHelper.addProductToList(getApplicationContext(), jsonArray);
+                        DatabaseHelper.addProductToList(getApplicationContext(), jsonObject);
                     }
                 }
 
