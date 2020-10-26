@@ -28,7 +28,8 @@ import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
-import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.github.clans.fab.FloatingActionButton;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,6 +69,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
         fabToAddProd = findViewById(R.id.fab_toAddProd);
         fabStartShopping = findViewById(R.id.fab_startShopping);
+
 
         listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
         loadProductsOfShoppinglist(this, shoppingList.getListenID(), listView);
