@@ -54,16 +54,16 @@ public class DatabaseHelper {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                int produktID = jsonObject.getInt("ProduktID");
-                                String hersteller = jsonObject.getString("Hersteller");
-                                String name = jsonObject.getString("Name");
-                                String kategorie = jsonObject.getString("Kategorie");
-                                double preis = jsonObject.getDouble("Preis");
+                                int produktID = jsonObject.getInt(Constants.REQ_RETURN_PRODUKTID);
+                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER);
+                                String name = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME);
+                                String kategorie = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                double preis = jsonObject.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
                                 int kcal;
-                                if (jsonObject.isNull("Kcal")){
+                                if (jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
                                     kcal = 0;
                                 }else{
-                                    kcal = jsonObject.getInt("Kcal");
+                                    kcal = jsonObject.getInt(Constants.REQ_RETURN_PRODUKT_KCAL);
                                 }
 
                                 // generate Product Object from Data
@@ -92,7 +92,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("Name", partOfProductName);
+                params.put(Constants.REQ_PARAM_PRODUCT_TEILNAME, partOfProductName);
                 return params;
             }
         };
@@ -129,7 +129,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ProductArray", jsonArray.toString());
+                params.put(Constants.REQ_PARAM_PRODUCT_ARRAY, jsonArray.toString());
                 return params;
             }
         };
@@ -138,6 +138,11 @@ public class DatabaseHelper {
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    /**
+     * This Method delete all Products of the Shoppinglist.
+     * @param context the Context
+     * @param listenID the ID of the Shopppinglist.
+     */
     public static void deleteProductsOfShoppinglist(final Context context, final int listenID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_DELETE_ALL_PRODUCTS_FROM_LIST,
                 new Response.Listener<String>() {
@@ -167,7 +172,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("listenid", Integer.toString(listenID));
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(listenID));
                 return params;
             }
         };

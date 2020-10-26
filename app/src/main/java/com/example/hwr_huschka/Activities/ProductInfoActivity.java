@@ -70,12 +70,12 @@ public class ProductInfoActivity extends AppCompatActivity {
                         try{
                             JSONObject jsonObject = new JSONObject(response);
 
-                            tvProductID.setText(jsonObject.getString("id"));
-                            tvHersteller.setText(jsonObject.getString("hersteller"));
-                            tvProductName.setText(jsonObject.getString("name"));
-                            tvPrice.setText(jsonObject.getString("preis"));
-                            tvKcal.setText(jsonObject.getString("kcal"));
-                            tvProductKategorie.setText(jsonObject.getString("kategorie"));
+                            tvProductID.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKTID));
+                            tvHersteller.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER));
+                            tvProductName.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME));
+                            tvPrice.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRICE));
+                            tvKcal.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KCAL));
+                            tvProductKategorie.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE));
                         }catch(JSONException e){
 
                         }
@@ -90,7 +90,7 @@ public class ProductInfoActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("productID", Integer.toString(productID));
+                params.put(Constants.REQ_RETURN_PRODUKTID, Integer.toString(productID));
                 return params;
             }
         };

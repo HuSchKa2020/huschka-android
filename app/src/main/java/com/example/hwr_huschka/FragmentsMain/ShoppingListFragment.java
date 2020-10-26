@@ -124,10 +124,10 @@ public class ShoppingListFragment extends Fragment {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                int listID = jsonObject.getInt("ListenID");
-                                String datum = jsonObject.getString("Erstelldatum");
-                                String supermarkt = jsonObject.getString("Supermarkt");
-                                String status = jsonObject.getString("Status");
+                                int listID = jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLISTID);
+                                String datum = jsonObject.getString(Constants.REQ_RETURN_SHOPPINGLIST_DATUM);
+                                String supermarkt = jsonObject.getString(Constants.REQ_RETURN_SHOPPINGLIST_SUPERMARKT);
+                                String status = jsonObject.getString(Constants.REQ_RETURN_SHOPPINGLIST_STATUS);
 
                                 // convert the datum to a LocalDate Object
                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -158,7 +158,7 @@ public class ShoppingListFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id", Integer.toString(kundenID));
+                params.put(Constants.REQ_PARAM_USERID, Integer.toString(kundenID));
                 return params;
             }
         };

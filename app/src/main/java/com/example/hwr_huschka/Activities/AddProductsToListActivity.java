@@ -100,7 +100,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                                 try {
                                     jsonObject.put("ListenID", shoppingList.getListenID());
                                     jsonObject.put("ProduktID", key.getProduktID());
-                                    jsonObject.put("numberOf", value);
+                                    jsonObject.put("Anzahl", value);
 
                                     jsonArray.put(jsonObject);
                                 } catch (JSONException e) {

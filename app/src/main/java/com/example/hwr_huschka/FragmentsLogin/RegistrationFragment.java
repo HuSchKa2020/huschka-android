@@ -200,11 +200,11 @@ public class RegistrationFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
-                params.put("vorname", firstname);
-                params.put("nachname", familyname);
-                params.put("adresse", adress);
+                params.put(Constants.REQ_PARAM_USER_MAIL, email);
+                params.put(Constants.REQ_PARAM_USER_PASSWORD, password);
+                params.put(Constants.REQ_PARAM_USER_FIRSTNAME, firstname);
+                params.put(Constants.REQ_PARAM_USER_FAMILYNAME, familyname);
+                params.put(Constants.REQ_PARAM_USER_ADDRESS, adress);
                 return params;
             }
         };
