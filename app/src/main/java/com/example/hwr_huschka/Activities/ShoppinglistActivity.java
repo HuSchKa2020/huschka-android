@@ -117,6 +117,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
             adapter = new ProductNumberAdapter(ShoppinglistActivity.this, products);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+
+            tv_price.setText(data.getStringExtra("price"));
         }
     }
     
