@@ -99,8 +99,8 @@ public class ShoppingListFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == Activity.RESULT_OK){
-            /*ShoppingListAdapter adapter = (ShoppingListAdapter) listView.getAdapter();
-            adapter.add((ShoppingList) data.getSerializableExtra("shoppinglist"));*/
+            ShoppingListAdapter adapter = (ShoppingListAdapter) listView.getAdapter();
+            adapter.add((ShoppingList) data.getSerializableExtra("shoppinglist"));
         }
     }
 

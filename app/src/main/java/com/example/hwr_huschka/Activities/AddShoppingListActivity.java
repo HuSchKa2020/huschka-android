@@ -112,11 +112,12 @@ public class AddShoppingListActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
 
                             if(jsonObject.getBoolean("error") == false){
-
-                                /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
+                                System.out.println(date);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                                 Intent resultIntent = new Intent();
-                                resultIntent.putExtra("shoppinglist", new ShoppingList(jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLISTID), LocalDate.parse(date, formatter), supermarkt)); // set new List as Extra to the Intent
-                                setResult(Activity.RESULT_OK, resultIntent);*/
+                                LocalDate localDate = LocalDate.parse(date, formatter);
+                                resultIntent.putExtra("shoppinglist", new ShoppingList(jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLISTID), localDate, supermarkt, "erstellt")); // set new List as Extra to the Intent
+                                setResult(Activity.RESULT_OK, resultIntent);
                                 finish();
                             }else{
                                 Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
