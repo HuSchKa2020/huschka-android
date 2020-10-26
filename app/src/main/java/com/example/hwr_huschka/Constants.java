@@ -14,7 +14,7 @@ public class Constants {
 
     public static final String URL_GET_USERS_SHOPPINGLIST = ROOT_URL + "getShoppingListbyUser.php";
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
-    public static final String URL_DELETE_ALL_PRODUCTS_FROM_LIST = ROOT_URL + "DeleteProduct.php";
+    public static final String URL_DELETE_ALL_PRODUCTS_FROM_LIST = ROOT_URL + "DeleteAllProductInShoppinglist.php";
 
     public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProductJsonArray.php";
 
@@ -24,11 +24,11 @@ public class Constants {
     // Shoppinglist params
     public static final String REQ_PARAM_SHOPPINGLISTID = "ListenID";
     public static final String REQ_PARAM_NUMBEROF_PRODUCTS = "numberOf";
-    public static final String REQ_PARAM_SHOPPINGLIST_DATE = "date";
-    public static final String REQ_PARAM_SHOPPINGLIST_SUPERMARKET= "supermarkt";
+    public static final String REQ_PARAM_SHOPPINGLIST_DATE = "Erstelldatum";
+    public static final String REQ_PARAM_SHOPPINGLIST_SUPERMARKET= "Supermarkt";
 
     // User params
-    public static final String REQ_PARAM_USERID = "UserID";
+    public static final String REQ_PARAM_USERID = "KundenID";
     public static final String REQ_PARAM_USER_MAIL = "Email";
     public static final String REQ_PARAM_USER_PASSWORD = "Password";
     public static final String REQ_PARAM_USER_FIRSTNAME = "Vorname";
@@ -46,7 +46,7 @@ public class Constants {
     public static final String REQ_RETURN_SHOPPINGLISTID = "ListenID";
     public static final String REQ_RETURN_SHOPPINGLIST_DATUM = "Erstelldatum";
     public static final String REQ_RETURN_SHOPPINGLIST_SUPERMARKT = "Supermarkt";
-    public static final String REQ_RETURN_SHOPPINGLIST_STATUS = "status";
+    public static final String REQ_RETURN_SHOPPINGLIST_STATUS = "Status";
     public static final String REQ_RETURN_SHOPPINGLIST_NUMBEROF_PRODUCTS = "Anzahl";
     public static final String REQ_RETURN_SHOPPINGLIST_PRICE = "Gesamtpreis";
 
@@ -56,7 +56,7 @@ public class Constants {
     public static final String REQ_RETURN_USER_FAMILYNAME = "Nachname";
 
     public static final String REQ_RETURN_PRODUKTID = "ProduktID";
-    public static final String REQ_RETURN_PRODUKT_NAME = "Produktname";
+    public static final String REQ_RETURN_PRODUKT_NAME = "Name";
     public static final String REQ_RETURN_PRODUKT_PRODUCER = "Hersteller";
     public static final String REQ_RETURN_PRODUKT_PRICE = "Preis";
     public static final String REQ_RETURN_PRODUKT_KCAL = "Kcal";
