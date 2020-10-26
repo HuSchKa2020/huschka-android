@@ -173,7 +173,7 @@ public class RegistrationFragment extends Fragment {
 
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                                //editor.putInt("id", jsonObject.getInt("id"));
+                                editor.putInt("id", jsonObject.getInt(Constants.REQ_RETURN_USERID));
                                 editor.putString("email", email);
                                 editor.putString("firstname", firstname);
                                 editor.putString("familyname", familyname);

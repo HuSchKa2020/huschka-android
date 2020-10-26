@@ -26,7 +26,7 @@ public class Constants {
     public static final String REQ_PARAM_NUMBEROF_PRODUCTS = "numberOf";
 
     // User params
-    public static final String REQ_PARAM_USERID = "KundeID";
+    public static final String REQ_PARAM_USERID = "UserID";
     public static final String REQ_PARAM_USER_MAIL = "mail";
     public static final String REQ_PARAM_USER_PASSWORD = "password";
     public static final String REQ_PARAM_USER_ADDRESS = "adresse";
