@@ -94,54 +94,24 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
                 HashMap<Product, Integer> data = new HashMap<Product, Integer>();
                 ArrayList<Product> productsForRemove = new ArrayList<>();
-                // get new List of Items
+
                 if (productNumberAdapter != null) {
                     if (productNumberAdapter.getProductsOfList() != null) {
                         data = productNumberAdapter.getProductsOfList();
-                        JSONArray jsonArray = new JSONArray();
-                        // pull them to the Database
-                        for (Map.Entry<Product, Integer> entry : data.entrySet()) {
-                            Product key = entry.getKey();
-                            Integer value = entry.getValue();
-                            if (value > 0) {
-                                // Build JsonArray with all Products
-                                JSONObject jsonObject = new JSONObject();
-                                try {
-
-                                    jsonObject.put("ProduktID", key.getProduktID());
-                                    jsonObject.put("numberOf", value);
-
-                                    jsonArray.put(jsonObject);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                productsForRemove.add(key);
-                            }
-                        }
-                        JSONObject jsonObject = new JSONObject();
-                        try {
-                            jsonObject.put("ListenID", shoppingList.getListenID());
-                            jsonObject.put("ProductArray", jsonArray);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        // send JsonArrayToBackend
-                        addProductToList(getApplicationContext(), jsonObject);
                     }
                 }
 
-
-                for (Product p : productsForRemove) {
-                    data.remove(p);
+                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+                    Product key = entry.getKey();
+                    Integer value = entry.getValue();
+                    if (value <= 0){
+                        data.remove(key);
+                    }
                 }
 
-                // go back to the Shoppinglist Overview
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
-                resultIntent.putExtra("price", btn_Finish.getText());
-                setResult(Activity.RESULT_OK, resultIntent);
-                finish();
+                addProductToList(getApplicationContext(), shoppingList.getListenID(),data);
+
+
             }
         }));
 
@@ -177,10 +147,39 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
     /**
      * This Method add one Product to a Shoppinglist
+     *
      * @param context the Context
-     * @param jsonObject a JSONObject with the products of the Shoppinglist and the ShoppinglistID
+     * @param data    a HashMap with the products of the Shoppinglist and the number Of
      */
-    public void addProductToList(final Context context, final JSONObject jsonObject){
+    public void addProductToList(final Context context, final int ListenID, final HashMap<Product, Integer> data) {
+
+        JSONArray products = new JSONArray();
+        for (Map.Entry<Product, Integer> entry : data.entrySet()) {
+            Product key = entry.getKey();
+            Integer value = entry.getValue();
+            // Build JsonArray with all Products
+            JSONObject jsonObject = new JSONObject();
+            try {
+
+                jsonObject.put("ProduktID", key.getProduktID());
+                jsonObject.put("numberOf", value);
+
+                products.put(jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        final JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("ListenID", shoppingList.getListenID());
+            jsonObject.put("ProductArray", products);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
@@ -188,12 +187,16 @@ public class AddProductsToListActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
-                            if(jsonObject.getBoolean("error") == true){
+                            if (jsonObject.getBoolean("error") == true) {
                                 Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
 
-                            btn_Finish.setText(jsonObject.getString("Gesamtpreis"));
-
+                            // go back to the Shoppinglist Overview
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
+                            resultIntent.putExtra("price", jsonObject.getString("price"));
+                            setResult(Activity.RESULT_OK, resultIntent);
+                            finish();
 
 
                         } catch (JSONException e) {
