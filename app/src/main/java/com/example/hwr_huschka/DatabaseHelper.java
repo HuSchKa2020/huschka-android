@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -99,44 +100,7 @@ public class DatabaseHelper {
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
-    /**
-     * This Method add one Product to a Shoppinglist
-     * @param context the Context
-     * @param jsonObject a JSONObject with the products of the Shoppinglist and the ShoppinglistID
-     */
-    public static void addProductToList(final Context context, final JSONObject jsonObject){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
 
-                            if(jsonObject.getBoolean("error") == true){
-                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("ProductArray", jsonObject.toString());
-                return params;
-            }
-        };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
-    }
 
     public static void deleteProductsOfShoppinglist(final Context context, final int listenID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_DELETE_ALL_PRODUCTS_FROM_LIST,

@@ -42,7 +42,7 @@ import java.util.Set;
 public class ShoppinglistActivity extends AppCompatActivity {
 
     ListView listView;
-    TextView tv_listID, tv_supermarkt, tv_datum;
+    TextView tv_listID, tv_supermarkt, tv_datum, tv_price;
 
     FloatingActionButton fabToAddProd, fabStartShopping;
     ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
@@ -57,6 +57,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
         tv_listID = findViewById(R.id.TV_shoppinglist_ID);
         tv_supermarkt = findViewById(R.id.TV_shoppinglist_SupermarktAuswahl);
         tv_datum = findViewById(R.id.TV_shoppinglist_DatumAuswahl);
+        tv_price = (TextView) findViewById(R.id.TV_Summe);
+        tv_price.setPaintFlags(tv_price.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
         tv_listID.setText(Integer.toString(shoppingList.getListenID()));
@@ -100,11 +102,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        TextView tv = (TextView) findViewById(R.id.TV_Summe);
-        tv.setPaintFlags(tv.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-
     }
 
     @Override
@@ -162,6 +159,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
+                            getPriceOfShoppinglist(context, shoppingListID);
+
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -185,5 +184,36 @@ public class ShoppinglistActivity extends AppCompatActivity {
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    public void getPriceOfShoppinglist(final Context context, final int shoppingListID){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRICE_OF_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            tv_price.setText(jsonObject.getString("Gesamtpreis"));
+
+                        } catch (JSONException e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("listenid", Integer.toString(shoppingListID));
+                return params;
+            }
+        };
+        stringRequest.setShouldCache(false);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10*1000, 20,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+    }
 
 }

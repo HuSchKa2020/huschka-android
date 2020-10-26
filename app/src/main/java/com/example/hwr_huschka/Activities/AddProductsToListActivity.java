@@ -1,6 +1,7 @@
 package com.example.hwr_huschka.Activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.SoundEffectConstants;
@@ -11,11 +12,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.hwr_huschka.Constants;
 import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 
@@ -118,7 +127,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         // send JsonArrayToBackend
-                        DatabaseHelper.addProductToList(getApplicationContext(), jsonObject);
+                        addProductToList(getApplicationContext(), jsonObject);
                     }
                 }
 
@@ -130,6 +139,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 // go back to the Shoppinglist Overview
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
+                resultIntent.putExtra("price", btn_Finish.getText());
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }
@@ -163,6 +173,49 @@ public class AddProductsToListActivity extends AppCompatActivity {
             listViewProductShoppinglist.setAdapter(productNumberAdapter);
             productNumberAdapter.notifyDataSetChanged();
         }
+    }
+
+    /**
+     * This Method add one Product to a Shoppinglist
+     * @param context the Context
+     * @param jsonObject a JSONObject with the products of the Shoppinglist and the ShoppinglistID
+     */
+    public void addProductToList(final Context context, final JSONObject jsonObject){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if(jsonObject.getBoolean("error") == true){
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+
+                            btn_Finish.setText(jsonObject.getString("Gesamtpreis"));
+
+
+
+                        } catch (JSONException e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("ProductArray", jsonObject.toString());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 }
