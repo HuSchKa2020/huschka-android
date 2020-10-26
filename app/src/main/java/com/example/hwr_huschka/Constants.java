@@ -18,4 +18,40 @@ public class Constants {
 
     public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProductJsonArray.php";
 
+
+
+    // parameter for StringRequests
+    // Shoppinglist params
+    public static final String REQ_PARAM_SHOPPINGLISTID = "ListenID";
+    public static final String REQ_PARAM_NUMBEROF_PRODUCTS = "numberOf";
+
+    // User params
+    public static final String REQ_PARAM_USERID = "KundeID";
+    public static final String REQ_PARAM_USER_MAIL = "mail";
+    public static final String REQ_PARAM_USER_PASSWORD = "password";
+    public static final String REQ_PARAM_USER_ADDRESS = "adresse";
+
+    // Product params
+    public static final String REQ_PARAM_PRODUCTID = "ProductID";
+
+
+    // return names from String Request
+    public static String REQ_RETURN_SHOPPINGLISTID = "ListenID";
+    public static String REQ_RETURN_SHOPPINGLIST_DATUM = "date";
+    public static String REQ_RETURN_SHOPPINGLIST_SUPERMARKT = "supermarkt";
+    public static String REQ_RETURN_SHOPPINGLIST_STATUS = "status";
+
+    public static String REQ_RETURN_USERID = "KundenID";
+    public static String REQ_RETURN_USER_FIRSTNAME = "firstname";
+    public static String REQ_RETURN_USER_FAMILYNAME = "familyname";
+
+    public static String REQ_RETURN_PRODUKTID = "ProductID";
+    public static String REQ_RETURN_PRODUKT_NAME = "produktname";
+    public static String REQ_RETURN_PRODUKT_PRODUCER = "hersteller";
+    public static String REQ_RETURN_PRODUKT_PRICE = "preis";
+    public static String REQ_RETURN_PRODUKT_KCAL = "kcal";
+    public static String REQ_RETURN_PRODUKT_KATEGORIE = "kategorie";
+
+
+
 }
