@@ -115,7 +115,7 @@ public class AddShoppingListActivity extends AppCompatActivity {
 
                                 /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD");
                                 Intent resultIntent = new Intent();
-                                resultIntent.putExtra("shoppinglist", new ShoppingList(jsonObject.getInt("ListenID"), LocalDate.parse(date, formatter), supermarkt)); // set new List as Extra to the Intent
+                                resultIntent.putExtra("shoppinglist", new ShoppingList(jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLISTID), LocalDate.parse(date, formatter), supermarkt)); // set new List as Extra to the Intent
                                 setResult(Activity.RESULT_OK, resultIntent);*/
                                 finish();
                             }else{
@@ -137,9 +137,9 @@ public class AddShoppingListActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("userID", Integer.toString(userID));
-                params.put("date", date);
-                params.put("supermarkt", supermarkt);
+                params.put(Constants.REQ_PARAM_USERID, Integer.toString(userID));
+                params.put(Constants.REQ_PARAM_SHOPPINGLIST_DATE, date);
+                params.put(Constants.REQ_PARAM_SHOPPINGLIST_SUPERMARKET, supermarkt);
                 return params;
             }
         };

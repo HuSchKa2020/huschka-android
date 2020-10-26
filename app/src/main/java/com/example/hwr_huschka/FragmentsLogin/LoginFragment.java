@@ -134,10 +134,10 @@ public class LoginFragment extends Fragment {
                                 // safe user data in SharedPreferences
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                                editor.putInt("id", jsonObject.getInt("id"));
-                                editor.putString("email", jsonObject.getString("email"));
-                                editor.putString("firstname", jsonObject.getString("vorname"));
-                                editor.putString("familyname", jsonObject.getString("nachname"));
+                                editor.putInt("id", jsonObject.getInt(Constants.REQ_RETURN_USERID));
+                                editor.putString("email", jsonObject.getString(Constants.REQ_RETURN_USER_MAIL));
+                                editor.putString("firstname", jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
+                                editor.putString("familyname", jsonObject.getString(Constants.REQ_RETURN_USER_FAMILYNAME));
                                 editor.commit();
 
                                 openMainActivity();
@@ -161,8 +161,8 @@ public class LoginFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
+                params.put(Constants.REQ_PARAM_USER_MAIL, email);
+                params.put(Constants.REQ_PARAM_USER_PASSWORD, password);
                 return params;
             }
         };

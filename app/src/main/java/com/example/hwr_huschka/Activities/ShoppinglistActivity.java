@@ -137,18 +137,18 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                int productID = jsonObject.getInt("ProduktID");
-                                String hersteller = jsonObject.getString("Hersteller");
-                                String name = jsonObject.getString("Name");
-                                //String kategorie = jsonObject.getString("Kategorie");
-                                double preis = jsonObject.getDouble("Preis");
+                                int productID = jsonObject.getInt(Constants.REQ_RETURN_PRODUKTID);
+                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                String name = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME);
+                                //String kategorie = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                double preis = jsonObject.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
                                 int kcal = 0;
-                                if(!jsonObject.isNull("Kcal")){
-                                    kcal = jsonObject.getInt("Kcal");
+                                if(!jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
+                                    kcal = jsonObject.getInt(Constants.REQ_RETURN_PRODUKT_KCAL);
                                 }
 
 
-                                int numberOf = jsonObject.getInt("Anzahl");
+                                int numberOf = jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLIST_NUMBEROF_PRODUCTS);
 
                                 Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
 
@@ -176,7 +176,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("listenid", Integer.toString(shoppingListID));
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(shoppingListID));
                 return params;
             }
         };

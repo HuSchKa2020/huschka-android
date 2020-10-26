@@ -55,16 +55,16 @@ public class DatabaseHelper {
 
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                int produktID = jsonObject.getInt("ProduktID");
-                                String hersteller = jsonObject.getString("Hersteller");
-                                String name = jsonObject.getString("Name");
-                                String kategorie = jsonObject.getString("Kategorie");
-                                double preis = jsonObject.getDouble("Preis");
+                                int produktID = jsonObject.getInt(Constants.REQ_RETURN_PRODUKTID);
+                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER);
+                                String name = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME);
+                                String kategorie = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                double preis = jsonObject.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
                                 int kcal;
-                                if (jsonObject.isNull("Kcal")){
+                                if (jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
                                     kcal = 0;
                                 }else{
-                                    kcal = jsonObject.getInt("Kcal");
+                                    kcal = jsonObject.getInt(Constants.REQ_RETURN_PRODUKT_KCAL);
                                 }
 
                                 // generate Product Object from Data
@@ -93,15 +93,58 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("Name", partOfProductName);
+                params.put(Constants.REQ_PARAM_PRODUCT_TEILNAME, partOfProductName);
                 return params;
             }
         };
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
+  
+  /**
+     * This Method add one Product to a Shoppinglist
+     * @param context the Context
+     * @param jsonArray a JSONArray with the products of the Shoppinglist
+     */
+    public static void addProductToList(final Context context, final JSONArray jsonArray){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if(jsonObject.getBoolean("error") == true){
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(Constants.REQ_PARAM_PRODUCT_ARRAY, jsonArray.toString());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+    }
 
 
-
+    /**
+     * This Method delete all Products of the Shoppinglist.
+     * @param context the Context
+     * @param listenID the ID of the Shopppinglist.
+     */
     public static void deleteProductsOfShoppinglist(final Context context, final int listenID){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_DELETE_ALL_PRODUCTS_FROM_LIST,
                 new Response.Listener<String>() {
@@ -131,7 +174,7 @@ public class DatabaseHelper {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("listenid", Integer.toString(listenID));
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(listenID));
                 return params;
             }
         };
