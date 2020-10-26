@@ -195,8 +195,12 @@ public class ShoppinglistActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            double preis = Double.parseDouble(jsonObject.getString("Gesamtpreis"));
-                            tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
+                            tv_price.setText("0.00");
+                            if (!jsonObject.isNull(Constants.REQ_RETURN_SHOPPINGLIST_PRICE)){
+                                double preis = Double.parseDouble(jsonObject.getString(Constants.REQ_RETURN_SHOPPINGLIST_PRICE));
+                                tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
+                            }
+
 
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();

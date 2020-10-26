@@ -182,7 +182,12 @@ public class AddProductsToListActivity extends AppCompatActivity {
                             // go back to the Shoppinglist Overview
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
-                            resultIntent.putExtra("price", jsonObject.getDouble(Constants.REQ_RETURN_SHOPPINGLIST_PRICE));
+                            if (jsonObject.isNull(Constants.REQ_RETURN_SHOPPINGLIST_PRICE)){
+                                resultIntent.putExtra("price", 0.00);
+                            } else {
+                                resultIntent.putExtra("price", jsonObject.getDouble(Constants.REQ_RETURN_SHOPPINGLIST_PRICE));
+                            }
+
                             setResult(Activity.RESULT_OK, resultIntent);
                             finish();
 
