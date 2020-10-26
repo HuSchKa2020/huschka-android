@@ -42,7 +42,7 @@ import java.util.Set;
 public class ShoppinglistActivity extends AppCompatActivity {
 
     ListView listView;
-    TextView tv_listID, tv_supermarkt, tv_datum, tv_price;
+    TextView tv_listID, tv_supermarkt, tv_datum, tv_price, tv_summe;
 
     FloatingActionButton fabToAddProd, fabStartShopping;
     ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
@@ -57,8 +57,9 @@ public class ShoppinglistActivity extends AppCompatActivity {
         tv_listID = findViewById(R.id.TV_shoppinglist_ID);
         tv_supermarkt = findViewById(R.id.TV_shoppinglist_SupermarktAuswahl);
         tv_datum = findViewById(R.id.TV_shoppinglist_DatumAuswahl);
-        tv_price = (TextView) findViewById(R.id.TV_Summe);
-        tv_price.setPaintFlags(tv_price.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_price = findViewById(R.id.TV_shoppinglist_Preis);
+        tv_summe = (TextView) findViewById(R.id.TV_Summe);
+        tv_summe.setPaintFlags(tv_price.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
         tv_listID.setText(Integer.toString(shoppingList.getListenID()));
@@ -118,7 +119,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
 
-            tv_price.setText(data.getStringExtra("price"));
+            double preis = data.getDoubleExtra("price", 0.00);
+            tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
         }
     }
     
@@ -138,7 +140,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                                 int productID = jsonObject.getInt(Constants.REQ_RETURN_PRODUKTID);
-                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER);
                                 String name = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME);
                                 //String kategorie = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
                                 double preis = jsonObject.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
@@ -193,7 +195,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            tv_price.setText(jsonObject.getString("Gesamtpreis"));
+                            double preis = Double.parseDouble(jsonObject.getString("Gesamtpreis"));
+                            tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
 
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -208,7 +211,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("listenid", Integer.toString(shoppingListID));
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(shoppingListID));
                 return params;
             }
         };

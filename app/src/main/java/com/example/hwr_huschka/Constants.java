@@ -11,7 +11,7 @@ public class Constants {
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
 
     public static final String URL_GET_PRODUCT_OF_SHOPPINGLIST = ROOT_URL + "getProductsbyListenID.php";
-    public static final String URL_GET_PRICE_OF_SHOPPINGLIST = ROOT_URL + "AddUpAllPricesOfShoppinglist.php";
+    public static final String URL_GET_PRICE_OF_SHOPPINGLIST = ROOT_URL + "TotalPrice.php";
 
     public static final String URL_GET_USERS_SHOPPINGLIST = ROOT_URL + "getShoppingListbyUser.php";
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
@@ -24,7 +24,7 @@ public class Constants {
     // parameter for StringRequests
     // Shoppinglist params
     public static final String REQ_PARAM_SHOPPINGLISTID = "ListenID";
-    public static final String REQ_PARAM_NUMBEROF_PRODUCTS = "numberOf";
+    public static final String REQ_PARAM_NUMBEROF_PRODUCTS = "Anzahl";
     public static final String REQ_PARAM_SHOPPINGLIST_DATE = "Erstelldatum";
     public static final String REQ_PARAM_SHOPPINGLIST_SUPERMARKET= "Supermarkt";
 

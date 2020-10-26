@@ -110,8 +110,6 @@ public class AddProductsToListActivity extends AppCompatActivity {
                 }
 
                 addProductToList(getApplicationContext(), shoppingList.getListenID(),data);
-
-
             }
         }));
 
@@ -151,9 +149,9 @@ public class AddProductsToListActivity extends AppCompatActivity {
      * @param context the Context
      * @param data    a HashMap with the products of the Shoppinglist and the number Of
      */
-    public void addProductToList(final Context context, final int ListenID, final HashMap<Product, Integer> data) {
+    public void addProductToList(final Context context, final int listenID, final HashMap<Product, Integer> data) {
 
-        JSONArray products = new JSONArray();
+        final JSONArray products = new JSONArray();
         for (Map.Entry<Product, Integer> entry : data.entrySet()) {
             Product key = entry.getKey();
             Integer value = entry.getValue();
@@ -161,23 +159,13 @@ public class AddProductsToListActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject();
             try {
 
-                jsonObject.put("ProduktID", key.getProduktID());
-                jsonObject.put("numberOf", value);
+                jsonObject.put(Constants.REQ_PARAM_PRODUCTID, key.getProduktID());
+                jsonObject.put(Constants.REQ_PARAM_NUMBEROF_PRODUCTS, value);
 
                 products.put(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-        }
-
-
-        final JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("ListenID", shoppingList.getListenID());
-            jsonObject.put("ProductArray", products);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
@@ -194,7 +182,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                             // go back to the Shoppinglist Overview
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("productMap", data); // set new List as Extra to the Intent
-                            resultIntent.putExtra("price", jsonObject.getString("price"));
+                            resultIntent.putExtra("price", jsonObject.getDouble(Constants.REQ_RETURN_SHOPPINGLIST_PRICE));
                             setResult(Activity.RESULT_OK, resultIntent);
                             finish();
 
@@ -212,7 +200,8 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("ProductArray", jsonObject.toString());
+                params.put(Constants.REQ_PARAM_PRODUCT_ARRAY, products.toString());
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(listenID));
                 return params;
             }
         };
