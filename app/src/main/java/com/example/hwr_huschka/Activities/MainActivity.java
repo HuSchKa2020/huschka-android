@@ -21,6 +21,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                 new HomeFragment()).commit();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navigationListener);
@@ -46,12 +50,15 @@ public class MainActivity extends AppCompatActivity {
                     switch(item.getItemId()){
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
+                            toolbar.setTitle(R.string.nameHomeScreen);
                             break;
                         case R.id.nav_Lists:
                             selectedFragment = new ShoppingListFragment();
+                            toolbar.setTitle(R.string.ListenScreen);
                             break;
                         case R.id.nav_ProductSearch:
                             selectedFragment = new ProductFragment();
+                            toolbar.setTitle(R.string.ProduktScreen);
                             break;
                     }
 

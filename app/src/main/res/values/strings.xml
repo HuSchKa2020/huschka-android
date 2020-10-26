@@ -86,5 +86,9 @@
     //https://www.idee-fuer-mich.de/schlau-eingekauft-12-clevere-einkaufstipps-1190.html
 
 
+    <string name="nameHomeScreen">Home</string>
+    <string name="ListenScreen">Einkaufslisten</string>
+    <string name="ProduktScreen">Produktsuche</string>
+    <string name="produktInfo">Produktinfo</string>
 
 </resources>
