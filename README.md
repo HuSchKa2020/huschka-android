@@ -2,13 +2,13 @@
 
 Der Einkaufsplaner
 
-# Über uns
+## Über uns
 
 Unser Team besteht aus Jan Hübner, Wilhelm Kaden und Max Schumann.
 Wir sind Dualstudenten im Bereich Informatik an der HWR-Berlin.
 Dieses Projekt ist unserer Leistungsnachweis für das Modul "Software Engineering 1".
 
-### Unser Projekt
+## Unser Projekt
 
 Wir wollen mit unserer App das Einkaufengehen vieler vereinfachen. 
 Lästiges Suchen nach Produkten soll der Vergangenheit angehören.
