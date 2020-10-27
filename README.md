@@ -1,7 +1,5 @@
 # hwr-HuSchKa
 
-Der Einkaufsplaner
-
 ## Über uns
 
 Unser Team besteht aus Jan Hübner, Wilhelm Kaden und Max Schumann.
