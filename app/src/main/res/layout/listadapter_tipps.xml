@@ -15,7 +15,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/TV_adapter_productName"
+            android:id="@+id/TV_adapter_TippNummer"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="Tipp1"
@@ -26,7 +26,7 @@
             android:background="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/TV_adapter_productPreis"
+            android:id="@+id/TV_adapter_TippText"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_weight="1"

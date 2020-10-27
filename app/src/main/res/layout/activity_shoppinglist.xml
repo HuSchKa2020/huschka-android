@@ -134,7 +134,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginBottom="30dp"
         android:textColor="@color/colorSehrDunkelTuerkis"
-        android:text="103,56€"
+        android:text="0,00€"
         android:textStyle="bold"
         android:textSize="30dp"
         android:textAlignment="center"/>
