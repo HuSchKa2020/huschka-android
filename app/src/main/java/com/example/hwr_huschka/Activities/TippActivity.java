@@ -1,6 +1,7 @@
 package com.example.hwr_huschka.Activities;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -15,13 +16,9 @@ import java.util.List;
 
 public class TippActivity extends AppCompatActivity {
 
-    String[] ListViewTippNummer = new String[]{
-            "Tipp 1","Tipp 2","Tipp 3","Tipp 4","Tipp 5","Tipp 6","Tipp 7","Tipp 8","Tipp 9","Tipp 10"
-    };
 
-    String[] ListViewTipp = new String[]{
-            "Nutzt Huschak!!","Meide lebensmittel","shsdgfhngfds","gbsdjfg fgdfsgsfdhg kikikiki","hngtzhntzb  sdfsdgf _ ddd","Tthdtrhthbdgh uzitzu","gghghfg","Tserfef","qwertzuio","12345678"
-    };
+
+
 
 
     @Override
@@ -29,24 +26,19 @@ public class TippActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tipps);
 
-        List<HashMap<String,String>> aList = new ArrayList<HashMap<String, String>>();
-        for (int x = 0; x < 10; x++){
-            HashMap<String,String> hm = new HashMap<String,String>();
-            hm.put("ListTitel",ListViewTippNummer[x]);
-            hm.put("ListText",ListViewTipp[x]);
-            aList.add(hm);
+        String[] ListViewTipp = this.getResources().getStringArray(R.array.Tipps);
+
+        ArrayList<String> aList = new ArrayList<String>();
+        for (int x = 1; x <= ListViewTipp.length; x++){
+            aList.add("Tipp " + x +": "+ ListViewTipp[x-1]);
         }
 
-        String[] from = {
-                "ListTitel", "ListText"
-        };
-        int[] to = {
-                R.id.TV_adapter_TippNummer,R.id.TV_adapter_TippText
-        };
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, aList);
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(),aList, R.layout.listadapter_tipps,from,to);
+
+
         ListView simpleListView = (ListView)findViewById(R.id.LV_Tipps);
-        simpleListView.setAdapter(simpleAdapter);
-        
+        simpleListView.setAdapter(adapter);
+
     }
 }
