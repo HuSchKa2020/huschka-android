@@ -1,6 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="Konto"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+
+
+    <TextView
+        android:id="@+id/TV_Konto_Vorname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="300dp"
+        android:text="@string/register_Vorname"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Nachname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/register_Nachname"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+
+    <TextView
+        android:id="@+id/TV_Konto_Postleitzahl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginTop="180dp"
+        android:text="@string/register_Postleitzahl"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Stadt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="180dp"
+        android:layout_marginStart="200dp"
+        android:text="@string/register_Stadt"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Straße"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/register_Straße"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Hausnummer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/register_Hausnummer"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/register_Email"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <TextView
+        android:id="@+id/TV_Konto_Passwort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="200dp"
+        android:text="@string/register_Passwort"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+    <Button
+        android:id="@+id/BTN_Konto_Bearbeiten"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="550dp"
+        android:text="Bearbeiten"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/Konto_Vorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20dp"
+        android:text="Axel"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/Konto_Nachname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="125dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:text="Schulz"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/Konto_Postleitzahl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="20dp"
+        android:text="12345"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/Konto_Stadt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="205dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:text="Bochum"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp"
+         />
+
+    <TextView
+        android:id="@+id/Konto_Straße"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="285dp"
+        android:text="Boxerstraße"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+    <TextView
+        android:id="@+id/Konto_Hausnummer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="285dp"
+        android:layout_marginEnd="20dp"
+        android:text="123"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/Konto_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="365dp"
+        android:text="axel.schulz@gmx.de"
+        android:textSize="20dp"
+        android:textColor="@color/colorSehrDunkelTuerkis"/>
+
+
+    <TextView
+        android:id="@+id/Konto_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="445dp"
+        android:text="HalloHallo"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+
