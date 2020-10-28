@@ -35,6 +35,7 @@ import org.json.JSONObject;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import androidx.annotation.Nullable;
@@ -101,11 +102,13 @@ public class AddProductsToListActivity extends AppCompatActivity {
                     }
                 }
 
-                for (Map.Entry<Product, Integer> entry : data.entrySet()) {
-                    Product key = entry.getKey();
-                    Integer value = entry.getValue();
-                    if (value <= 0){
-                        data.remove(key);
+                Iterator it = data.entrySet().iterator();
+                while (it.hasNext()) {
+
+                    Map.Entry item = (Map.Entry) it.next();
+
+                    if((Integer)item.getValue() <= 0) {
+                        it.remove();
                     }
                 }
 
