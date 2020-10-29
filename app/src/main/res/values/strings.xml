@@ -90,5 +90,7 @@
     <string name="ListenScreen">Einkaufslisten</string>
     <string name="ProduktScreen">Produktsuche</string>
     <string name="produktInfo">Produktinfo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
