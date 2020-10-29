@@ -11,12 +11,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
 import com.example.hwr_huschka.Activities.AddListActivity;
 import com.example.hwr_huschka.Activities.ImpressumActivity;
 import com.example.hwr_huschka.Activities.ProspektActivity;
 import com.example.hwr_huschka.Activities.SearchActivity;
 import com.example.hwr_huschka.Activities.SettingsActivity;
 import com.example.hwr_huschka.Activities.TippsActivity;
+
+import com.example.hwr_huschka.Activities.TippActivity;
+
 import com.example.hwr_huschka.R;
 
 import androidx.annotation.NonNull;

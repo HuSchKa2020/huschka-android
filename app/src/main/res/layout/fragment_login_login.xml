@@ -10,7 +10,10 @@
         android:layout_above="@id/login_PasswordField"
         android:layout_marginBottom="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="20dp"
+        android:inputType="textEmailAddress"
+        android:hint="E-Mail"/>
+
 
     <EditText
         android:id="@+id/login_PasswordField"
@@ -30,7 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="317dp"
+        android:layout_marginBottom="370dp"
         android:background="@color/colorPrimaryDark"
         android:text="Anzeigen"
         android:textColor="@color/colorSehrDunkelTuerkis"/>
@@ -95,6 +98,7 @@
         android:text="@string/login_Begrueßung"
         android:textColor="@color/colorDunkelTuerkis"
         android:textSize="25dp" />
+
 
 
 </RelativeLayout>

@@ -61,29 +61,30 @@
     <string name="Produktinfo_Preis">Preis in €</string>
     <string name="Produktinfo_Kcal">Kcal je 100g</string>
 
-    <string name="Tipp1">HuSchKa nutzen!!!</string>
-    <string name="Tipp2">Meide Lebensmittel mit unnötigen Zusatzstoffen</string>
-    <string name="Tipp3">Lies die Etiketten, bevor du etwas blind kaufst</string>
-    <string name="Tipp4">Greife zu gesunden Fetten</string>
-    <string name="Tipp5">Halte dich von der Süßwarenabteilung fern</string>
-    <string name="Tipp6">Frischfleisch ist King</string>
-    <string name="Tipp7">Lass dich an der Kasse zu nichts verführen</string>
-    <string name="Tipp8">Kaufe unbehandelte Kohlenhydrate</string>
-    <string name="Tipp9">Bio ist nicht alles</string>
-    <string name="Tipp10">Halte dich an deinen Einkaufszettel</string>
-    //https://fitnfemale.com/10-clevere-einkaufstipps-fuer-die-gesunde-ernaehrung/
 
-    <string name="Tipp11">Vorher satt essen</string>
-    <string name="Tipp12">Auch mal die Kinder Zuhause lassen</string>
-    <string name="Tipp13">Preise vergleichen</string>
-    <string name="Tipp14">Keine Plastiktüten</string>
-    <string name="Tipp15">Morgens einkaufen gehen</string>
-    <string name="Tipp16">Nicht blenden lassen von Angeboten</string>
-    <string name="Tipp17">Saisonal einkaufen</string>
-    <string name="Tipp18">Richtige Korbgröße wählen</string>
-    <string name="Tipp19">Preise vergleichen</string>
-    <string name="Tipp20">Tiefkühlkost ist besser als ihr Ruf</string>
-    //https://www.idee-fuer-mich.de/schlau-eingekauft-12-clevere-einkaufstipps-1190.html
+    <string-array name="Tipps">
+        <item>HuSchKa nutzen!!!</item>
+        <item>Unnötigen Zusatzstoffen meiden</item>
+        <item>Lies die Etiketten, bevor du etwas blind kaufst</item>
+        <item>Greife zu gesunden Fetten</item>
+        <item>Halte dich von der Süßwarenabteilung fern</item>
+        <item>Frischfleisch ist King</item>
+        <item>Lass dich an der Kasse zu nichts verführen</item>
+        <item>Kaufe unbehandelte Kohlenhydrate</item>
+        <item>Kaufe unbehandelte Kohlenhydrate</item>
+        <item>Bio ist nicht alles</item>
+        <item>Halte dich an deinen Einkaufszettel</item>
+        <item>Vorher satt essen</item>
+        <item>Auch mal die Kinder Zuhause lassen</item>
+        <item>Preise vergleichen</item>
+        <item>Keine Plastiktüten</item>
+        <item>Morgens einkaufen gehen</item>
+        <item>Nicht blenden lassen von Angeboten</item>
+        <item>Saisonal einkaufen</item>
+        <item>Richtige Korbgröße wählen</item>
+        <item>Preise vergleichen</item>
+        <item>Tiefkühlkost ist besser als ihr Ruf</item>
+    </string-array>
 
 
     <string name="nameHomeScreen">Home</string>
