@@ -26,10 +26,10 @@
         </activity>
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.AddProductsToListActivity" />
-        <activity android:name=".Activities.TippsActivity" />
+        <activity android:name=".Activities.SettingsActivity"/>
         <activity android:name=".Activities.ImpressumActivity"/>
         <activity android:name=".Activities.ProspektActivity"/>
-        <activity android:name=".Activities.AddListActivity"/>
+
         <activity android:name=".Activities.SearchActivity"/>
         <activity android:name=".Activities.TippActivity"/>
 
