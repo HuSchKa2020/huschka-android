@@ -5,6 +5,7 @@ import com.example.hwr_huschka.klassen.Position;
 import java.io.Serializable;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class Product implements Serializable {
 
@@ -45,6 +46,12 @@ public class Product implements Serializable {
 	@Override
 	public String toString() {
 		return "ID: " + produktID + ", Hersteller: " + hersteller + ",  Name: " + name;
+	}
+
+	@Override
+	public boolean equals(@Nullable Object obj) {
+		Product product = (Product) obj;
+		return this.produktID == product.getProduktID();
 	}
 
 	//Methoden

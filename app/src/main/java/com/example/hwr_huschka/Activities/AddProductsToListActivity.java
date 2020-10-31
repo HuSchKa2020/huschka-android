@@ -36,6 +36,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.Nullable;
@@ -76,6 +77,9 @@ public class AddProductsToListActivity extends AppCompatActivity {
         productsBefore = (HashMap<Product, Integer>) this.getIntent().getSerializableExtra("productMap");
         if (productsBefore.size() > 0) {
             refreshProductListView();
+        } else {
+            productNumberAdapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>(), true);
+            listViewProductShoppinglist.setAdapter(productNumberAdapter);
         }
 
         DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
@@ -112,7 +116,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                     }
                 }
 
-                addProductToList(getApplicationContext(), shoppingList.getListenID(),data);
+                addProductToList(getApplicationContext(), shoppingList.getListenID(), data);
             }
         }));
 
@@ -120,10 +124,28 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Product clickedItem = (Product) adapterView.getItemAtPosition(i);
-                newProductsOfShoppingList.put(clickedItem, 0);
-                refreshProductListView();
+                HashMap<Product, Integer> products =  productNumberAdapter.getProductsOfList();
+                if(isProductInList(clickedItem, products)){
+                    Toast.makeText(AddProductsToListActivity.this, "Produkt schon in ihrer Einkaufsliste!", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    newProductsOfShoppingList.put(clickedItem, 0);
+                    refreshProductListView();
+                }
+
+
             }
         });
+    }
+
+    private boolean isProductInList(Product product, HashMap<Product, Integer> items){
+        boolean contains = false;
+        for (Product p:items.keySet()) {
+            if(p.getProduktID() == product.getProduktID()){
+                contains = true;
+            }
+        }
+        return contains;
     }
 
     /**
