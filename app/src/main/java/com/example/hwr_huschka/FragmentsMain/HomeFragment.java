@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
 import com.example.hwr_huschka.Activities.ImpressumActivity;
+import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.Activities.ProspektActivity;
 import com.example.hwr_huschka.Activities.SearchActivity;
 import com.example.hwr_huschka.Activities.SettingsActivity;
@@ -32,6 +33,8 @@ public class HomeFragment extends Fragment {
 
     ImageButton btn_settings, btn_tipp, btn_impressum, btn_prospekt, btn_addshoppinglist, btn_search;
 
+    BottomNavigationView bottomNav;
+
     TextView tv;
 
     SharedPreferences sharedPreferences;
@@ -40,6 +43,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        bottomNav = v.findViewById(R.id.bottom_navigation);
 
         btn_settings=v.findViewById(R.id.IB_Home_Einstellungen);
         btn_tipp=v.findViewById(R.id.IB_Home_Tipps);
@@ -98,8 +103,8 @@ public class HomeFragment extends Fragment {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent);
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
+                        new ProductFragment()).commit();
             }
         });
 
