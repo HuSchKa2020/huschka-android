@@ -6,6 +6,7 @@ public class Constants {
 
     public static final String URL_LOGIN_USER = ROOT_URL + "UserLogin.php";
     public static final String URL_REGISTER_USER = ROOT_URL + "registerUser.php";
+    public static final String URL_LOAD_USER_DATA = ROOT_URL + "getUserData.php";
 
     public static final String URL_GET_PRODUCTS = ROOT_URL + "getProduct.php";
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
@@ -55,6 +56,8 @@ public class Constants {
     public static final String REQ_RETURN_USER_MAIL = "Email";
     public static final String REQ_RETURN_USER_FIRSTNAME = "Vorname";
     public static final String REQ_RETURN_USER_FAMILYNAME = "Nachname";
+    public static final String REQ_RETURN_USER_ADRESSE = "Adresse";
+    public static final String REQ_RETURN_USER_BANKVERBINDUNG = "Bankverbindung";
 
     public static final String REQ_RETURN_PRODUKTID = "ProduktID";
     public static final String REQ_RETURN_PRODUKT_NAME = "Name";

@@ -32,6 +32,7 @@
 
         <activity android:name=".Activities.SearchActivity"/>
         <activity android:name=".Activities.TippActivity"/>
+        <activity android:name=".Activities.AccountActivity"/>
 
     </application>
 

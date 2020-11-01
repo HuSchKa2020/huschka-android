@@ -213,7 +213,7 @@
         android:layout_marginEnd="130dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="445dp"
-        android:text="HalloHallo"
+        android:text="******"
         android:textColor="@color/colorSehrDunkelTuerkis"
         android:textSize="20dp"/>
 
