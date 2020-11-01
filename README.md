@@ -23,7 +23,7 @@ Der Code aus dem Backend ist zu finden in folgendem Reporsitory: https://github.
 
 ### Installation der App
 
-Download der APK unter: https://drive.google.com/drive/folders/10ZCHjQIcFPLY_TfO1eHbgzy2rgo2mapn?usp=sharing</br>
+Download der APK unter Releases in GitHub oder unter folgendem Google-Drive-Link: https://drive.google.com/drive/folders/10ZCHjQIcFPLY_TfO1eHbgzy2rgo2mapn?usp=sharing</br>
 Anleitung zur Installation einer Android-APK: https://www.heise.de/tipps-tricks/Externe-Apps-APK-Dateien-bei-Android-installieren-so-klappt-s-3714330.html
 
 Testnutzer zum Testen der App: Email: 'max@mustermann.de' Passwort: 'huschka'
