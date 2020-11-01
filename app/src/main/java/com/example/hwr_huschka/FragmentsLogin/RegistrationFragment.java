@@ -168,7 +168,7 @@ public class RegistrationFragment extends Fragment {
                         // jsonObject, dass was in Postman zurückgegeben wurde
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            System.out.println(response);
+                            
                             if (jsonObject.getBoolean("error") == false){
 
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
