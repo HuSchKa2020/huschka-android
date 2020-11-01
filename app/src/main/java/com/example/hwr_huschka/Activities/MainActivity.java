@@ -84,10 +84,12 @@ public class MainActivity extends AppCompatActivity {
         // recognize a Click on the OnOptionsMenu in the right corner of the App
         switch(item.getItemId()){
             case R.id.Settings:
-                Toast.makeText(this, "Settings pushed", Toast.LENGTH_LONG).show();
+                Intent intentSettings = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intentSettings);
                 return true;
             case R.id.impressum:
-                Toast.makeText(this, "Impressum pushed", Toast.LENGTH_LONG).show();
+                Intent intentImpressum = new Intent(getApplicationContext(), ImpressumActivity.class);
+                startActivity(intentImpressum);
                 return true;
             case R.id.logout:
                 clearSharedpreferences();
