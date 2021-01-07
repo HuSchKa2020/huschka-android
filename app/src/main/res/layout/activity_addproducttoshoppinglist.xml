@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--    Layout für die Activity in der zu einer Einkaufsliste Produkte hinzugefügt werden können.
+        Zugehörige Klasse: /Activities/AddProductsToListActivity -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"

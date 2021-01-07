@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--    Layout für das Fragment der Produkte-Suche
+        "Eltern"-Activitie(s): activity_main.xml
+        Zugehörige Klasse: /Fragments/Main/ProductFragment -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <EditText
         android:id="@+id/edTextProduct"
