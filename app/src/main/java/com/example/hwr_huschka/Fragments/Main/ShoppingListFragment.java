@@ -1,4 +1,4 @@
-package com.example.hwr_huschka.FragmentsMain;
+package com.example.hwr_huschka.Fragments.Main;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.hwr_huschka.FragmentsLogin;
+package com.example.hwr_huschka.Fragments.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,14 +15,12 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.Constants;
-import com.example.hwr_huschka.FragmentsLogin.LoginFragment;
+import com.example.hwr_huschka.Fragments.Login.LoginFragment;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
 

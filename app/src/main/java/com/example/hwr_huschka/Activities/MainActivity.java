@@ -11,12 +11,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.hwr_huschka.FragmentsMain.HomeFragment;
-import com.example.hwr_huschka.FragmentsMain.ProductFragment;
+import com.example.hwr_huschka.Fragments.Main.HomeFragment;
+import com.example.hwr_huschka.Fragments.Main.ProductFragment;
 import com.example.hwr_huschka.R;
-import com.example.hwr_huschka.FragmentsMain.ShoppingListFragment;
+import com.example.hwr_huschka.Fragments.Main.ShoppingListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
