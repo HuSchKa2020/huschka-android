@@ -8,7 +8,6 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.hwr_huschka.FragmentsLogin.LoginFragment;
 import com.example.hwr_huschka.R;
 
 public class SettingsActivity extends AppCompatActivity {

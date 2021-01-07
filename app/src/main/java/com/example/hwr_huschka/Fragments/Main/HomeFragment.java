@@ -1,11 +1,10 @@
-package com.example.hwr_huschka.FragmentsMain;
+package com.example.hwr_huschka.Fragments.Main;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -15,9 +14,7 @@ import android.widget.TextView;
 
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
 import com.example.hwr_huschka.Activities.ImpressumActivity;
-import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.Activities.ProspektActivity;
-import com.example.hwr_huschka.Activities.SearchActivity;
 import com.example.hwr_huschka.Activities.SettingsActivity;
 
 import com.example.hwr_huschka.Activities.TippActivity;
