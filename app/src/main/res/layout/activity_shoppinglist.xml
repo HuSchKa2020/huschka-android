@@ -8,26 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ShoppinglistActivity">
 
-    <TextView
-        android:id="@+id/TV_shoppingList_ListenID"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-
-        android:layout_marginTop="5dp"
-        android:text="@string/shoppinglist_ListenID"
-        android:textColor="@color/colorDunkelTuerkis" />
-
-
-    <TextView
-        android:id="@+id/TV_shoppinglist_ID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/TV_shoppingList_ListenID"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="5dp"
-        android:text="0001"
-        android:textColor="@color/colorDunkelTuerkis" />
+        android:background="@color/colorDunkelTuerkis"
+        app:title="@string/einkaufslistenActivityToolbar"
+        app:titleTextColor="@color/colorWeiß"/>
 
     <TextView
         android:id="@+id/TV_shoppinglist_Supermarkt"

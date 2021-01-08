@@ -1,10 +1,12 @@
 package com.example.hwr_huschka.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,9 @@ public class ProductInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_info);
 
         toolbar = findViewById(R.id.addListToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         tvProductID = findViewById(R.id.TVproductID);
         tvHersteller = findViewById(R.id.TVproductHersteller);
         tvProductName = findViewById(R.id.TVproductName);
@@ -99,4 +104,16 @@ public class ProductInfoActivity extends AppCompatActivity {
         RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()){
+            case (android.R.id.home):
+                finish();
+                break;
+        }
+
+        return true;
+    }
 }
