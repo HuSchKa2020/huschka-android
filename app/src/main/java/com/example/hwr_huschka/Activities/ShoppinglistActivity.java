@@ -51,19 +51,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        super.onOptionsItemSelected(item);
-
-        switch (item.getItemId()){
-            case (android.R.id.home):
-                finish();
-                break;
-        }
-
-        return true;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppinglist);
@@ -243,4 +230,17 @@ public class ShoppinglistActivity extends AppCompatActivity {
         RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()){
+            case (android.R.id.home):
+                finish();
+                break;
+        }
+
+        return true;
+    }
 }
