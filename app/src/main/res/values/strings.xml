@@ -20,6 +20,8 @@
 
     <string name="register_ueberschrift">Konto erstellen</string>
 
+    <string name="einkaufslistenActivityToolbar">Einkaufsliste</string>
+
 
     <string name="addList_Infos">Hinzufügen</string>
     <string name="finish">Fertig!</string>

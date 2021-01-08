@@ -1,16 +1,13 @@
 package com.example.hwr_huschka.Activities;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,14 +19,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.hwr_huschka.Constants;
-import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
 import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ShoppingList;
 import com.github.clans.fab.FloatingActionButton;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,24 +33,46 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ShoppinglistActivity extends AppCompatActivity {
 
     ListView listView;
-    TextView tv_listID, tv_supermarkt, tv_datum, tv_price, tv_summe;
+    TextView tv_supermarkt, tv_datum, tv_price, tv_summe;
 
     FloatingActionButton fabToAddProd, fabStartShopping;
     ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
 
     ShoppingList shoppingList;
+    Toolbar toolbar;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()){
+            case (android.R.id.home):
+                finish();
+                break;
+        }
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoppinglist);
 
-        tv_listID = findViewById(R.id.TV_shoppinglist_ID);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         tv_supermarkt = findViewById(R.id.TV_shoppinglist_SupermarktAuswahl);
         tv_datum = findViewById(R.id.TV_shoppinglist_DatumAuswahl);
         tv_price = findViewById(R.id.TV_shoppinglist_Preis);
@@ -63,7 +80,6 @@ public class ShoppinglistActivity extends AppCompatActivity {
         tv_summe.setPaintFlags(tv_price.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
-        tv_listID.setText(Integer.toString(shoppingList.getListenID()));
         tv_supermarkt.setText(shoppingList.getSupermarkt());
         tv_datum.setText(shoppingList.getDatum().toString());
 
