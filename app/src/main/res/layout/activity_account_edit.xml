@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    Layout für die Activity für die Übersicht des Accounts.
+        Zugehörige Klasse: /Activities/AccountActivity -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="Konto bearbeiten"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+
+
+    <Button
+        android:id="@+id/BTN_Password_Speichern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginTop="550dp"
+        android:text="Speichern"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <Button
+        android:id="@+id/BTN_Passswort_Abbrechen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="550dp"
+        android:text="Abbrechen"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"/>
+
+
+      <EditText
+        android:id="@+id/Edit_Nachname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Nachname"/>
+
+    <EditText
+        android:id="@+id/Edit_Vorname"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Vorname"/>
+
+
+
+    <EditText
+        android:id="@+id/Edit_Stadt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:hint="Stadt"/>
+
+    <EditText
+        android:id="@+id/Edit_Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="440dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="E-Mail"/>
+
+    <EditText
+        android:id="@+id/Edit_Straße"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="340dp"
+        android:hint="Straße"/>
+
+    <EditText
+        android:id="@+id/Edit_Hausnummer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Nr."/>
+
+    <EditText
+        android:id="@+id/Edit_Postleitzahl"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:layout_marginLeft="20dp"
+        android:inputType="number"
+        android:hint="PLZ"/>
+
+
+    <TextView
+        android:id="@+id/TV_Edit_Vorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Vorname"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Vorname"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Nachname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Nachname"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Nachname"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Email"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Email"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Straße"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Straße"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Straße"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Hausnummer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Hausnummer"
+        android:layout_marginStart="320dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Hausnummer"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Postleitzahl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Postleitzahl"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Postleitzahl"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/TV_Edit_Stadt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Edit_Stadt"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/register_Stadt"
+        android:textSize="18dp"
+        android:textColor="@color/colorDunkelTuerkis" />
+
+
+
+
+</RelativeLayout>
