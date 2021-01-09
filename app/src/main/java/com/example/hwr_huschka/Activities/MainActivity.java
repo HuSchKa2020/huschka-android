@@ -99,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        // es sollte eigentlich richtig zwischen den Fragments navigiert werden
+        // implementierung höchstwahrscheinlich hier
+    }
+
     private void clearSharedpreferences(){
         SharedPreferences sharedPreferences = getSharedPreferences("userdata", MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences.edit();
