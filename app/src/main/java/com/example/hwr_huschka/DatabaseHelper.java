@@ -1,5 +1,6 @@
 package com.example.hwr_huschka;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,11 +37,14 @@ public class DatabaseHelper {
 
     /**
      * Search Product by a Part of a Productname
-     * @param context the context
+     * @param activity the activity
      * @param partOfProductName the String who is searched for
      * @param listView the ListView where the Products will be Shown
      */
-    public static void searchProduct(final Context context, final String partOfProductName, final ListView listView){
+    public static void searchProduct(final Activity activity, final String partOfProductName, final ListView listView){
+        final LoadingDialog loadingDialog = new LoadingDialog(activity);
+        loadingDialog.startLoadingAnimation();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_PRODUCTS,
                 new Response.Listener<String>() {
                     @Override
@@ -76,18 +80,20 @@ public class DatabaseHelper {
 
                             // in der ListView anzeigen
                             ProductAdapter adapter;
-                            adapter = new ProductAdapter(context, R.layout.listadapter_product, productArrayList);
+                            adapter = new ProductAdapter(activity.getApplicationContext(), R.layout.listadapter_product, productArrayList);
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
+                            loadingDialog.dismissDialog();
+
                         } catch (JSONException e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(activity.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
@@ -97,7 +103,7 @@ public class DatabaseHelper {
                 return params;
             }
         };
-        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+        RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
     }
   
   /**
