@@ -113,8 +113,20 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="570dp"
         android:text="Passwort ändern"
+        android:textColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <Button
+        android:id="@+id/BTN_Daten_Aendern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="500dp"
+        android:text="Kontodaten ändern"
         android:textColor="@color/colorWeiß"
         android:background="@color/colorDunkelTuerkis"/>
 

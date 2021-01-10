@@ -34,6 +34,8 @@
         <activity android:name=".Activities.TippActivity"/>
         <activity android:name=".Activities.AccountActivity"/>
         <activity android:name=".Activities.ChangePasswordActivity"/>
+        <activity android:name=".Activities.ChangeDataActivity"/>
+
 
 
     </application>
