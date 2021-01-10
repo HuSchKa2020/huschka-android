@@ -37,7 +37,7 @@ public class AccountActivity extends AppCompatActivity {
 
     TextView tv_KontoVorname, tv_KontoNachname, tv_KontoPostleitzahl, tv_KontoStadt, tv_KontoStraße, tv_KontoHausnummer, tv_KontoEmail;
 
-    Button btn_Passwort_aendern;
+    Button btn_Passwort_aendern, btn_Kontodaten_aendern;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -53,6 +53,7 @@ public class AccountActivity extends AppCompatActivity {
         tv_KontoHausnummer = findViewById(R.id.Konto_Hausnummer);
         tv_KontoEmail = findViewById(R.id.Konto_Email);
         btn_Passwort_aendern = findViewById(R.id.BTN_Passwort_Aendern);
+        btn_Kontodaten_aendern = findViewById(R.id.BTN_Daten_Aendern);
 
         sharedPreferences = this.getSharedPreferences("userdata", Context.MODE_PRIVATE);
 
@@ -63,6 +64,14 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_Kontodaten_aendern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChangeDataActivity.class);
                 startActivity(intent);
             }
         });
