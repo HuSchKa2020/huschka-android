@@ -18,10 +18,10 @@
 
     <TextView
         android:id="@+id/TV_shoppinglist_Supermarkt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Supermarkt"
         android:textAlignment="center"
@@ -33,23 +33,24 @@
         android:id="@+id/TV_shoppinglist_SupermarktAuswahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TV_shoppinglist_Supermarkt"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/TV_shoppinglist_Supermarkt"
         android:background="@color/colorDunkelTuerkis"
         android:text="SupermarktString"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Datum"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Datum"
         android:textAlignment="center"
@@ -61,23 +62,24 @@
         android:id="@+id/TV_shoppinglist_DatumAuswahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TV_shoppinglist_Datum"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="115dp"
+        android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/TV_shoppinglist_Datum"
         android:background="@color/colorDunkelTuerkis"
         android:text="DatumString"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/TV_shoppinglist_Produkte"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="20dp"
         android:text="@string/shoppinglist_Produkte"
         android:textAlignment="center"
@@ -85,13 +87,29 @@
         android:textSize="20dp"
         android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/TV_shoppinglist_Ernaehrungsform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/TV_shoppinglist_Produkte"
+        android:background="@color/colorDunkelTuerkis"
+        android:text="Ernährungsform"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
 
     <ListView
         android:id="@+id/LV_shoppinglist_ProduktListe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="160dp"
         android:layout_below="@+id/TV_shoppinglist_Produkte"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
@@ -128,7 +146,90 @@
         android:textSize="30dp"
         android:textAlignment="center"/>
 
+    <TextView
+        android:id="@+id/TV_shoppinglist_GesundheitsScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LV_shoppinglist_ProduktListe"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-140dp"
+        android:layout_marginEnd="20dp"
+        android:text="Gesundheitsscore"
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="14dp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/TV_shoppinglist_GesundheitsScore_anzeige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TV_shoppinglist_GesundheitsScore"
+        android:layout_alignStart="@+id/TV_shoppinglist_GesundheitsScore"
+        android:layout_alignEnd="@+id/TV_shoppinglist_GesundheitsScore"
+        android:layout_marginStart="0dp"
+        android:background="@color/colorDunkelTuerkis"
+        android:text="GS"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_UmweltScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LV_shoppinglist_ProduktListe"
+        android:layout_marginTop="-140dp"
+        android:layout_marginStart="155dp"
+        android:text="Gesundheitsscore"
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_UmweltScore_anzeige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TV_shoppinglist_UmweltScore"
+        android:layout_alignStart="@+id/TV_shoppinglist_UmweltScore"
+        android:layout_alignEnd="@+id/TV_shoppinglist_UmweltScore"
+        android:background="@color/colorDunkelTuerkis"
+        android:text="US"
+        android:textAlignment="center"
+        android:textColor="@color/colorWeiß"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_GesamtScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LV_shoppinglist_ProduktListe"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-144dp"
+        android:layout_marginEnd="20dp"
+        android:text="Gesamtscore"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TV_shoppinglist_GesamtScore_anzeige"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TV_shoppinglist_GesamtScore"
+        android:layout_alignStart="@+id/TV_shoppinglist_GesamtScore"
+        android:layout_alignEnd="@+id/TV_shoppinglist_GesamtScore"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
+        android:text="gS"
+        android:textAlignment="center"
+        android:textColor="@color/colorSehrDunkelTuerkis"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
     <com.github.clans.fab.FloatingActionMenu
