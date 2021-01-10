@@ -169,6 +169,17 @@
             app:fab_title="@string/shoppinglist_Starten"
             />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_deleteList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorSehrDunkelTuerkis"
+            app:fab_colorPressed="@color/colorDunkelTuerkis"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:fab_size="mini"
+            app:fab_title="@string/shoppinglist_Loeschen"
+            />
+
     </com.github.clans.fab.FloatingActionMenu>
 
 

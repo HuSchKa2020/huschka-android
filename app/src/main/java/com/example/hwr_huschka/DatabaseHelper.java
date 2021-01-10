@@ -158,11 +158,9 @@ public class DatabaseHelper {
                             } else{
                                 Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -184,5 +182,44 @@ public class DatabaseHelper {
     }
 
 
+    /**
+     * This Method delete a Shoppinglist.
+     * @param context the Context
+     * @param listenID the ID of the Shopppinglist.
+     */
+    public static void deleteShoppinglist(final Context context, final int listenID){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_DELETE_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
 
+                            if (jsonObject.getBoolean("error") == false){
+
+                            } else{
+                                Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(listenID));
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(stringRequest);
+    }
 }

@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.hwr_huschka.Constants;
+import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
@@ -29,6 +30,7 @@ import com.github.clans.fab.FloatingActionButton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +46,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
     ListView listView;
     TextView tv_supermarkt, tv_datum, tv_price, tv_summe;
 
-    FloatingActionButton fabToAddProd, fabStartShopping;
+    FloatingActionButton fabToAddProd, fabStartShopping, fabDelete;
     ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
 
     ShoppingList shoppingList;
@@ -72,6 +74,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
 
         fabToAddProd = findViewById(R.id.fab_toAddProd);
         fabStartShopping = findViewById(R.id.fab_startShopping);
+        fabDelete = findViewById(R.id.fab_deleteList);
 
 
         listView = (ListView) findViewById(R.id.LV_shoppinglist_ProduktListe);
@@ -93,6 +96,20 @@ public class ShoppinglistActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // start Shopping
                 Toast.makeText(ShoppinglistActivity.this, "Start Shopping", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseHelper.deleteShoppinglist(getApplicationContext(), shoppingList.getListenID());
+
+                Toast.makeText(getApplicationContext(), "Ihre Einkaufsliste wurde gelöscht", Toast.LENGTH_SHORT).show();
+
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("ListenID", shoppingList.getListenID());
+                setResult(100, resultIntent); // 100 für Liste gelöscht
+                finish();
             }
         });
 

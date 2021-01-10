@@ -43,6 +43,7 @@
     <string name="shoppinglist_Datum">Einkaufsdatum</string>
     <string name="shoppinglist_Produkte">Produkte</string>
     <string name="shoppinglist_Starten">Einkauf starten</string>
+    <string name="shoppinglist_Loeschen">Einkaufsliste löschen</string>
 
     <string-array name="Anzahl">
         <item>0</item>
