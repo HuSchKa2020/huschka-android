@@ -39,8 +39,8 @@
 
 
     <string name="shoppinglist_ListenID">ListenID:</string>
-    <string name="shoppinglist_Supermarkt">Supermarkt</string>
-    <string name="shoppinglist_Datum">Einkaufsdatum</string>
+    <string name="shoppinglist_Supermarkt">Supermarkt:</string>
+    <string name="shoppinglist_Datum">Einkaufsdatum:</string>
     <string name="shoppinglist_Produkte">Produkte</string>
     <string name="shoppinglist_Starten">Einkauf starten</string>
     <string name="shoppinglist_Loeschen">Einkaufsliste löschen</string>
