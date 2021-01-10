@@ -63,6 +63,9 @@
     <string name="Produktinfo_Kategorie">Kategorie</string>
     <string name="Produktinfo_Preis">Preis in €</string>
     <string name="Produktinfo_Kcal">Kcal je 100g</string>
+    <string name="Produktinfo_Ernaehrungsform">Ernährungsform</string>
+    <string name="Produktinfo_GesundheitsScore">Gesundheits-Score</string>
+    <string name="Produktinfo_UmweltScore">Umwelt-Score</string>
 
 
     <string-array name="Tipps">
