@@ -1,9 +1,12 @@
 package com.example.hwr_huschka.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +37,7 @@ public class AccountActivity extends AppCompatActivity {
 
     TextView tv_KontoVorname, tv_KontoNachname, tv_KontoPostleitzahl, tv_KontoStadt, tv_KontoStraße, tv_KontoHausnummer, tv_KontoEmail;
 
+    Button btn_Passwort_aendern;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -48,12 +52,24 @@ public class AccountActivity extends AppCompatActivity {
         tv_KontoStraße = findViewById(R.id.Konto_Straße);
         tv_KontoHausnummer = findViewById(R.id.Konto_Hausnummer);
         tv_KontoEmail = findViewById(R.id.Konto_Email);
+        btn_Passwort_aendern = findViewById(R.id.BTN_Passwort_Aendern);
 
         sharedPreferences = this.getSharedPreferences("userdata", Context.MODE_PRIVATE);
 
         loadUserdata(getApplicationContext(), sharedPreferences.getInt("id", 0));
 
+        btn_Passwort_aendern.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     /**
      * Search Product by a Part of a Productname
