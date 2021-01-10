@@ -30,6 +30,7 @@ import com.github.clans.fab.FloatingActionButton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.threeten.bp.LocalDate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,6 +103,13 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseHelper.deleteShoppinglist(getApplicationContext(), shoppingList.getListenID());
+
+                Toast.makeText(getApplicationContext(), "Ihre Einkaufsliste wurde gelöscht", Toast.LENGTH_SHORT).show();
+
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("ListenID", shoppingList.getListenID());
+                setResult(100, resultIntent); // 100 für Liste gelöscht
+                finish();
             }
         });
 

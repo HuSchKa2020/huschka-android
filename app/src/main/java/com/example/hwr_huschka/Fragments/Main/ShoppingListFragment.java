@@ -68,7 +68,7 @@ public class ShoppingListFragment extends Fragment {
         loadShoppingLists(userID);
 
         // go to create new Shoppinglist
-        addListFltBtn.setOnClickListener(new View.OnClickListener(){
+        addListFltBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Fragment aufrufen, in dem Infos für eine neue Einkaufsliste eingetragen werden
@@ -84,11 +84,10 @@ public class ShoppingListFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), ShoppinglistActivity.class);
 
                 intent.putExtra("shoppinglist", clickedItem);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
 
             }
         });
-
 
 
         return v;
@@ -98,9 +97,12 @@ public class ShoppingListFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             ShoppingListAdapter adapter = (ShoppingListAdapter) listView.getAdapter();
             adapter.add((ShoppingList) data.getSerializableExtra("shoppinglist"));
+        } else if (resultCode == 100) { // 100 für Liste gelöscht
+            int deleteListID = data.getIntExtra("ListenID", 0);
+            loadShoppingLists(userID);
         }
     }
 
@@ -109,12 +111,12 @@ public class ShoppingListFragment extends Fragment {
      *
      * @param kundenID ID des Kunden
      */
-    private void loadShoppingLists(final int kundenID){
+    private void loadShoppingLists(final int kundenID) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_USERS_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                        try {
                             JSONArray jsonArray = new JSONArray(response);
 
                             ArrayList<ShoppingList> listOfShoppingLists = new ArrayList<ShoppingList>();
@@ -144,7 +146,7 @@ public class ShoppingListFragment extends Fragment {
                             adapter = new ShoppingListAdapter(getContext(), R.layout.listadapter_shoppinglist, listOfShoppingLists);
                             listView.setAdapter(adapter);
 
-                        }catch(JSONException e){
+                        } catch (JSONException e) {
 
                         }
                     }
@@ -154,7 +156,7 @@ public class ShoppingListFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                }){
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
