@@ -88,7 +88,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String searchedProduct = ed_productName.getText().toString().trim();
-                DatabaseHelper.searchProduct(getApplicationContext(), searchedProduct, listViewProductSuche);
+                DatabaseHelper.searchProduct(getParent(), searchedProduct, listViewProductSuche);
             }
         });
 

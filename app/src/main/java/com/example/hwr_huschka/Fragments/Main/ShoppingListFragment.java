@@ -20,8 +20,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.AddShoppingListActivity;
+import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.Activities.ShoppinglistActivity;
 import com.example.hwr_huschka.Constants;
+import com.example.hwr_huschka.LoadingDialog;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.ListAdapter.ShoppingListAdapter;
 import com.example.hwr_huschka.RequestHandler;
@@ -65,6 +67,8 @@ public class ShoppingListFragment extends Fragment {
         addListFltBtn = v.findViewById(R.id.floatActBtnAddShoopingList);
         listView = (ListView) v.findViewById(R.id.shoppingListView);
 
+        //LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+
         loadShoppingLists(userID);
 
         // go to create new Shoppinglist
@@ -88,8 +92,6 @@ public class ShoppingListFragment extends Fragment {
 
             }
         });
-
-
         return v;
     }
 
@@ -112,6 +114,9 @@ public class ShoppingListFragment extends Fragment {
      * @param kundenID ID des Kunden
      */
     private void loadShoppingLists(final int kundenID) {
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startLoadingAnimation();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GET_USERS_SHOPPINGLIST,
                 new Response.Listener<String>() {
                     @Override
@@ -145,6 +150,8 @@ public class ShoppingListFragment extends Fragment {
                             // in der ListView anzeigen
                             adapter = new ShoppingListAdapter(getContext(), R.layout.listadapter_shoppinglist, listOfShoppingLists);
                             listView.setAdapter(adapter);
+
+                            loadingDialog.dismissDialog();
 
                         } catch (JSONException e) {
 

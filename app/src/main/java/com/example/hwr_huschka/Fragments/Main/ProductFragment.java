@@ -57,13 +57,13 @@ public class ProductFragment extends Fragment {
         productListView = v.findViewById(R.id.produktListView);
 
         // show all available Products
-        DatabaseHelper.searchProduct(getContext(), "", productListView);
+        DatabaseHelper.searchProduct(getActivity(), "", productListView);
 
         // search for Products
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseHelper.searchProduct(getContext(), searchedProductName.getText().toString(), productListView);
+                DatabaseHelper.searchProduct(getActivity(), searchedProductName.getText().toString(), productListView);
             }
         });
 
