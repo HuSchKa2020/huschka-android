@@ -84,11 +84,14 @@ public class AddProductsToListActivity extends AppCompatActivity {
 
         DatabaseHelper.deleteProductsOfShoppinglist(getApplicationContext(), shoppingList.getListenID());
 
+        // load all Products
+        DatabaseHelper.searchProduct(AddProductsToListActivity.this, "", listViewProductSuche);
+
         btn_SearchProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String searchedProduct = ed_productName.getText().toString().trim();
-                DatabaseHelper.searchProduct(getParent(), searchedProduct, listViewProductSuche);
+                DatabaseHelper.searchProduct(AddProductsToListActivity.this, searchedProduct, listViewProductSuche);
             }
         });
 
