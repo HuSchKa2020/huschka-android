@@ -37,7 +37,7 @@ import java.util.Map;
 public class ProductInfoActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    TextView tvProductID, tvHersteller, tvProductName, tvProductKategorie, tvPrice, tvKcal;
+    TextView tvProductID, tvHersteller, tvProductName, tvProductKategorie, tvPrice, tvKcal, tvGS, tvUS, tvErnaehrungsform;
     Product product = new Product();
 
     InputStream is = null;
@@ -58,6 +58,9 @@ public class ProductInfoActivity extends AppCompatActivity {
         tvProductKategorie = findViewById(R.id.TVproductKategorie);
         tvPrice = findViewById(R.id.TVproductPreis);
         tvKcal = findViewById(R.id.TVproductKcal);
+        tvGS = findViewById(R.id.TVproductErnaehrungsform);
+        tvUS = findViewById(R.id.TVproductGesundheitsScore);
+        tvErnaehrungsform = findViewById(R.id.TVproductUmweltScore);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -76,13 +79,17 @@ public class ProductInfoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject jsonObject = new JSONObject(response);
-
+                            System.out.println(response);
                             tvProductID.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKTID));
                             tvHersteller.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER));
                             tvProductName.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME));
                             tvPrice.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRICE));
                             tvKcal.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KCAL));
                             tvProductKategorie.setText(jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE));
+                            tvErnaehrungsform.setText(jsonObject.getString(Constants.REQ_RETURN_ERNAEHRUNGSFORM));
+                            tvGS.setText(jsonObject.getString(Constants.REQ_RETURN_GESUNDHEITSSCORE));
+                            tvUS.setText(jsonObject.getString(Constants.REQ_RETURN_UMWELTSCORE));
+
                         }catch(JSONException e){
 
                         }
