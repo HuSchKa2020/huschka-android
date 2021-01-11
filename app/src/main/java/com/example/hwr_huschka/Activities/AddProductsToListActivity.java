@@ -203,6 +203,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
+
                             if (jsonObject.getBoolean("error") == true) {
                                 Toast.makeText(context, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -216,10 +217,11 @@ public class AddProductsToListActivity extends AppCompatActivity {
                                 resultIntent.putExtra("price", jsonObject.getDouble(Constants.REQ_RETURN_SHOPPINGLIST_PRICE));
                             }
 
+                            JSONObject scores = jsonObject.getJSONObject(Constants.REQ_RETURN_ALL_SCORES);
+                            resultIntent.putExtra("Scores", scores.toString());
+
                             setResult(Activity.RESULT_OK, resultIntent);
                             finish();
-
-
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }

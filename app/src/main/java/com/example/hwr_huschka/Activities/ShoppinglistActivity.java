@@ -145,10 +145,23 @@ public class ShoppinglistActivity extends AppCompatActivity {
             adapter = new ProductNumberAdapter(ShoppinglistActivity.this, products);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+            try {
+                setTVScores(new JSONObject(data.getStringExtra("Scores")));
+            } catch (JSONException e) {
+                System.out.println(e.toString());
+            }
+
 
             double preis = data.getDoubleExtra("price", 0.00);
             tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
         }
+    }
+
+    public void setTVScores (JSONObject scores) throws JSONException {
+        tv_GesundheitsScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESUNDHEITSSCORE) * 100.0) / 100.0));
+        tv_UmweltScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_UMWELTSCORE) * 100.0) / 100.0));
+        tv_GesamtScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESAMTSCORE) * 100.0) / 100.0));
+        tv_ernaehrungsform.setText(scores.getString(Constants.REQ_RETURN_ERNAEHRUNGSFORM));
     }
     
     public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
@@ -164,10 +177,7 @@ public class ShoppinglistActivity extends AppCompatActivity {
                                 JSONObject scores = jsonObject.getJSONObject(Constants.REQ_RETURN_ALL_SCORES);
 
                                 // set Scores
-                                tv_GesundheitsScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESUNDHEITSSCORE) * 100.0) / 100.0));
-                                tv_UmweltScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_UMWELTSCORE) * 100.0) / 100.0));
-                                tv_GesamtScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESAMTSCORE) * 100.0) / 100.0));
-                                tv_ernaehrungsform.setText(scores.getString(Constants.REQ_RETURN_ERNAEHRUNGSFORM));
+                                setTVScores(scores);
 
                                 // fetch the Product data from JSON
                                 for (int i = 0; i < produkte.length(); i++) {
