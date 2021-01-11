@@ -17,6 +17,9 @@ public class Product implements Serializable {
 	private String hersteller;
 	private int kcal;
 	private Position position;
+	private double gesundheitsscore;
+	private double umweltscore;
+	private String ernaehrungsform;
 
 	//Konstruktoren
 	public Product(int produktID, String name, double preis){
@@ -29,13 +32,16 @@ public class Product implements Serializable {
 		this.produktID = produktID;
 	}
 
-	public Product(int produktID, String hersteller, String name, String kategorie, double preis, int kcal) {
+	public Product(int produktID, String hersteller, String name, String kategorie, double preis, int kcal, double gesundheitsscore, double umweltscore, String ernaehrungsform) {
 		this.produktID = produktID;
 		this.name = name;
 		this.preis = preis;
 		this.kategorie = kategorie;
 		this.hersteller = hersteller;
 		this.kcal = kcal;
+		this.gesundheitsscore = gesundheitsscore;
+		this.umweltscore = umweltscore;
+		this.ernaehrungsform = ernaehrungsform;
 	}
 
 	public Product(){
@@ -84,6 +90,16 @@ public class Product implements Serializable {
 		this.kcal = kcal;	
 	}
 
+	public void setGesundheitsscore(double gesundheitsscore) { this.gesundheitsscore = gesundheitsscore; }
+
+	public void setUmweltscore(double umweltscore ) {
+		this.umweltscore = umweltscore;
+	}
+
+	public void setErnaehrungsform(String ernaehrungsform) {
+		this.ernaehrungsform = ernaehrungsform;
+	}
+
 	// getter
 	public Position getPosition() {
 		return position;
@@ -111,5 +127,17 @@ public class Product implements Serializable {
 	
 	public int getKcal() {
 		return kcal;
+	}
+
+	public double getGesundheitsscore() {
+		return gesundheitsscore;
+	}
+
+	public double getUmweltscore() {
+		return umweltscore;
+	}
+
+	public String getErneahrungsform() {
+		return ernaehrungsform;
 	}
 }
