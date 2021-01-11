@@ -179,7 +179,7 @@
         android:layout_below="@+id/TV_Produktsuche_Ernaehrungsform_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
