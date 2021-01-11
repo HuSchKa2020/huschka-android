@@ -70,6 +70,14 @@ public class Constants {
     public static final String REQ_RETURN_PRODUKT_PRICE = "Preis";
     public static final String REQ_RETURN_PRODUKT_KCAL = "Kcal";
     public static final String REQ_RETURN_PRODUKT_KATEGORIE = "Kategorie";
+    public static final String REQ_RETURN_PRODUKT_LISTE = "Produkte";
+
+
+    public static final String REQ_RETURN_ALL_SCORES = "Scores";
+    public static final String REQ_RETURN_GESUNDHEITSSCORE = "GesundheitsScore";
+    public static final String REQ_RETURN_UMWELTSCORE = "UmweltScore";
+    public static final String REQ_RETURN_GESAMTSCORE = "GesamtScore";
+    public static final String REQ_RETURN_ERNAEHRUNGSFORM = "Ernaehrungsform";
 
 
 
