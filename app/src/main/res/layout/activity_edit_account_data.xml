@@ -79,18 +79,6 @@
         android:hint="Stadt"/>
 
     <EditText
-        android:id="@+id/Edit_Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="440dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="E-Mail"/>
-
-    <EditText
         android:id="@+id/Edit_Straße"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -147,17 +135,6 @@
         android:textColor="@color/colorDunkelTuerkis"
         android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/TV_Edit_Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/Edit_Email"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="47dp"
-        android:text="@string/register_Email"
-        android:textColor="@color/colorDunkelTuerkis"
-        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/TV_Edit_Straße"
