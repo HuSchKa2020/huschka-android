@@ -2,8 +2,6 @@ package com.example.hwr_huschka.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hwr_huschka.R;
 
-public class ChangeDataActivity extends AppCompatActivity {
+public class ChangeAccountDataActivity extends AppCompatActivity {
 
     Button btn_Abbrechen, btn_Speichern;
     EditText edVorname, edNachname, edPLZ, edStadt, edStraße, edNummer, edEmail;
@@ -23,7 +21,7 @@ public class ChangeDataActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_edit);
+        setContentView(R.layout.activity_edit_account_data);
 
         edVorname = findViewById(R.id.Edit_Vorname);
         edNachname = findViewById(R.id.Edit_Nachname);
