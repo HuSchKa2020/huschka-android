@@ -2,11 +2,12 @@ package com.example.hwr_huschka;
 
 public class Constants {
 
-    public static final String ROOT_URL = "http://huschka.ddnss.de/huschka/v1/"; // muss noch angepasst werden
+    public static final String ROOT_URL = "http://huschka.ddnss.de/jan/v1/"; // muss noch angepasst werden
 
     public static final String URL_LOGIN_USER = ROOT_URL + "UserLogin.php";
     public static final String URL_REGISTER_USER = ROOT_URL + "registerUser.php";
     public static final String URL_LOAD_USER_DATA = ROOT_URL + "getUserData.php";
+    public static final String URL_CHANGE_PASSWORD = ROOT_URL + "UpdatePasswort.php";
 
     public static final String URL_GET_PRODUCTS = ROOT_URL + "getProduct.php";
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
@@ -37,6 +38,9 @@ public class Constants {
     public static final String REQ_PARAM_USER_FIRSTNAME = "Vorname";
     public static final String REQ_PARAM_USER_FAMILYNAME = "Nachname";
     public static final String REQ_PARAM_USER_ADDRESS = "Adresse";
+
+    public static final String REQ_PARAM_NEWPASSWORD = "neuesPasswort";
+    public static final String REQ_PARAM_OLDPASSWORD = "altesPasswort";
 
     // Product params
     public static final String REQ_PARAM_PRODUCTID = "ProduktID";
