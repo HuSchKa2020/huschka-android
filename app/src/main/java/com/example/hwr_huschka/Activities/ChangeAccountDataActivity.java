@@ -1,9 +1,9 @@
 package com.example.hwr_huschka.Activities;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,18 +12,25 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hwr_huschka.DatabaseHelper;
 import com.example.hwr_huschka.R;
+import com.example.hwr_huschka.klassen.Kunde;
 
-public class ChangeDataActivity extends AppCompatActivity {
+public class ChangeAccountDataActivity extends AppCompatActivity {
 
     Button btn_Abbrechen, btn_Speichern;
     EditText edVorname, edNachname, edPLZ, edStadt, edStraße, edNummer, edEmail;
 
+    SharedPreferences sharedPreferences;
+    int userID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_edit);
+        setContentView(R.layout.activity_edit_account_data);
+
+        sharedPreferences = this.getSharedPreferences("userdata", Context.MODE_PRIVATE);
+        userID = sharedPreferences.getInt("id", 0);
 
         edVorname = findViewById(R.id.Edit_Vorname);
         edNachname = findViewById(R.id.Edit_Nachname);
@@ -31,10 +38,8 @@ public class ChangeDataActivity extends AppCompatActivity {
         edStadt = findViewById(R.id.Edit_Stadt);
         edStraße = findViewById(R.id.Edit_Straße);
         edNummer = findViewById(R.id.Edit_Hausnummer);
-        edEmail = findViewById(R.id.Edit_Email);
         btn_Abbrechen = findViewById(R.id.BTN_Passswort_Abbrechen);
         btn_Speichern = findViewById(R.id.BTN_Password_Speichern);
-
 
         btn_Abbrechen.setOnClickListener(new View.OnClickListener() {
 
@@ -55,15 +60,14 @@ public class ChangeDataActivity extends AppCompatActivity {
                 nachname = edNachname.getText().toString();
                 stadt = edStadt.getText().toString();
                 straße = edStraße.getText().toString();
-                email = edEmail.getText().toString();
                 postleitzahl = edPLZ.getText().toString();
                 nummer = edNummer.getText().toString();
 
+                //weiß nicht ob man das eleganter machen könnte, aber es funktioniert
 
-                    //weiß nicht ob man das eleganter machen könnte, aber es funktioniert
-
-                if (vorname.length() > 0 && nachname.length() > 0 && stadt.length() > 0 && straße.length() > 0 && email.length() > 0 && postleitzahl.length() > 0 && nummer.length() > 0 && email.contains("@")){
-                    changeData(getApplicationContext(), vorname, nachname, postleitzahl, stadt, straße, nummer, email);
+                if (vorname.length() > 0 && nachname.length() > 0 && stadt.length() > 0 && straße.length() > 0 && postleitzahl.length() > 0 && nummer.length() > 0){
+                    String adresse = straße + " " + nummer + ", " + postleitzahl + " " + stadt;
+                    changeData(ChangeAccountDataActivity.this, userID, vorname, nachname, adresse);
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(),"Sie haben nicht alle Felder ausgefüllt.", Toast.LENGTH_LONG).show();
@@ -76,8 +80,8 @@ public class ChangeDataActivity extends AppCompatActivity {
 
     // Habe hier alle Strings gemacht, weil ich oben ja nicht getText().toInteger machen kann, sondern nur .toString()
 
-    private void changeData(Context context, String vorname, String nachname, String postleitzahl, String stadt, String straße, String nummer, String email ) {
-
+    private void changeData(Activity activity, int userID, String vorname, String nachname, String adresse) {
+        DatabaseHelper.changeAccountData(activity, new Kunde(userID, "", vorname, nachname, adresse));
     }
 }
 

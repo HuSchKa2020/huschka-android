@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
+import com.example.hwr_huschka.klassen.Kunde;
 import com.example.hwr_huschka.klassen.Product;
 
 import org.json.JSONArray;
@@ -275,6 +276,97 @@ public class DatabaseHelper {
                 params.put(Constants.REQ_PARAM_USERID, Integer.toString(userID));
                 params.put(Constants.REQ_PARAM_OLDPASSWORD, oldPassword);
                 params.put(Constants.REQ_PARAM_NEWPASSWORD, newPassword);
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    /**
+     * This Method change the Password of the User.
+     * @param activity the Activity.
+     * @param kunde Objekt der Klasse Kunde, welches alle neuen Daten enthält.
+     */
+    public static void changeAccountData(final Activity activity, final Kunde kunde){
+        // Update Name
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_CHANGE_NAME,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            System.out.println(response);
+
+                            if (jsonObject.getBoolean("error") == true){
+                                Toast.makeText(activity.getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            } else {
+                                changeAdresse(activity, kunde.getKundenID(), kunde.getAdresse());
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(activity.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(Constants.REQ_PARAM_USERID, Integer.toString(kunde.getKundenID()));
+                params.put(Constants.REQ_PARAM_USER_FIRSTNAME, kunde.getVorname());
+                params.put(Constants.REQ_PARAM_USER_FAMILYNAME, kunde.getNachname());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    /**
+     * This Method change the Password of the User.
+     * @param activity the Activity.
+     * @param userID id of the user.
+     * @param adresse adresse des Kunden.
+     */
+    public static void changeAdresse(final Activity activity, final int userID,final String adresse){
+        // Update Name
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_CHANGE_ADRESS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            System.out.println(response);
+                            if (jsonObject.getBoolean("error") == true){
+                                Toast.makeText(activity.getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            } else {
+                                activity.finish();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(activity.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(Constants.REQ_PARAM_USERID, Integer.toString(userID));
+                params.put(Constants.REQ_PARAM_USER_ADDRESS, adresse);
                 return params;
             }
         };

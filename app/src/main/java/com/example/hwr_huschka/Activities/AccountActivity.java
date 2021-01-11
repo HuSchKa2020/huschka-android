@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,16 +15,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.hwr_huschka.Constants;
-import com.example.hwr_huschka.ListAdapter.ProductAdapter;
 import com.example.hwr_huschka.R;
 import com.example.hwr_huschka.RequestHandler;
-import com.example.hwr_huschka.klassen.Product;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,7 +65,7 @@ public class AccountActivity extends AppCompatActivity {
         btn_Kontodaten_aendern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChangeDataActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChangeAccountDataActivity.class);
                 startActivity(intent);
             }
         });

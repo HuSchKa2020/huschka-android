@@ -5,6 +5,9 @@ public class Kunde {
 	//Eigenschaften
 	
 	private int kundenID;
+	private String email;
+
+
 	private String vorname;
 	private String nachname;
 	private String adresse;
@@ -14,7 +17,15 @@ public class Kunde {
 	
 	public Kunde(){
 	}
-	
+
+	public Kunde(int kundenID, String email, String vorname, String nachname, String adresse) {
+		this.kundenID = kundenID;
+		this.email = email;
+		this.vorname = vorname;
+		this.nachname = nachname;
+		this.adresse = adresse;
+	}
+
 	//Methoden
 	
 	//setter
@@ -38,8 +49,16 @@ public class Kunde {
 	public void setBank(String bank) {
 		this.bank = bank;
 	}
-	
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	//getter
+	public String getEmail() {
+		return email;
+	}
 
 	public String getVorname() {
 		return vorname;
