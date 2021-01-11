@@ -44,7 +44,7 @@ import androidx.appcompat.widget.Toolbar;
 public class ShoppinglistActivity extends AppCompatActivity {
 
     ListView listView;
-    TextView tv_supermarkt, tv_datum, tv_price, tv_summe;
+    TextView tv_supermarkt, tv_datum, tv_price, tv_summe, tv_GesundheitsScore, tv_UmweltScore, tv_GesamtScore, tv_ernaehrungsform;
 
     FloatingActionButton fabToAddProd, fabStartShopping, fabDelete;
     ProductNumberAdapter adapter = new ProductNumberAdapter(this, new HashMap<Product, Integer>());
@@ -61,12 +61,15 @@ public class ShoppinglistActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         tv_supermarkt = findViewById(R.id.TV_shoppinglist_SupermarktAuswahl);
         tv_datum = findViewById(R.id.TV_shoppinglist_DatumAuswahl);
         tv_price = findViewById(R.id.TV_shoppinglist_Preis);
         tv_summe = (TextView) findViewById(R.id.TV_Summe);
         tv_summe.setPaintFlags(tv_price.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        tv_GesundheitsScore = findViewById(R.id.TV_shoppinglist_GesundheitsScore_anzeige);
+        tv_UmweltScore = findViewById(R.id.TV_shoppinglist_UmweltScore_anzeige);
+        tv_GesamtScore = findViewById(R.id.TV_shoppinglist_GesamtScore_anzeige);
+        tv_ernaehrungsform = findViewById(R.id.TV_shoppinglist_Ernaehrungsform);
 
         shoppingList = (ShoppingList) this.getIntent().getSerializableExtra("shoppinglist");
         tv_supermarkt.setText(shoppingList.getSupermarkt());
@@ -86,7 +89,9 @@ public class ShoppinglistActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), AddProductsToListActivity.class);
                 intent.putExtra("shoppinglist", shoppingList);
                 ProductNumberAdapter productNumberAdapter = (ProductNumberAdapter) listView.getAdapter();
-                intent.putExtra("productMap", productNumberAdapter.getProductsOfList());
+                if (productNumberAdapter != null) {
+                    intent.putExtra("productMap", productNumberAdapter.getProductsOfList());
+                }
                 startActivityForResult(intent, 0);
             }
         });
@@ -140,10 +145,23 @@ public class ShoppinglistActivity extends AppCompatActivity {
             adapter = new ProductNumberAdapter(ShoppinglistActivity.this, products);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+            try {
+                setTVScores(new JSONObject(data.getStringExtra("Scores")));
+            } catch (JSONException e) {
+                System.out.println(e.toString());
+            }
+
 
             double preis = data.getDoubleExtra("price", 0.00);
             tv_price.setText(Double.toString(Math.round(100.0 * preis) / 100.0));
         }
+    }
+
+    public void setTVScores (JSONObject scores) throws JSONException {
+        tv_GesundheitsScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESUNDHEITSSCORE) * 100.0) / 100.0));
+        tv_UmweltScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_UMWELTSCORE) * 100.0) / 100.0));
+        tv_GesamtScore.setText(Double.toString(Math.round(scores.getDouble(Constants.REQ_RETURN_GESAMTSCORE) * 100.0) / 100.0));
+        tv_ernaehrungsform.setText(scores.getString(Constants.REQ_RETURN_ERNAEHRUNGSFORM));
     }
     
     public void loadProductsOfShoppinglist(final Context context, final int shoppingListID, final ListView listView){
@@ -152,41 +170,45 @@ public class ShoppinglistActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONArray jsonArray = new JSONArray(response);
-
                             HashMap<Product, Integer> products = new HashMap<Product, Integer>();
+                            if(!response.equals("")) {
+                                JSONObject jsonObject = new JSONObject(response);
+                                JSONArray produkte = jsonObject.getJSONArray(Constants.REQ_RETURN_PRODUKT_LISTE);
+                                JSONObject scores = jsonObject.getJSONObject(Constants.REQ_RETURN_ALL_SCORES);
 
-                            // fetch the Product data from JSON
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                                // set Scores
+                                setTVScores(scores);
 
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                // fetch the Product data from JSON
+                                for (int i = 0; i < produkte.length(); i++) {
 
-                                int productID = jsonObject.getInt(Constants.REQ_RETURN_PRODUKTID);
-                                String hersteller = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER);
-                                String name = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_NAME);
-                                //String kategorie = jsonObject.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
-                                double preis = jsonObject.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
-                                int kcal = 0;
-                                if(!jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
-                                    kcal = jsonObject.getInt(Constants.REQ_RETURN_PRODUKT_KCAL);
+                                    JSONObject produkt = produkte.getJSONObject(i);
+
+                                    int productID = produkt.getInt(Constants.REQ_RETURN_PRODUKTID);
+                                    String hersteller = produkt.getString(Constants.REQ_RETURN_PRODUKT_PRODUCER);
+                                    String name = produkt.getString(Constants.REQ_RETURN_PRODUKT_NAME);
+                                    //String kategorie = produkt.getString(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
+                                    double preis = produkt.getDouble(Constants.REQ_RETURN_PRODUKT_PRICE);
+                                    int kcal = 0;
+                                    if (!produkt.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)) {
+                                        kcal = produkt.getInt(Constants.REQ_RETURN_PRODUKT_KCAL);
+                                    }
+
+
+                                    int numberOf = produkt.getInt(Constants.REQ_RETURN_SHOPPINGLIST_NUMBEROF_PRODUCTS);
+
+                                    Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
+
+                                    // add to the Product to the HashMap
+                                    products.put(temp, numberOf);
                                 }
-
-
-                                int numberOf = jsonObject.getInt(Constants.REQ_RETURN_SHOPPINGLIST_NUMBEROF_PRODUCTS);
-
-                                Product temp = new Product(productID, hersteller, name, "test", preis, kcal);
-
-                                // add to the Product to the HashMap
-                                products.put(temp, numberOf);
                             }
-
                             // in der ListView anzeigen
                             adapter = new ProductNumberAdapter(context, products);
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
                             getPriceOfShoppinglist(context, shoppingListID);
-
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
