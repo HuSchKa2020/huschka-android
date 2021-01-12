@@ -80,7 +80,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 passwordNeu = edPasswordNeu.getText().toString();
                 passwordNeu2 = edPasswordNeu2.getText().toString();
 
-                if (passwordNeu.equals(passwordNeu2) && passwordNeu.length() > 6)  {
+                if (passwordNeu.equals(passwordNeu2) && passwordNeu.length() >= 6)  {
                     changePassword(ChangePasswordActivity.this, userID, passwordAlt, passwordNeu);
                 } else {
                     Toast.makeText(getApplicationContext(),"Entweder ist Ihr Passwort zu kurz oder die Passwörter nicht gleich.", Toast.LENGTH_LONG).show();

@@ -9,7 +9,7 @@ public class Constants {
     public static final String URL_LOAD_USER_DATA = ROOT_URL + "getUserData.php";
     public static final String URL_CHANGE_PASSWORD = ROOT_URL + "UpdatePasswort.php";
     public static final String URL_CHANGE_NAME = ROOT_URL + "UpdateName.php";
-    public static final String URL_CHANGE_ADRESS = ROOT_URL + "UpdateAdress.php";
+    public static final String URL_CHANGE_ADRESS = ROOT_URL + "UpdateAdresse.php";
 
     public static final String URL_GET_PRODUCTS = ROOT_URL + "getProduct.php";
     public static final String URL_PRODUCT_INFO = ROOT_URL + "getProductInfo.php";
