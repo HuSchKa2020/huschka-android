@@ -2,23 +2,36 @@
 <!--    Layout für die Activity für die Übersicht des Accounts.
         Zugehörige Klasse: /Activities/AccountActivity -->
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
-        android:text="Konto"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:textColor="@color/colorWeiß"
+        app:titleTextColor="@color/colorWeiß"
         android:background="@color/colorDunkelTuerkis"/>
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Konto"
+        android:background="@color/colorDunkelTuerkis"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWeiß"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"/>
 
     <TextView
         android:id="@+id/TV_Konto_Vorname"
