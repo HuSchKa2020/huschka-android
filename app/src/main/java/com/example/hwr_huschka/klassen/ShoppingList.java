@@ -32,14 +32,12 @@ public class ShoppingList implements Serializable {
 		this.datum = LocalDate.of(2020,04,19);
 	}
 
-	public ShoppingList(int listenID, LocalDate datum, String supermarkt, String status, double gesundheitsscore, double umweltscore, String ernaehrungsform) {
+	public ShoppingList(int listenID, LocalDate datum, String supermarkt, String status) {
 		this.listenID = listenID;
 		this.datum = datum;
 		this.supermarkt = supermarkt;
 		this.status = status;
-		this.gesundheitsscore = gesundheitsscore;
-		this.umweltscore = umweltscore;
-		this.ernaehrungsform = ernaehrungsform;
+
 	}
 	public ShoppingList(int listenID, LocalDate datum, String supermarkt) {
 		this.listenID = listenID;
