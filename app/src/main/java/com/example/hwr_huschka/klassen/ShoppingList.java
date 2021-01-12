@@ -15,6 +15,9 @@ public class ShoppingList implements Serializable {
 	private LocalDate datum;
 	private String supermarkt;
 	private String status;
+	private double gesundheitsscore;
+	private double umweltscore;
+	private String ernaehrungsform;
 	private HashMap<Product, Integer> inhalt = new HashMap<Product, Integer>();
 	
 	//Konstruktoren
@@ -29,11 +32,14 @@ public class ShoppingList implements Serializable {
 		this.datum = LocalDate.of(2020,04,19);
 	}
 
-	public ShoppingList(int listenID, LocalDate datum, String supermarkt, String status) {
+	public ShoppingList(int listenID, LocalDate datum, String supermarkt, String status, double gesundheitsscore, double umweltscore, String ernaehrungsform) {
 		this.listenID = listenID;
 		this.datum = datum;
 		this.supermarkt = supermarkt;
 		this.status = status;
+		this.gesundheitsscore = gesundheitsscore;
+		this.umweltscore = umweltscore;
+		this.ernaehrungsform = ernaehrungsform;
 	}
 	public ShoppingList(int listenID, LocalDate datum, String supermarkt) {
 		this.listenID = listenID;
@@ -71,6 +77,12 @@ public class ShoppingList implements Serializable {
 		this.inhalt = inhalt; 
 	}
 
+	public void  setGesundheitsscore(double gesundheitsscore) { this.gesundheitsscore = gesundheitsscore; }
+
+	public void  setUmweltscore(double umweltscore) { this.umweltscore = umweltscore; }
+
+	public void  setErnaehrungsform(String ernaehrungsform) { this.ernaehrungsform = ernaehrungsform; }
+
 	//getter
 	public int getListenID() {
 		return listenID;
@@ -90,6 +102,18 @@ public class ShoppingList implements Serializable {
 
 	public HashMap<Product, Integer> getInhalt() {
 		return inhalt;
+	}
+
+	public double getGesundheitsscore() {
+		return gesundheitsscore;
+	}
+
+	public double getUmweltscore() {
+		return umweltscore;
+	}
+
+	public String getErnaehrungsform() {
+		return ernaehrungsform;
 	}
 	
 }
