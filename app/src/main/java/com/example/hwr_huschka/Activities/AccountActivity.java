@@ -96,13 +96,36 @@ public class AccountActivity extends AppCompatActivity {
                             tv_KontoVorname.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
                             tv_KontoNachname.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FAMILYNAME));
                             tv_KontoEmail.setText(jsonObject.getString(Constants.REQ_RETURN_USER_MAIL));
-                            /*Adresse
-                            tv_KontoStraße.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
+                            String adresse = jsonObject.getString(Constants.REQ_RETURN_USER_ADRESSE);
 
-                            tv_KontoHausnummer.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
-                            tv_KontoPostleitzahl.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
-                            tv_KontoStadt.setText(jsonObject.getString(Constants.REQ_RETURN_USER_FIRSTNAME));
-                            */
+                            String[] unterteilen = adresse.split(", ");
+                            String straße = unterteilen[0];
+                            String stadt = unterteilen[1];
+
+                            String[] unterteilenstadt = stadt.split(" ");
+                            String postleitzahl = unterteilenstadt[0];
+                            String ort = unterteilenstadt[1];
+
+                            String[] unterteilenstraße = straße.split(" ");
+
+                            StringBuilder street = new StringBuilder();
+                            String hausnummer = null;
+
+                            for(int i = 0; i < unterteilenstraße.length; i++) {
+                                if(unterteilenstraße[i].matches(".*\\d.*")){
+                                    hausnummer = unterteilenstraße[i];
+
+                                } else {
+
+                                    street.append(unterteilenstraße[i] + " ");
+                                }
+                            }
+
+                            tv_KontoStraße.setText(street);
+                            tv_KontoHausnummer.setText(hausnummer);
+                            tv_KontoPostleitzahl.setText(postleitzahl);
+                            tv_KontoStadt.setText(ort);
+
 
                         } catch (JSONException e) {
                             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
