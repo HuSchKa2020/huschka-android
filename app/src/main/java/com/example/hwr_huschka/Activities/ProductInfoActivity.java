@@ -58,9 +58,9 @@ public class ProductInfoActivity extends AppCompatActivity {
         tvProductKategorie = findViewById(R.id.TVproductKategorie);
         tvPrice = findViewById(R.id.TVproductPreis);
         tvKcal = findViewById(R.id.TVproductKcal);
-        tvGS = findViewById(R.id.TVproductErnaehrungsform);
-        tvUS = findViewById(R.id.TVproductGesundheitsScore);
-        tvErnaehrungsform = findViewById(R.id.TVproductUmweltScore);
+        tvGS = findViewById(R.id.TVproductGesundheitsScore);
+        tvUS = findViewById(R.id.TVproductUmweltScore);
+        tvErnaehrungsform = findViewById(R.id.TVproductErnaehrungsform);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
