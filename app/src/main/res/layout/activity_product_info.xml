@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--    Layout für die Activity für die Detailansicht eines Produktes.
         Zugehörige Klasse: /Activities/ProductInfoActivity -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProductInfoActivity"
+    android:orientation="horizontal">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.ProductInfoActivity"
@@ -49,16 +56,16 @@
         android:text="@string/Produktinfo_Hersteller"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductHersteller"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Hersteller_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -73,16 +80,16 @@
         android:text="@string/Produktinfo_Produktname"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductName"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Name_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -98,16 +105,16 @@
         android:text="@string/Produktinfo_Kategorie"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductKategorie"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Kategorie_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -122,16 +129,16 @@
         android:text="@string/Produktinfo_Preis"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductPreis"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Preis_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -146,16 +153,16 @@
         android:text="@string/Produktinfo_Kcal"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductKcal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Kcal_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -170,16 +177,16 @@
         android:text="@string/Produktinfo_Ernaehrungsform"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductErnaehrungsform"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_Ernaehrungsform_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -194,16 +201,16 @@
         android:text="@string/Produktinfo_GesundheitsScore"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductGesundheitsScore"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_GesundheitsScore_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
@@ -218,17 +225,19 @@
         android:text="@string/Produktinfo_UmweltScore"
         android:textAlignment="center"
         android:textColor="@color/colorWeiß"
-        android:textSize="15dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/TVproductUmweltScore"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/TV_Produktsuche_UmweltScore_Ueberschrift"
         android:layout_marginTop="0dp"
         android:textAlignment="center"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:textColor="@color/colorDunkelTuerkis"
         android:background="@drawable/rahmen_nicht_ganz_dunkel"
         android:gravity="center"/>
 </RelativeLayout>
+
+</ScrollView>
