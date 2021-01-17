@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="80dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:src="@drawable/ic_baseline_settings_24"
         android:background="@color/colorDunkelTuerkis"
         />
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="220dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:src="@drawable/ic_tipps"
         android:background="@color/colorDunkelTuerkis"/>
 
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="360dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:src="@drawable/ic_baseline_star_border_24"
         android:background="@color/colorDunkelTuerkis"/>
 
@@ -100,9 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="80dp"
-        android:layout_marginStart="160dp"
-        android:src="@drawable/ic_baseline_search_24"
-        android:background="@color/colorDunkelTuerkis"/>
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorDunkelTuerkis"
+        android:src="@drawable/ic_baseline_search_24" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -124,10 +124,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="80dp"
-        android:layout_marginStart="280dp"
-        android:src="@drawable/ic_neue_liste_erstellen"
-        android:background="@color/colorDunkelTuerkis"/>
+        android:layout_marginEnd="30dp"
+        android:background="@color/colorDunkelTuerkis"
+        android:src="@drawable/ic_neue_liste_erstellen" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -150,10 +151,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="220dp"
-        android:layout_marginStart="160dp"
-        android:src="@drawable/ic_prospekt"
+        android:layout_centerHorizontal="true"
         android:background="@color/colorDunkelTuerkis"
-        />
+        android:src="@drawable/ic_prospekt" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -178,7 +178,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="450dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="30dp"
         android:background="@color/colorDunkelTuerkis"
         android:padding="5dp"
         android:text="Schnell Start"

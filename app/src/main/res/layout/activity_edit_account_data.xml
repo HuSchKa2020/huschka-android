@@ -72,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="280dp"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
@@ -83,9 +83,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="150dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="420dp"
         android:hint="Straße"/>
 
     <EditText
@@ -93,18 +93,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginStart="-140dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="420dp"
+        android:layout_toEndOf="@+id/Edit_Straße"
         android:ems="10"
-        android:hint="Nr."/>
+        android:hint="Nr." />
 
     <EditText
         android:id="@+id/Edit_Postleitzahl"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="280dp"
         android:layout_marginLeft="20dp"
         android:inputType="number"
         android:hint="PLZ"/>
@@ -151,8 +152,8 @@
         android:id="@+id/TV_Edit_Hausnummer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Edit_Hausnummer"
         android:layout_alignBottom="@+id/Edit_Hausnummer"
-        android:layout_marginStart="320dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="47dp"
         android:text="@string/register_Hausnummer"
