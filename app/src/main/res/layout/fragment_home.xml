@@ -2,188 +2,326 @@
 <!--    Layout für das Fragment des Home-Bildschirms
         "Eltern"-Activitie(s): activity_main.xml
         Zugehörige Klasse: /Fragments/Main/HomeFragment -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-    <TextView
-        android:id="@+id/textView_home"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="30dp"
-        android:textColor="@color/colorDunkelTuerkis"
-        android:textStyle="bold"
-        android:text="Home" />
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
-    <ImageButton
-        android:id="@+id/IB_Home_Einstellungen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/ic_baseline_settings_24"
-        android:background="@color/colorDunkelTuerkis"
-        />
+        <TextView
+            android:id="@+id/textView_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="Hallo"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorDunkelTuerkis"
+            android:layout_marginTop="5dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Einstellungen"
-        android:layout_alignStart="@+id/IB_Home_Einstellungen"
-        android:layout_alignEnd="@+id/IB_Home_Einstellungen"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Einstellungen"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
+    </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/IB_Home_Tipps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="220dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/ic_tipps"
-        android:background="@color/colorDunkelTuerkis"/>
+    <GridLayout
+        android:columnOrderPreserved="false"
+        android:alignmentMode="alignMargins"
+        android:rowCount="3"
+        android:columnCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Tipps"
-        android:layout_alignStart="@+id/IB_Home_Tipps"
-        android:layout_alignEnd="@+id/IB_Home_Tipps"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Tipps | Tricks"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
 
-    <ImageButton
-        android:id="@+id/IB_Home_Impressum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="360dp"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/ic_baseline_star_border_24"
-        android:background="@color/colorDunkelTuerkis"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Impressum"
-        android:layout_alignStart="@+id/IB_Home_Impressum"
-        android:layout_alignEnd="@+id/IB_Home_Impressum"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Impressum"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
+                <ImageButton
+                    android:id="@+id/IB_Home_Suche"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorDunkelTuerkis"
+                    android:src="@drawable/ic_baseline_search_24" />
 
-    <ImageButton
-        android:id="@+id/IB_Home_Suche"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorDunkelTuerkis"
-        android:src="@drawable/ic_baseline_search_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suche"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Suche"
-        android:layout_alignStart="@+id/IB_Home_Suche"
-        android:layout_alignEnd="@+id/IB_Home_Suche"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Suche"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
-
-    <ImageButton
-        android:id="@+id/IB_Home_Liste_erstellen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/colorDunkelTuerkis"
-        android:src="@drawable/ic_neue_liste_erstellen" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Liste_erstellen"
-        android:layout_alignStart="@+id/IB_Home_Liste_erstellen"
-        android:layout_alignEnd="@+id/IB_Home_Liste_erstellen"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Liste erstellen"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
-
-    <ImageButton
-        android:id="@+id/IB_Home_Prospekt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="220dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorDunkelTuerkis"
-        android:src="@drawable/ic_prospekt" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/IB_Home_Prospekt"
-        android:layout_alignStart="@+id/IB_Home_Prospekt"
-        android:layout_alignEnd="@+id/IB_Home_Prospekt"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:text="Prospekte"
-        android:textAlignment="center"
-        android:textColor="@color/colorSehrDunkelTuerkis"
-        android:textStyle="bold"
-        android:textSize="13dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
 
 
-    <Button
-        android:id="@+id/IB_Home_Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/colorDunkelTuerkis"
-        android:padding="5dp"
-        android:text="Schnell Start"
-        android:textColor="@color/colorWeiß"
-        android:textSize="22dp"
-        android:textStyle="bold" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
 
-</RelativeLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/IB_Home_Liste_erstellen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorDunkelTuerkis"
+                    android:src="@drawable/ic_neue_liste_erstellen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Liste erstellen"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/IB_Home_Einstellungen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    android:background="@color/colorDunkelTuerkis"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Einstellungen"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/IB_Home_Tipps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_tipps"
+                    android:background="@color/colorDunkelTuerkis"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipps | Tricks"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/IB_Home_Impressum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_baseline_star_border_24"
+                    android:background="@color/colorDunkelTuerkis"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Impressum"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="20dp"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/IB_Home_Prospekt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorDunkelTuerkis"
+                    android:src="@drawable/ic_prospekt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/IB_Home_Prospekt"
+                    android:layout_alignStart="@+id/IB_Home_Prospekt"
+                    android:layout_alignEnd="@+id/IB_Home_Prospekt"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="Prospekte"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSehrDunkelTuerkis"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp">
+
+
+        <Button
+            android:id="@+id/IB_Home_Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorDunkelTuerkis"
+            android:padding="5dp"
+            android:text="Schnell Start"
+            android:textColor="@color/colorWeiß"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
