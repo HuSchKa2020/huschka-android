@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    Layout für die Activity in der alle Tipps&Tricks angezeigt werden.
+        Zugehörige Klasse: /Activities/AddProductsToListActivity -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:titleTextColor="@color/colorWeiß"
+        android:background="@color/colorDunkelTuerkis"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Ihr Einkauf"
+        android:background="@color/colorDunkelTuerkis"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWeiß"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"/>
+
+
+    <ListView
+        android:id="@+id/LV_go_shopping"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Karte anzeigen"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:background="@color/colorDunkelTuerkis"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="550dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Einkauf beenden"
+        android:textSize="25dp"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textStyle="bold"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+</RelativeLayout>
