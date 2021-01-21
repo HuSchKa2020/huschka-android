@@ -15,8 +15,12 @@ public class Position {
 		this.regal = regal;
 		this.reihe = reihe;
 	}
-	
-	
+
+	public Position(int reihe, int regal) {
+		this.reihe = reihe;
+		this.regal = regal;
+	}
+
 	//Methoden
 	
 		

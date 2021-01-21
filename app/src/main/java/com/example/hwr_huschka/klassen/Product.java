@@ -38,6 +38,16 @@ public class Product implements Serializable {
 		this.kcal = kcal;
 	}
 
+	public Product(int produktID, String hersteller, String name, String kategorie, double preis, int kcal, Position position) {
+		this.produktID = produktID;
+		this.name = name;
+		this.preis = preis;
+		this.kategorie = kategorie;
+		this.hersteller = hersteller;
+		this.kcal = kcal;
+		this.position = position;
+	}
+
 	public Product(){
 
 	}
