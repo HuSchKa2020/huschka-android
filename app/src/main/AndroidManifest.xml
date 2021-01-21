@@ -35,6 +35,7 @@
         <activity android:name=".Activities.AccountActivity"/>
         <activity android:name=".Activities.ChangePasswordActivity"/>
         <activity android:name=".Activities.ChangeAccountDataActivity"/>
+        <activity android:name=".Activities.GoShoppingActivity"/>
 
 
 

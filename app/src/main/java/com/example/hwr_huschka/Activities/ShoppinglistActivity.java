@@ -100,7 +100,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
         fabStartShopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // start Shopping
+                Intent intent = new Intent(getApplicationContext(), GoShoppingActivity.class);
+                startActivity(intent);
                 Toast.makeText(ShoppinglistActivity.this, "Start Shopping", Toast.LENGTH_SHORT).show();
             }
         });
