@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Listadapter zum Einkaufen mit Bild, Produktname, Anzahl, Regal, Reihe und Checkbox -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@drawable/rahmen_nicht_ganz_dunkel">
+
+    <ImageView
+        android:id="@+id/image_of_product"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="16"
+        android:src="@drawable/test_bild"
+        android:padding="3dp"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_weight="12">
+
+        <TextView
+            android:id="@+id/TV_adapter_productName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Produktname"
+            android:textColor="@color/colorWeiß"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@color/colorDunkelTuerkis" />
+
+        <TextView
+            android:id="@+id/TV_adapter_productReihe"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Reihe: 4"
+            android:textAlignment="center"
+            android:textColor="@color/colorDunkelTuerkis" />
+
+        <TextView
+            android:id="@+id/TV_adapter_productRegal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Regal: 1"
+            android:textAlignment="center"
+            android:textColor="@color/colorDunkelTuerkis" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_weight="16"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel">
+
+        <Spinner
+            android:id="@+id/spinner_ProduktAnzahl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:textAlignment="center"
+            android:gravity="center"
+            />
+
+        <CheckBox
+            android:id="@+id/ceckbox_einkaufen"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginStart="35dp"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
