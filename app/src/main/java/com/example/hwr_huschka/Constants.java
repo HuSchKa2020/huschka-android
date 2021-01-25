@@ -2,7 +2,7 @@ package com.example.hwr_huschka;
 
 public class Constants {
 
-    public static final String ROOT_URL = "http://huschka.ddnss.de/jan/v1/"; // muss noch angepasst werden
+    public static final String ROOT_URL = "http://huschka.ddnss.de/huschka/v1/"; // muss noch angepasst werden
 
     public static final String URL_LOGIN_USER = ROOT_URL + "UserLogin.php";
     public static final String URL_REGISTER_USER = ROOT_URL + "registerUser.php";
@@ -21,6 +21,7 @@ public class Constants {
     public static final String URL_ADD_LIST = ROOT_URL + "createShoppinglist.php";
     public static final String URL_DELETE_ALL_PRODUCTS_FROM_LIST = ROOT_URL + "DeleteAllProductInShoppinglist.php";
     public static final String URL_DELETE_SHOPPINGLIST = ROOT_URL + "DeleteShoppinglist.php";
+    public static final String URL_SHOPPINGLIST_POSITIONS = ROOT_URL + "ShoppinglistLocation.php";
 
     public static final String URL_ADD_PRODUCT_SHOPPINGLIST = ROOT_URL + "InsertProductJsonArray.php";
 
@@ -73,6 +74,10 @@ public class Constants {
     public static final String REQ_RETURN_PRODUKT_KCAL = "Kcal";
     public static final String REQ_RETURN_PRODUKT_KATEGORIE = "Kategorie";
     public static final String REQ_RETURN_PRODUKT_LISTE = "Produkte";
+
+    public static final String REQ_RETURN_PRODUKT_REIHE = "Reihe";
+    public static final String REQ_RETURN_PRODUKT_REGALHOEHE = "Regalhoehe";
+
 
 
     public static final String REQ_RETURN_ALL_SCORES = "Scores";

@@ -82,8 +82,8 @@ public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
             TextView tv_regal = (TextView) view.findViewById(R.id.TV_adapter_productRegal);
 
             tv_name.setText(product.getName());
-            tv_reihe.setText(Integer.toString(product.getPosition().getReihe()));
-            tv_regal.setText(Integer.toString(product.getPosition().getRegal()));
+            tv_reihe.setText("Reihe: " + Integer.toString(product.getPosition().getReihe()));
+            tv_regal.setText("Reagalhöhe: " + Integer.toString(product.getPosition().getRegal()));
 
             // Spinner
             final Spinner spinnerNumberOfProd = view.findViewById(R.id.spinner_ProduktAnzahl);

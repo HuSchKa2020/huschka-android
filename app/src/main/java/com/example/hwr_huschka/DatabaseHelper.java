@@ -20,9 +20,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hwr_huschka.Activities.MainActivity;
 import com.example.hwr_huschka.ListAdapter.ProductAdapter;
+import com.example.hwr_huschka.ListAdapter.ProductCheckboxSpinnerPositionAdapter;
 import com.example.hwr_huschka.ListAdapter.ProductNumberAdapter;
 import com.example.hwr_huschka.klassen.Kunde;
+import com.example.hwr_huschka.klassen.Position;
 import com.example.hwr_huschka.klassen.Product;
+import com.example.hwr_huschka.klassen.ProductInShoppinglist;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -374,4 +377,6 @@ public class DatabaseHelper {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
     }
+
+
 }
