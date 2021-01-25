@@ -101,8 +101,8 @@ public class ShoppinglistActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), GoShoppingActivity.class);
+                intent.putExtra("shoppingListID", shoppingList.getListenID());
                 startActivity(intent);
-                Toast.makeText(ShoppinglistActivity.this, "Start Shopping", Toast.LENGTH_SHORT).show();
             }
         });
 
