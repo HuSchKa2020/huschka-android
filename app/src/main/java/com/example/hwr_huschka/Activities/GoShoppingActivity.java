@@ -106,8 +106,14 @@ public class GoShoppingActivity extends AppCompatActivity {
                                 String name = (String) jsonObject.get(Constants.REQ_RETURN_PRODUKT_NAME);
                                 String kategorie = (String) jsonObject.get(Constants.REQ_RETURN_PRODUKT_KATEGORIE);
                                 double preis = (double) jsonObject.get(Constants.REQ_RETURN_PRODUKT_PRICE);
-                                int kcal = (int) jsonObject.get(Constants.REQ_RETURN_PRODUKT_KCAL);
 
+                                int kcal;
+
+                                if (jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
+                                    kcal = 0;
+                                } else {
+                                    kcal = (int) jsonObject.get(Constants.REQ_RETURN_PRODUKT_KCAL);
+                                }
                                 // Position
                                 int reihe = (int) jsonObject.get(Constants.REQ_RETURN_PRODUKT_REIHE);
                                 int regalhoehe = (int) jsonObject.get(Constants.REQ_RETURN_PRODUKT_REGALHOEHE);
