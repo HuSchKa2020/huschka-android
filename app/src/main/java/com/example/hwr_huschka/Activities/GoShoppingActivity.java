@@ -2,6 +2,7 @@ package com.example.hwr_huschka.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -69,7 +70,7 @@ public class GoShoppingActivity extends AppCompatActivity {
                 adapter = (ProductCheckboxSpinnerPositionAdapter) produktListView.getAdapter();
 
                 ArrayList<ProductInShoppinglist> pr = adapter.getCheckedProducts();
-                System.out.println(pr.size());
+                einkaufBeenden(GoShoppingActivity.this, shoppingListID, pr);
             }
         });
     }
@@ -78,7 +79,7 @@ public class GoShoppingActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case (android.R.id.home):
                 finish();
                 break;
@@ -109,7 +110,7 @@ public class GoShoppingActivity extends AppCompatActivity {
 
                                 int kcal;
 
-                                if (jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)){
+                                if (jsonObject.isNull(Constants.REQ_RETURN_PRODUKT_KCAL)) {
                                     kcal = 0;
                                 } else {
                                     kcal = (int) jsonObject.get(Constants.REQ_RETURN_PRODUKT_KCAL);
@@ -120,7 +121,7 @@ public class GoShoppingActivity extends AppCompatActivity {
 
                                 int anzahl = (int) jsonObject.get(Constants.REQ_RETURN_SHOPPINGLIST_NUMBEROF_PRODUCTS);
 
-                                products[i] = new ProductInShoppinglist(productId, hersteller, name, kategorie, preis, kcal, new Position(reihe, regalhoehe),anzahl);
+                                products[i] = new ProductInShoppinglist(productId, hersteller, name, kategorie, preis, kcal, new Position(reihe, regalhoehe), anzahl);
                             }
 
                             ProductCheckboxSpinnerPositionAdapter adapter = new ProductCheckboxSpinnerPositionAdapter(activity.getApplicationContext(), products);
@@ -149,5 +150,62 @@ public class GoShoppingActivity extends AppCompatActivity {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    public void einkaufBeenden(final Activity activity, final int listenID, final ArrayList<ProductInShoppinglist> produkte) {
+
+        final JSONArray produkteJSON;
+        produkteJSON = productListToJSONArray(produkte);
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_ADD_PRODUCT_SHOPPINGLIST,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject responseJSON = new JSONObject(response);
+                            Log.i("Response", response);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(activity.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put(Constants.REQ_PARAM_SHOPPINGLISTID, Integer.toString(listenID));
+                params.put(Constants.REQ_PARAM_PRODUCT_ARRAY, produkteJSON.toString());
+                return params;
+            }
+        };
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000, 0,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
+    }
+
+    public static JSONArray productListToJSONArray(final ArrayList<ProductInShoppinglist> produkte) {
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            for (ProductInShoppinglist produkt : produkte) {
+                JSONObject jsonObject = new JSONObject();
+
+                jsonObject.put("ProduktID", Integer.toString(produkt.getProduktID()));
+                jsonObject.put("Anzahl", Integer.toString(produkt.getAnzahl()));
+
+                jsonArray.put(jsonObject);
+            }
+        } catch (JSONException exception) {
+            Log.e("Fehler", exception.getMessage());
+        }
+
+        return jsonArray;
     }
 }
