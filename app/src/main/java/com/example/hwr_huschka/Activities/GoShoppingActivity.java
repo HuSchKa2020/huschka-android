@@ -1,6 +1,7 @@
 package com.example.hwr_huschka.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -67,6 +68,10 @@ public class GoShoppingActivity extends AppCompatActivity {
         btn_einkaufBeenden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Fragment Dialog hier, wo man die Richtigkeit seiner Angaben bestätigt
+                // nur wenn der Nutzer sie bestätigt, wir der folgende Code ausgeführt
+
                 adapter = (ProductCheckboxSpinnerPositionAdapter) produktListView.getAdapter();
 
                 ArrayList<ProductInShoppinglist> pr = adapter.getCheckedProducts();
@@ -152,6 +157,7 @@ public class GoShoppingActivity extends AppCompatActivity {
         RequestHandler.getInstance(activity.getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
+    
     public void einkaufBeenden(final Activity activity, final int listenID, final ArrayList<ProductInShoppinglist> produkte) {
 
         final JSONArray produkteJSON;
@@ -165,6 +171,13 @@ public class GoShoppingActivity extends AppCompatActivity {
                         try {
                             JSONObject responseJSON = new JSONObject(response);
                             Log.i("Response", response);
+
+                            if (responseJSON.getBoolean("error") == false) {
+                                double preis = responseJSON.getDouble("Gesamtpreis");
+
+                                // Bezahl Activity starten
+                                Intent intent = new Intent();
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
