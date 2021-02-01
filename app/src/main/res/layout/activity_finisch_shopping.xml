@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    Layout für die Activity in der alle Tipps&Tricks angezeigt werden.
+        Zugehörige Klasse: /Activities/AddProductsToListActivity -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorDunkelTuerkis"
+        app:titleTextColor="@color/colorWeiß" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Überprüfen Sie bitte nochmal Ihren Einkauf"
+        android:background="@color/colorDunkelTuerkis"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWeiß"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"/>
+
+
+    <ListView
+        android:id="@+id/LV_go_shopping"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
+        android:padding="3dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        >
+    </ListView>
+
+    <TextView
+        android:id="@+id/EndSummeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="530dp"
+        android:layout_marginStart="20dp"
+        android:text="Endsumme:"
+        android:textSize="20dp"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/TV_Endpreis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="530dp"
+        android:layout_toEndOf="@+id/EndSummeText"
+        android:text="0,00€"
+        android:textAlignment="center"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_Kasse_zahlen"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:text="Klassisch bezahlen"
+        android:textColor="@color/colorWeiß"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:background="@color/colorDunkelTuerkis"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="580dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btn_QR_Code"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:text="QR-Code generieren"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="580dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <Button
+        android:id="@+id/btn_App_bezahlen"
+        android:layout_width="105dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rahmen_nicht_ganz_dunkel"
+        android:text="Mit der App bezahlen"
+        android:textSize="16dp"
+        android:textColor="@color/colorDunkelTuerkis"
+        android:textStyle="bold" />
+
+</RelativeLayout>
