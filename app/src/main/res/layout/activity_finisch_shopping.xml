@@ -36,7 +36,7 @@
 
 
     <ListView
-        android:id="@+id/LV_go_shopping"
+        android:id="@+id/LV_finish_shopping"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_alignParentTop="true"

@@ -69,6 +69,9 @@ public class GoShoppingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(), FinishShoppingActivity.class);
+                startActivity(intent);
+
                 // Fragment Dialog hier, wo man die Richtigkeit seiner Angaben bestätigt
                 // nur wenn der Nutzer sie bestätigt, wir der folgende Code ausgeführt
 
