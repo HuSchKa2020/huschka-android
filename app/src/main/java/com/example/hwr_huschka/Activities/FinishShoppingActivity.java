@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,13 +12,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.hwr_huschka.ListAdapter.ProductCheckboxSpinnerPositionAdapter;
 import com.example.hwr_huschka.R;
-import com.example.hwr_huschka.klassen.ProductInShoppinglist;
-
-import java.util.ArrayList;
 
 public class FinishShoppingActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    Button btn_kasse;
 
     ProductCheckboxSpinnerPositionAdapter adapter;
 
@@ -29,11 +26,23 @@ public class FinishShoppingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finisch_shopping);
 
         toolbar = findViewById(R.id.toolbar);
+        btn_kasse = findViewById(R.id.btn_Kasse_zahlen);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        btn_kasse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
 
+    }
+
+    public void openDialog() {
+        DialogFragment dialogFragment = new DialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "dialog");
     }
 
     @Override
