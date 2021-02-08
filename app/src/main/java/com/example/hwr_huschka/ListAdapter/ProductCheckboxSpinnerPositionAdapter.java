@@ -19,6 +19,7 @@ import com.example.hwr_huschka.klassen.Product;
 import com.example.hwr_huschka.klassen.ProductInShoppinglist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +32,7 @@ public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
 
     public ProductCheckboxSpinnerPositionAdapter(Context context, ProductInShoppinglist[] products) {
         this.context = context;
+        Arrays.sort(products);
         this.mProducts = products;
 
         System.out.println("hier");
