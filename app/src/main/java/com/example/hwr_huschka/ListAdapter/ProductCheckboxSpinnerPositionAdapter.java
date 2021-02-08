@@ -27,28 +27,22 @@ import java.util.Map;
  */
 public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
     private ProductInShoppinglist[] mProducts;
-    private HashMap<ProductInShoppinglist, Boolean> productsCheckedHashMap = new HashMap<ProductInShoppinglist, Boolean>();
     private Context context;
 
     public ProductCheckboxSpinnerPositionAdapter(Context context, ProductInShoppinglist[] products) {
         this.context = context;
         this.mProducts = products;
 
-        for (ProductInShoppinglist p : mProducts) {
-            productsCheckedHashMap.put(p, false);
-        }
-
         System.out.println("hier");
     }
 
     public ArrayList<ProductInShoppinglist> getCheckedProducts() {
         ArrayList<ProductInShoppinglist> products = new ArrayList<ProductInShoppinglist>(); // alle Produkte die in der Liste "gecheckt wurden" 
-        for (Map.Entry<ProductInShoppinglist, Boolean> pair : productsCheckedHashMap.entrySet()) {
-            if (pair.getValue() == true) { // Produkt wurde ausgwählt
-                products.add(pair.getKey());
+        for (ProductInShoppinglist product: mProducts) {
+            if (product.isAusgewaehlt() == true) { // Produkt wurde ausgwählt
+                products.add(product);
             }
         }
-
         return products;
     }
 
@@ -76,7 +70,7 @@ public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
 
         final ProductInShoppinglist product = mProducts[i];
         if (product != null) {
-            Boolean isChecked = productsCheckedHashMap.get(product);
+            Boolean isChecked = product.isAusgewaehlt();
             TextView tv_name = (TextView) view.findViewById(R.id.TV_adapter_productName);
             TextView tv_reihe = (TextView) view.findViewById(R.id.TV_adapter_productReihe);
             TextView tv_regal = (TextView) view.findViewById(R.id.TV_adapter_productRegal);
@@ -116,7 +110,7 @@ public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    productsCheckedHashMap.put(product, b);
+                    product.setAusgewaehlt(!product.isAusgewaehlt());
                 }
             });
         }
