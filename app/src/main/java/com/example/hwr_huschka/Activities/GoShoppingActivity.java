@@ -68,10 +68,6 @@ public class GoShoppingActivity extends AppCompatActivity {
         btn_einkaufBeenden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(getApplicationContext(), FinishShoppingActivity.class);
-                startActivity(intent);
-
                 // Fragment Dialog hier, wo man die Richtigkeit seiner Angaben bestätigt
                 // nur wenn der Nutzer sie bestätigt, wir der folgende Code ausgeführt
 
@@ -178,8 +174,9 @@ public class GoShoppingActivity extends AppCompatActivity {
                             if (responseJSON.getBoolean("error") == false) {
                                 double preis = responseJSON.getDouble("Gesamtpreis");
 
-                                // Bezahl Activity starten
-                                Intent intent = new Intent();
+                                Intent intent = new Intent(getApplicationContext(), FinishShoppingActivity.class);
+                                intent.putExtra("preis", preis);
+                                startActivity(intent);
                             }
 
                         } catch (JSONException e) {
