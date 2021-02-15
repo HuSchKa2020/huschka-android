@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,7 @@ public class FinishShoppingActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     Button btn_kasse;
-
+    TextView tv_endpreis;
     ProductCheckboxSpinnerPositionAdapter adapter;
 
     @Override
@@ -27,7 +28,9 @@ public class FinishShoppingActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         btn_kasse = findViewById(R.id.btn_Kasse_zahlen);
+        tv_endpreis = findViewById(R.id.TV_Endpreis);
 
+        tv_endpreis.setText(Double.toString(getIntent().getDoubleExtra("preis", 0.0)));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
