@@ -168,17 +168,9 @@ public class RegistrationFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             
                             if (jsonObject.getBoolean("error") == false){
-
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                                editor.putInt("id", jsonObject.getInt(Constants.REQ_RETURN_USERID));
-                                editor.putString("email", email);
-                                editor.putString("firstname", firstname);
-                                editor.putString("familyname", familyname);
-                                editor.commit();
-
-
-                                openMainActivity();
+                                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                ft.replace(R.id.fragmentLoginContainer, new LoginFragment(), "login");
+                                ft.commit();
                             } else if (jsonObject.getString("message").equals("User already registered")){
                                 Toast.makeText(getContext(), "Sie sind schon registriert, bitte loggen sie sich ein!", Toast.LENGTH_LONG).show();
                             }
