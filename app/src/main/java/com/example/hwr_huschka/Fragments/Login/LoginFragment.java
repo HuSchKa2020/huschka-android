@@ -126,8 +126,14 @@ public class LoginFragment extends Fragment {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            boolean verifiziert;
+                            if (jsonObject.getInt("verifiziert") >= 1) {
+                                verifiziert = true;
+                            } else {
+                                verifiziert = false;
+                            }
 
-                            if (jsonObject.getBoolean("error") == false){
+                            if (jsonObject.getBoolean("error") == false && verifiziert == true){
                                 // mail and password are correct
                                 // safe user data in SharedPreferences
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -139,7 +145,9 @@ public class LoginFragment extends Fragment {
                                 editor.commit();
 
                                 openMainActivity();
-                            } else{
+                            } else if (jsonObject.getBoolean("error") == false && verifiziert == false) {
+                                Toast.makeText(getContext(), "Sie sind noch nicht verifiziert. Bitte öffnen Sie den Link in der ihn bei der Registrierung zugesandten Mail.", Toast.LENGTH_LONG).show();
+                            } else {
                                 // mail and password are not correct
                                 Toast.makeText(getContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             }
