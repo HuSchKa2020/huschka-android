@@ -17,7 +17,7 @@ Schlussendlich soll man wählen können, ob man an der Kasse oder mit der App be
 
 ## Backend
 
-Der Code aus dem Backend ist zu finden in folgendem Reporsitory: https://github.com/Jan1208/hwr-huschka-backend
+Der Code aus dem Backend ist zu finden in folgendem Reporsitory: https://github.com/HuSchKa2020/huschka-backend
 
 ## Installationshinweise
 
