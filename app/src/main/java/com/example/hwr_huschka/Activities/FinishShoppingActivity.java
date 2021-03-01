@@ -32,7 +32,7 @@ public class FinishShoppingActivity extends AppCompatActivity {
         btn_qrcode = findViewById(R.id.btn_QR_Code);
         tv_endpreis = findViewById(R.id.TV_Endpreis);
 
-        tv_endpreis.setText(Double.toString(getIntent().getDoubleExtra("preis", 0.0)));
+        tv_endpreis.setText(Double.toString(Math.round(getIntent().getDoubleExtra("preis", 0.0) * 100)/100.0));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
