@@ -24,7 +24,7 @@
         android:text="Wie willst du bezahlen?"
         android:background="@color/colorDunkelTuerkis"
         android:textAlignment="center"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorWeiß"
         android:gravity="center"
