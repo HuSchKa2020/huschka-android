@@ -1,5 +1,6 @@
 package com.example.hwr_huschka.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,7 @@ import com.example.hwr_huschka.R;
 public class FinishShoppingActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    Button btn_kasse;
+    Button btn_kasse, btn_qrcode;
     TextView tv_endpreis;
     ProductCheckboxSpinnerPositionAdapter adapter;
 
@@ -28,6 +29,7 @@ public class FinishShoppingActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         btn_kasse = findViewById(R.id.btn_Kasse_zahlen);
+        btn_qrcode = findViewById(R.id.btn_QR_Code);
         tv_endpreis = findViewById(R.id.TV_Endpreis);
 
         tv_endpreis.setText(Double.toString(getIntent().getDoubleExtra("preis", 0.0)));
@@ -38,6 +40,15 @@ public class FinishShoppingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDialog();
+            }
+        });
+
+        btn_qrcode.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QRCodeActivity.class);
+                startActivity(intent);
             }
         });
 
