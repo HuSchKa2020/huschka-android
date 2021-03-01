@@ -68,15 +68,13 @@ public class GoShoppingActivity extends AppCompatActivity {
         btn_einkaufBeenden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Fragment Dialog hier, wo man die Richtigkeit seiner Angaben bestätigt
-                // nur wenn der Nutzer sie bestätigt, wir der folgende Code ausgeführt
-
-                adapter = (ProductCheckboxSpinnerPositionAdapter) produktListView.getAdapter();
-
-                ArrayList<ProductInShoppinglist> pr = adapter.getCheckedProducts();
-                einkaufBeenden(GoShoppingActivity.this, shoppingListID, pr);
+                openDialog();
             }
         });
+    }
+    public void openDialog() {
+        UeberpruefenFragment dialogFragment = new UeberpruefenFragment();
+        dialogFragment.show(getSupportFragmentManager(), "dialog");
     }
 
     @Override
