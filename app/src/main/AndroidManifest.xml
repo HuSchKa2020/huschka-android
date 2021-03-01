@@ -37,6 +37,7 @@
         <activity android:name=".Activities.ChangeAccountDataActivity"/>
         <activity android:name=".Activities.GoShoppingActivity"/>
         <activity android:name=".Activities.FinishShoppingActivity"/>
+        <activity android:name=".Activities.QRCodeActivity"/>
 
 
 
