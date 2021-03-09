@@ -40,8 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="150dp"
-        android:src="@drawable/qr_code"/>
+        android:layout_marginTop="150dp"/>
 
     <Button
         android:id="@+id/BTN_QR_Code_beenden"

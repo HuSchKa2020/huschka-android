@@ -173,6 +173,7 @@ public class GoShoppingActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(getApplicationContext(), FinishShoppingActivity.class);
                                 intent.putExtra("preis", preis);
+                                intent.putExtra("ListenID", listenID);
                                 startActivity(intent);
                             }
 
