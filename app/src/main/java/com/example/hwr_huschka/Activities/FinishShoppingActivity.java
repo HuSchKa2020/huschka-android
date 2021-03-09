@@ -48,6 +48,7 @@ public class FinishShoppingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), QRCodeActivity.class);
+                intent.putExtra("ListenID", getIntent().getIntExtra("ListenID", 0));
                 startActivity(intent);
             }
         });
