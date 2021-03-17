@@ -132,7 +132,7 @@ public class AddProductsToListActivity extends AppCompatActivity {
                     Toast.makeText(AddProductsToListActivity.this, "Produkt schon in ihrer Einkaufsliste!", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    newProductsOfShoppingList.put(clickedItem, 0);
+                    newProductsOfShoppingList.put(clickedItem, 1);
                     refreshProductListView();
                 }
 

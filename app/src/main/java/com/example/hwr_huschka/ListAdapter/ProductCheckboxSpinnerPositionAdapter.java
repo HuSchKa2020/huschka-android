@@ -84,7 +84,7 @@ public class ProductCheckboxSpinnerPositionAdapter extends BaseAdapter {
             // Spinner
             final Spinner spinnerNumberOfProd = view.findViewById(R.id.spinner_ProduktAnzahl);
             // set Items to the Spinner
-            Integer[] spinnerItems = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+            Integer[] spinnerItems = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
             ArrayAdapter<Integer> myAdapter = new ArrayAdapter<Integer>(context,
                     android.R.layout.simple_list_item_1,
                     spinnerItems);
