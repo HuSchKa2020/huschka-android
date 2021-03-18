@@ -45,7 +45,7 @@
         android:background="@drawable/rahmen_nicht_ganz_dunkel"/>
 
 
-      <EditText
+    <EditText
         android:id="@+id/Edit_Nachname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +53,8 @@
         android:layout_marginTop="140dp"
         android:layout_marginStart="200dp"
         android:layout_marginEnd="20dp"
-        android:hint="Nachname"/>
+        android:layout_marginBottom="474dp"
+        android:hint="Nachname" />
 
     <EditText
         android:id="@+id/Edit_Vorname"
@@ -63,6 +64,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="140dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="474dp"
         android:hint="Vorname"/>
 
 
@@ -75,6 +77,7 @@
         android:layout_marginTop="280dp"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="335dp"
         android:ems="10"
         android:hint="Stadt"/>
 
@@ -86,6 +89,7 @@
         android:layout_marginEnd="150dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="420dp"
+        android:layout_marginBottom="194dp"
         android:hint="Straße"/>
 
     <EditText
@@ -96,6 +100,7 @@
         android:layout_marginStart="-140dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="420dp"
+        android:layout_marginBottom="194dp"
         android:layout_toEndOf="@+id/Edit_Straße"
         android:ems="10"
         android:hint="Nr." />
@@ -107,6 +112,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="280dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="335dp"
         android:inputType="number"
         android:hint="PLZ"/>
 
